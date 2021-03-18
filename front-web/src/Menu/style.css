@@ -1,0 +1,64 @@
+/* -------------> Barra de navegação <------------- */
+nav.navbar-transparente {
+    padding: 5px 0;
+    background-image: url('02.png');
+    background: #10589b 67%;
+
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white !important;
+    font-weight: bold;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #5F9EA0 !important;
+}
+
+.navbar-light .navbar-toggle {
+    color: rgba(255, 255, 255, .5) !important;
+    border-color: rgba(255, 255, 255, .1) !important;
+}
+
+.divisor {
+    width: 1px;
+    background: white;
+}
+
+#home{
+	background: rgba(0, 0, 0, 0.7);
+	color: white;
+}
+footer p a{
+    margin: 5px 5px;
+}
+.caixa{
+    padding: 60px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.page-header{
+    border-top: unset!important;
+    background: linear-gradient(
+115deg
+,#ffffff 18%,#ffffff 17%,rgba(206,209,226,0.45) 41%,#10589b 67%)!important;
+}
+
+.logo {
+     display: inline-block; 
+     vertical-align: middle; 
+     margin: 30px 0; 
+     margin-left: 60px;
+     max-width: 50%; 
+     position: relative; 
+     z-index: 5; 
+}
+.carrinho{
+    display: inline-block; 
+    vertical-align: middle; 
+    margin: 30px 0; 
+    margin-left: 180px;
+    max-width: 50%; 
+    position: relative; 
+    z-index: 5;
+}
