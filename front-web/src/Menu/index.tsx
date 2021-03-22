@@ -1,6 +1,7 @@
 import './style.css'
 import Logo from './logo.png';
 import Car from './carrinho.png';
+import { Link } from 'react-router-dom';
 
 function Menu() {
     return (
@@ -9,9 +10,9 @@ function Menu() {
                 <div className='row'>
                     <div className='col-md-4 d-flex'>
                         <div className='align-self-center logo'>
-                            <a className="navbar-brand" href="/">
+                            <Link  to="/">
                                 <img src={Logo} width="90px" alt="logo-vision-otica" />
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
@@ -19,16 +20,16 @@ function Menu() {
                         <div className="align-self-center input-group input-group-lg">
                             <input type="text" placeholder="Seu e-mail" className="form-control" />
                             <div className="input-group-append">
-                                <button type="button" className="btn btn-primary">Cadastre-se</button>
+                                <Link to='/cadastrar' type="button" className="btn btn-primary">Cadastre-se</Link>
                             </div>
                         </div>
                     </div>
 
                     <div className='col-md-4 d-flex'>
                         <div className='align-self-center carrinho'>
-                            <button className=" navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
-                                <img src={Car} width="90px" alt="carrinho compra" />
-                            </button>
+                        <a  href="/">
+                                <img src={Car} width="90px" alt="carrinho" />
+                            </a>
                         </div>
                     </div>
                 </div>
