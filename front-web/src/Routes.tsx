@@ -2,6 +2,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Cadastrar from "./cadastrar";
 import Home from "./Home";
 import Menu from "./Menu";
+import OculosGrau from "./OculosGrau";
 
 function Routes() {
     return (
@@ -12,9 +13,13 @@ function Routes() {
                     <Cadastrar />
                 </Route>
 
+                <Route path="/oculos-de-grau">
+                    <OculosGrau/>
+                </Route>
+
                 <Route path="/">
                     <Home />
-                </Route>
+                </Route>         
             </Switch>
         </BrowserRouter>
     );

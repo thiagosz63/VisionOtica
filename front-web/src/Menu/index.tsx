@@ -44,7 +44,7 @@ function Menu() {
                     <div className="collapse navbar-collapse" id="nav-principal">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-                                <a href="/" className="nav-link text-white">Óculos de grau</a>
+                                <Link to='/oculos-de-grau' className="nav-link text-white">Óculos de grau</Link>
                             </li>
 
                             <li className="nav-item">
