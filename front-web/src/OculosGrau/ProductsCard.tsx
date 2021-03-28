@@ -1,20 +1,25 @@
-import Oculos from './oculos.jpg';
-function ProductsCard() {
+import { Product } from './types';
+
+type Props = {
+    product: Product;
+}
+
+function ProductsCard({product}: Props) {
 
     return (
         <div className='order-card-container'>
             <h3 className='order-card-title'>
-                Oculos de grau
+                {product.name}
             </h3>
-            <img className='order-card-image' src={Oculos} alt='Oculos' />
+            <img className='order-card-image' src={product.imageUri} alt={product.name} />
 
             <h3 className='order-card-price'>
-                R$ 309,90
+                R$ {product.price}
             </h3>
             <div className='order-card-description'>
                 <h3>Descrição</h3>
                 <p>
-                    Descrição de Produto
+                    {product.description}
                 </p>
             </div>
 
