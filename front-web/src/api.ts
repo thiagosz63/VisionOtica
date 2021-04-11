@@ -1,7 +1,12 @@
 import axios from "axios";
 
-const api_url = 'http://localhost:8080';
+const api_url = 'http://127.0.0.1:8080';
 
 export function fetchProducts(){
     return axios(`${api_url}/products`)
 }
+
+
+
+
+

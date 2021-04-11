@@ -1,8 +1,50 @@
+
+import axios from 'axios';
+import { useState } from 'react';
 import './style.css'
 
+
+
 function Cadastrar() {
+
+    const [dados, setDados] = useState({
+        name: '',
+        sobrenome: '',
+        email: '',
+        cpf: '',
+        sexo: '',
+        senha: ''
+    })
+
+    const onchangeInput = (e: { target: { name: any; value: any; }; }) =>
+        setDados({ ...dados, [e.target.name]: e.target.value });
+
+    const senDados = async (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+       
+
+        //@ts-ignore
+        if (document.getElementById("senha").value === document.getElementById("confirmacaoSenha").value) {
+
+            axios.post('http://localhost:8080/client', dados)
+                .then(function (response) {
+                    alert('Dados inseridos com sucesso');
+                })
+                .catch(function (error) {
+                    alert('Error: ' + error)
+                });
+
+        } else {
+            alert('Senhas são diferentes')
+        }
+
+    }
+
+
+
     return (
         <div className='container homeCad'>
+
             <div className='row'>
                 <div className='col text-center'>
                     <h5>
@@ -11,75 +53,63 @@ function Cadastrar() {
                 </div>
             </div>
 
-            <div className="row mb-4 mt-2 ml-2 mr-2">
-                <div className="col">
-                    <form>
+            <form onSubmit={senDados}>
+                <div className="row mb-4 mt-2 ml-2 mr-2">
+                    <div className="col">
                         <label htmlFor='nome' >NOME*</label>
-                        <input type="text" id="nome" placeholder="Nome" />
-                    </form>
+                        <input type="text" id="nome" name='name' onChange={onchangeInput}
+                               placeholder="Nome" />
+                        <span>error</span>
+                    </div>
+
+                    <div className="col">
+                        <label htmlFor="sexo">Gênero (opcional)</label>
+                        <select id='sexo' name='sexo' className='form-control form-control-sm' onChange={onchangeInput} >
+                            <option>Não especificado</option>
+                            <option>Masculino</option>
+                            <option>Feminino</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div className="col">
-                    <form>
-                        <label htmlFor="sobrenome">SOBRENOME*</label>
-                        <input type="text" id="sobrenome" placeholder="Sobrenome" />
-                    </form>
-                </div>
-            </div>
-
-            <div className="row mt-2 ml-2 mr-2">
-                <div className="col-md-12">
-                    <form>
+                <div className="row mt-2 ml-2 mr-2">
+                    <div className="col-md-12">
                         <label htmlFor="email">E-MAIL*</label>
-                        <input type="text" id="email" placeholder="E-mail" />
-                    </form>
+                        <input type="text" id="email" placeholder="E-mail"
+                               name='email' onChange={onchangeInput} />
+                    </div>
                 </div>
-            </div>
 
-            <div className="row mt-2 ml-2 mr-2">
-                <div className="col-md-12">
-                    <form>
+                <div className="row mt-2 ml-2 mr-2">
+                    <div className="col-md-12">
                         <label htmlFor="cpf">CPF*</label>
-                        <input type="text" id="cpf" placeholder="cpf" />
-                    </form>
-                </div>
-            </div>
-
-            <div className="row mt-2">
-                <div className="col text-center">
-                    <div className="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="feminino" name="sexo" className="custom-control-input" />
-                        <label className="custom-control-label" htmlFor="feminino">Feminino</label>
-                    </div>
-
-                    <div className="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="masculino" name="sexo" className="custom-control-input" />
-                        <label className="custom-control-label" htmlFor="masculino">Masculino</label>
+                        <input type="number" id="cpf" placeholder="cpf (Apenas número)"
+                            name='cpf' onChange={onchangeInput} />
                     </div>
                 </div>
-            </div>
 
-            <div className="row mt-2 ml-2 mr-2">
-                <div className="col-md-12">
-                    <form>
+                <div className="row mt-2 ml-2 mr-2">
+                    <div className="col-md-12">
                         <label htmlFor="senha">SENHA*</label>
-                        <input type="password" name="senha" id="senha" placeholder="********" />
-                    </form>
+                        <input type="password" name="senha" id="senha"
+                            placeholder="********" onChange={onchangeInput} />
+                    </div>
                 </div>
-            </div>
 
-            <div className="row mt-2 ml-2 mr-2">
-                <div className="col-md-12">
-                    <form>
+                <div className="row mt-2 ml-2 mr-2">
+                    <div className="col-md-12">
                         <label htmlFor="confirmacaoSenha">CONFIRMAÇÃO DA SENHA*</label>
-                        <input type="password" id="confirmacaoSenha" placeholder="confirmar Senha" />
-                    </form>
+                        <input type="password" id="confirmacaoSenha"
+                            placeholder="confirmar Senha" />
+                    </div>
                 </div>
-            </div>
+            </form>  
 
             <div className="row mt-2 mr-2">
                 <div className="col text-center">
-                    <button className="btn btn-dark" type="button" value="criar">CRIAR</button>
+                    <button type='submit' onClick={senDados} className="btn btn-secondary">
+                        CRIAR
+                    </button>
                 </div>
             </div>
 
@@ -88,12 +118,15 @@ function Cadastrar() {
                     <p>
                         À partir de agora você receberá as newsletters com as novidades da Vísion Ótica. <br /> Fique tranquilo, a qualquer momento você poderá cancelar o Cadastro.
                         </p>
-
                 </div>
-
             </div>
         </div >
     );
 }
 
 export default Cadastrar;
+
+
+
+
+
