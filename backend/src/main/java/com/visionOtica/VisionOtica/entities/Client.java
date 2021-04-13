@@ -2,6 +2,7 @@ package com.visionOtica.VisionOtica.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,7 @@ public class Client implements Serializable {
 	private Long id;
 	private String name;
 	private String email;
+	@Column(unique = true)
 	private String cpf;
 	private String sexo;
 	private String senha;
