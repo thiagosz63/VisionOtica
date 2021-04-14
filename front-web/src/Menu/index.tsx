@@ -62,7 +62,7 @@ function Menu() {
                             <li className="nav-item divisor ml-2 mr-2"></li>
 
                             <li className="nav-item">
-                                <a href="/" className="btn btn-outline-light ml-4">Entrar</a>
+                                <Link to="/loguin-cliente" className="btn btn-outline-light ml-4">Entrar</Link>
                             </li>
                         </ul>
                     </div>
