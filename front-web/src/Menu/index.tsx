@@ -17,12 +17,7 @@ function Menu() {
                     </div>
 
                     <div className='col-md-4 d-flex'>
-                        <div className="align-self-center input-group input-group-lg">
-                            <input type="text" placeholder="Seu e-mail" className="form-control" />
-                            <div className="input-group-append">
-                                <Link to='/cadastrar' type="button" className="btn btn-primary">Cadastre-se</Link>
-                            </div>
-                        </div>
+                        
                     </div>
 
                     <div className='col-md-4 d-flex'>

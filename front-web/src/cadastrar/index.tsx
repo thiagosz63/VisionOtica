@@ -93,7 +93,7 @@ function Cadastrar() {
         senha: ''
     })
 
-    const onchangeInput = (e: { target: { name: any; value: any; }; }) =>
+    const onchangeInput = (e: { target: { name: string; value: string; }; }) =>
         setDados({ ...dados, [e.target.name]: e.target.value });
 
 
@@ -114,7 +114,7 @@ function Cadastrar() {
                 });
 
         } else {
-            alert('Porfavor insira os dados')
+            alert('Por favor insira os dados')
         }
     }
 

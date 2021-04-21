@@ -1,5 +1,6 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Cadastrar from "./cadastrar";
+import Footer from "./Footer";
 import Home from "./Home";
 import LoguinCliente from "./LoguinCliente";
 import Menu from "./Menu";
@@ -26,6 +27,7 @@ function Routes() {
                     <Home />
                 </Route>       
             </Switch>
+            <Footer/>
         </BrowserRouter>
     );
 }
