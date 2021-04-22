@@ -1,32 +1,31 @@
 import './style.css'
 import Logo from './logo.png';
-import Car from './carrinho.png';
 import { Link } from 'react-router-dom';
+import { History } from '../history';
+
 
 function Menu() {
+
+    function btnEntra(){
+        if(localStorage.getItem('client-logado')){
+            History.push('/page-user');
+        }else{
+            History.push('/loguin-cliente');
+        }
+    }
+    
     return (
         <header >
             <div className="contante page-header">
                 <div className='row'>
                     <div className='col-md-4 d-flex'>
                         <div className='align-self-center logo'>
-                            <Link  to="/">
+                            <Link to="/">
                                 <img src={Logo} width="90px" alt="logo-vision-otica" />
                             </Link>
                         </div>
                     </div>
 
-                    <div className='col-md-4 d-flex'>
-                        
-                    </div>
-
-                    <div className='col-md-4 d-flex'>
-                        <div className='align-self-center carrinho'>
-                        <a  href="/">
-                                <img src={Car} width="90px" alt="carrinho" />
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -57,7 +56,8 @@ function Menu() {
                             <li className="nav-item divisor ml-2 mr-2"></li>
 
                             <li className="nav-item">
-                                <Link to="/loguin-cliente" className="btn btn-outline-light ml-4">Entrar</Link>
+                                <button id ='buttons'onClick={btnEntra} type="button" 
+                                    className="btn btn-outline-light ml-4">Entrar</button>
                             </li>
                         </ul>
                     </div>

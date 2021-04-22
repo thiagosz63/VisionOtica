@@ -1,34 +1,29 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Switch, Route, Router } from "react-router-dom";
 import Cadastrar from "./cadastrar";
 import Footer from "./Footer";
+import { History } from "./history";
 import Home from "./Home";
 import LoguinCliente from "./LoguinCliente";
 import Menu from "./Menu";
 import OculosGrau from "./OculosGrau";
+import PageUser from "./pageUser";
+import PrivateRooter from "./PrivateRooter";
+import PrivateRooterInverso from "./PrivateRooterInverso";
+
 
 function Routes() {
     return (
-        <BrowserRouter>
+        <Router history={History}>
             <Menu />
             <Switch>
-                <Route path="/cadastrar">
-                    <Cadastrar />
-                </Route>
-
-                <Route path="/oculos-de-grau">
-                    <OculosGrau/>
-                </Route>
-
-                <Route path="/loguin-cliente">
-                    <LoguinCliente/>
-                </Route>   
-
-                <Route path="/">
-                    <Home />
-                </Route>       
+                <Route component={Cadastrar} exact path="/cadastrar" />
+                <Route component={OculosGrau} exact path="/oculos-de-grau" />
+                <PrivateRooterInverso component={LoguinCliente}  exact path="/loguin-cliente" />
+                <PrivateRooter component={PageUser} exact path="/page-user" />
+                <Route component={Home} path="/" />
             </Switch>
-            <Footer/>
-        </BrowserRouter>
+            <Footer />
+        </Router>
     );
 }
 export default Routes;

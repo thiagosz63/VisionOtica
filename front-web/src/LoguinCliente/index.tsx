@@ -1,45 +1,43 @@
-import { AxiosResponse, AxiosError } from 'axios';
-import { useState } from 'react';
+import { ErrorMessage, Field, Form, Formik, FormikValues } from 'formik';
 import { Link } from 'react-router-dom';
 import './style.css'
+import * as Yup from 'yup';
+import { AxiosError, AxiosResponse } from 'axios';
+import { History } from '../history';
+
 
 
 function LoguinCliente() {
 
-    const [dadosForm, setDadosForm] = useState({
-        loguinEmail: '',
-        loguinSenha: ''
-    })
-
-    const onChangeInput = (e: { target: { name: string; value: string }; }) =>
-        setDadosForm({ ...dadosForm, [e.target.name]: e.target.value });
-
     const axios = require('axios').default;
 
-    const submit = async (e: { preventDefault: () => void; }) => {
-        e.preventDefault();
+    const handleSubmit = (values: FormikValues) => {
 
-        if (dadosForm.loguinEmail !== '') {
-            axios.get(`http://localhost:8080/client/${dadosForm.loguinEmail}`)
+        axios.get(`http://localhost:8080/client/${values.email}`)
 
-                .then(function (response: AxiosResponse) {
-                    // handle success
-                    if (response.data.senha === dadosForm.loguinSenha) {
-                        alert('as senha sao iguais')
-                    } else {
-                        // window.location.assign("/");
-                        alert('as senha sao diferente')
-                    }
-                })
-                .catch(function (error: AxiosError) {
-                    // handle error
+            .then(function (response: AxiosResponse) {
 
-                    console.log(error.message);
+                if (response.data.senha === values.password) {
+                    localStorage.setItem('client-logado', response.data);
+                    History.push('/page-user');
+                } else {
+                    alert('as senha sao diferente')
+                }
+            })
+            .catch(function (error: AxiosError) {
+                // handle error
 
-                })
-        } else { alert("preencha os campos") }
+                console.log(error.message);
 
+            })
     }
+
+    const validations = Yup.object().shape({
+        email: Yup.string().email().required(),
+        password: Yup.string().min(6).required()
+    });
+
+
     return (
         <div className='container Caixa'>
             <div className='row'>
@@ -50,32 +48,36 @@ function LoguinCliente() {
                         endereço de e-mail e senha.
                         </p>
 
-                        <form onSubmit={submit}>
-                            <div>
-                                <label htmlFor='loguinEmail'>E-MAIL*</label>
-                                <input id='loguinEmail' placeholder='DIGITE SEU EMAIL'
-                                    type='email' name='loguinEmail' onChange={onChangeInput} />
-                            </div>
-
-                            <div className='Caixa'>
-                                <label htmlFor='loguinSenha'>SENHA*</label>
-                                <input id='loguinSenha' placeholder='DIGITE SUA SENHA'
-                                    name='loguinSenha' type='password' onChange={onChangeInput} />
-                            </div>
-
-
-                            <div className='row Caixa'>
-                                <div className='col-md-6'>
-                                    <button type="submit" className="btn btn-warning">Entrar</button>
+                        <Formik initialValues={{}} onSubmit={handleSubmit} validationSchema={validations}>
+                            <Form>
+                                <div>
+                                    <label htmlFor='email'>E-MAIL*</label>
+                                    <Field id='email' placeholder='DIGITE SEU EMAIL'
+                                        type='email' name='email' />
+                                    <ErrorMessage component='span' name='email' />
                                 </div>
 
-                                <div className='col-md-6'>
-                                    <a href='/'>Esqueceu sua Senha?</a>
+                                <div className='Caixa'>
+                                    <label htmlFor='password'>SENHA*</label>
+                                    <Field id='password' placeholder='DIGITE SUA SENHA'
+                                        name='password' type='password' />
+                                    <ErrorMessage component='span' name='password' />
                                 </div>
 
-                                <div id='tteste'></div>
-                            </div>
-                        </form>
+                                <div className='row Caixa'>
+                                    <div className='col-md-6'>
+                                        <button type="submit" className="btn btn-warning">Entrar</button>
+                                    </div>
+
+                                    <div className='col-md-6'>
+                                        <a href='/'>Esqueceu sua Senha?</a>
+                                    </div>
+
+                                </div>
+
+                            </Form>
+                        </Formik>
+
                     </div>
 
                 </div>

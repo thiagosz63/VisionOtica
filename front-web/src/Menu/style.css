@@ -1,7 +1,6 @@
 /* -------------> Barra de navegação <------------- */
 nav.navbar-transparente {
     padding: 5px 0;
-    background-image: url('02.png');
     background: #10589b 67%;
 
 }
@@ -25,18 +24,6 @@ nav.navbar-transparente {
     background: white;
 }
 
-#home{
-	background: rgba(0, 0, 0, 0.7);
-	color: white;
-}
-footer p a{
-    margin: 5px 5px;
-}
-.caixa{
-    padding: 60px 0;
-    border-bottom: 1px solid #e5e5e5;
-}
-
 .page-header{
     border-top: unset!important;
     background: linear-gradient(
@@ -53,12 +40,6 @@ footer p a{
      position: relative; 
      z-index: 5; 
 }
-.carrinho{
-    display: inline-block; 
-    vertical-align: middle; 
-    margin: 30px 0; 
-    margin-left: 180px;
-    max-width: 50%; 
-    position: relative; 
-    z-index: 5;
-}
+#buttons {
+    margin-right: 40px;
+   }
