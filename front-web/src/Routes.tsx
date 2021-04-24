@@ -1,6 +1,8 @@
 import { Switch, Route, Router } from "react-router-dom";
 import Cadastrar from "./cadastrar";
 import Footer from "./Footer";
+import Contato from "./Footer/TelasFooter/Contato";
+import QuemSomos from "./Footer/TelasFooter/QuemSomos";
 import { History } from "./history";
 import Home from "./Home";
 import LoguinCliente from "./LoguinCliente";
@@ -18,6 +20,8 @@ function Routes() {
             <Switch>
                 <Route component={Cadastrar} exact path="/cadastrar" />
                 <Route component={OculosGrau} exact path="/oculos-de-grau" />
+                <Route component={QuemSomos} exact path="/quem-somos" />
+                <Route component={Contato} exact path="/contato" />
                 <PrivateRooterInverso component={LoguinCliente}  exact path="/loguin-cliente" />
                 <PrivateRooter component={PageUser} exact path="/page-user" />
                 <Route component={Home} path="/" />

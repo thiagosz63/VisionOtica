@@ -1,0 +1,34 @@
+.contato-h2 {
+    margin: 20px;
+    color: #10589b;
+}
+.Contato-box{
+    width: 100%;
+    height: 40px;
+	border-radius: 8px;
+    border: 1px solid #ccc;
+}
+.contato-telefone {
+    width: 100%;
+    height: 40px;
+	border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+.contato-msn {
+    background: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    height: auto;
+    line-height: 1.4;
+    margin: 0;
+    padding: 9px;
+    vertical-align: baseline;
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+    margin-bottom: 20px;
+}

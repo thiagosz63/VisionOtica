@@ -1,4 +1,4 @@
-import './style.css'
+import './style.css';
 import Instagram from './instagram.png';
 import Facebook from './facebook.png';
 import Twitter from './twitter.png';
@@ -35,10 +35,10 @@ function Footer() {
                         <h4>INSTITUCIONAL</h4>
                         <ul className="navbar-nav">
                             <li className="nav-item" >
-                                <Link to='/'>Quem Somos</Link>
+                                <Link to='/quem-somos'>Quem Somos</Link>
                             </li>
                             <li className="nav-item" >
-                                <Link to='/'>Contato</Link>
+                                <Link to='/contato'>Contato</Link>
                             </li>
                             <li className="nav-item" >
                                 <Link to='/'>Políticas de Entregas</Link>
