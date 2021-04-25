@@ -32,3 +32,7 @@
     resize: none;
     margin-bottom: 20px;
 }
+.btn-info{
+    background:#10589b;
+    width: 200px;
+}

@@ -41,10 +41,10 @@ function Footer() {
                                 <Link to='/contato'>Contato</Link>
                             </li>
                             <li className="nav-item" >
-                                <Link to='/'>Políticas de Entregas</Link>
+                                <Link to='/politica-de-entrega'>Políticas de Entregas</Link>
                             </li>
                             <li className="nav-item" >
-                                <Link to='/'>Políticas de troca e devolução</Link>
+                                <Link to='/trocas-e-Devolucao'>Políticas de troca e devolução</Link>
                             </li>
                             <li className="nav-item" >
                                 <Link to='/'>Universidade Vision</Link>

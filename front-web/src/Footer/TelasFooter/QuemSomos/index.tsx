@@ -3,10 +3,10 @@ import './style.css';
 function QuemSomos() {
     return (
     <body className="QuemSomos-center">
-        <div className="contener">
-            <div className="col-md-12">
+        <div className="container">
                 <h2 className="quemSomos">Quem Somos</h2>
-                <p className="text-justify"><h4>1. Forneça informações úteis sobre o seu negócio</h4>
+                <p className="text-justify" id="quemSomos-p">
+                <h4>1. Forneça informações úteis sobre o seu negócio</h4>
                 Forneça apenas informações úteis sobre o seu negócio como:
                 a quanto tempo a empresa está no mercado, qual o nível de experiência da empresa,
                 principal área de atuação, principais serviços e diferenciais.
@@ -45,7 +45,6 @@ function QuemSomos() {
                 <h4>4. Use imagens</h4>
                 Apresente a sua empresa de uma maneira mais dinâmica utilizando imagens para mostrar como ela funciona,
                  ou até mesmo coloque boas fotos da sua empresa para chamar a atenção do cliente.</p>
-            </div>
         </div>
     </body>
     )
