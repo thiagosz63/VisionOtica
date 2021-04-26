@@ -9,7 +9,7 @@ import com.visionOtica.VisionOtica.entities.Client;
 
 public interface ClientRepository extends JpaRepository<Client, Long>{
 
-	List<Client> findAllByOrderByNameAsc();
+	List<Client> findAllByOrderByNomeAsc();
 	
 	Optional<Client> findByEmail(String email);
 }

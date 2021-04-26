@@ -9,7 +9,7 @@ public class ClientDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
-	private String name;
+	private String nome;
 	private String email;
 	private String cpf;
 	private String sexo;
@@ -18,10 +18,10 @@ public class ClientDTO implements Serializable {
 	public ClientDTO() {
 	}
 
-	public ClientDTO(Long id, String name,String email, String cpf, String sexo, String senha) {
+	public ClientDTO(Long id, String nome,String email, String cpf, String sexo, String senha) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
 		this.sexo = sexo;
@@ -31,7 +31,7 @@ public class ClientDTO implements Serializable {
 	public ClientDTO(Client entity) {
 		super();
 		id = entity.getId();
-		name = entity.getName();
+		nome = entity.getNome();
 		email = entity.getEmail();
 		cpf = entity.getCpf();
 		sexo = entity.getSexo();
@@ -46,12 +46,12 @@ public class ClientDTO implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getEmail() {

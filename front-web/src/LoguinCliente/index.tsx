@@ -2,33 +2,29 @@ import { ErrorMessage, Field, Form, Formik, FormikValues } from 'formik';
 import { Link } from 'react-router-dom';
 import './style.css'
 import * as Yup from 'yup';
+import { pt } from 'yup-locale-pt';
 import { AxiosError, AxiosResponse } from 'axios';
 import { History } from '../history';
 
 
 
 function LoguinCliente() {
+    Yup.setLocale(pt);
 
     const axios = require('axios').default;
 
     const handleSubmit = (values: FormikValues) => {
-
         axios.get(`http://localhost:8080/client/${values.email}`)
-
             .then(function (response: AxiosResponse) {
-
                 if (response.data.senha === values.password) {
                     localStorage.setItem('client-logado', response.data);
                     History.push('/page-user');
                 } else {
-                    alert('as senha sao diferente')
+                    alert('As senha sao diferente')
                 }
             })
             .catch(function (error: AxiosError) {
-                // handle error
-
-                console.log(error.message);
-
+                alert('error: Cliente não encontrado')
             })
     }
 

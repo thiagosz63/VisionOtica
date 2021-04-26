@@ -21,7 +21,7 @@ public class ClientService {
 
 	@Transactional(readOnly = true)
 	public List<ClientDTO> findAll() {
-		List<Client> list = repository.findAllByOrderByNameAsc();
+		List<Client> list = repository.findAllByOrderByNomeAsc();
 		return list.stream().map(x -> new ClientDTO(x)).collect(Collectors.toList());
 	}
 	
@@ -33,7 +33,7 @@ public class ClientService {
 	
 		@Transactional
 	public ClientDTO insert(ClientDTO dto) {
-		Client client = new Client(null, dto.getName(), dto.getEmail(), dto.getCpf(), dto.getSexo(), dto.getSenha());
+		Client client = new Client(null, dto.getNome(), dto.getEmail(), dto.getCpf(), dto.getSexo(), dto.getSenha());
 
 		client = repository.save(client);
 		return new ClientDTO(client);

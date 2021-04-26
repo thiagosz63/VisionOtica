@@ -1,128 +1,79 @@
 
-import axios from 'axios';
-import { useState } from 'react';
+import { ErrorMessage, Field, Form, Formik, FormikValues } from 'formik'
+import * as Yup from 'yup';
 import './style.css'
-
+import { pt } from 'yup-locale-pt';
+import axios from 'axios';
 
 function Cadastrar() {
+    Yup.setLocale(pt);
 
-    function validacao() {
-        //@ts-ignore
-        let imputName = document.getElementById("name").value;
-        //@ts-ignore
-        let imputEmail = document.getElementById("email").value;
-        //@ts-ignore
-        let imputCpf = document.getElementById("cpf").value;
-        //@ts-ignore
-        let imputSenha = document.getElementById("senha").value;
-        //@ts-ignore
-        let imputConfirmaSenha = document.getElementById("confirmacaoSenha").value;
+    const handleSubmit = (Values: FormikValues) => {
+        axios.post('http://localhost:8080/client', Values)
 
-        if (imputName === '') {
-            //@ts-ignore
-            document.getElementById("errorName").innerHTML = "Error: Campo obligatorio!";
-            //@ts-ignore
-            document.getElementById("BtnInserir").disabled = true;
+            .then(function (response) {
+                alert('Dados inseridos com sucesso');       
+            })
+            .catch(function (error) {
+                alert('Error: client ja cadastrado')
+            });
+    }
+    function validarCPF(cpf: string) {
+        cpf = cpf.replace(/[^\d]+/g, '');
+        if (cpf === '') return false;
+        // Elimina CPFs invalidos conhecidos	
+        if (cpf.length !== 11 ||
+            cpf === "00000000000" ||
+            cpf === "11111111111" ||
+            cpf === "22222222222" ||
+            cpf === "33333333333" ||
+            cpf === "44444444444" ||
+            cpf === "55555555555" ||
+            cpf === "66666666666" ||
+            cpf === "77777777777" ||
+            cpf === "88888888888" ||
+            cpf === "99999999999")
+            return false;
+        // Valida 1o digito	
+        let add = 0;
+        for (let i = 0; i < 9; i++) {
+            add += parseInt(cpf.charAt(i)) * (10 - i);
         }
-        else {
-            //@ts-ignore
-            document.getElementById("errorName").innerHTML = "";
-            //@ts-ignore
-            document.getElementById("BtnInserir").disabled = false;
+        let rev = 11 - (add % 11);
+        if (rev === 10 || rev === 11) {
+            rev = 0;
         }
-        if (imputEmail === '') {
-            //@ts-ignore
-            document.getElementById("errorEmail").innerHTML = "Error: Campo obligatorio!";
-            //@ts-ignore
-            document.getElementById("BtnInserir").disabled = true;
+        if (rev !== parseInt(cpf.charAt(9))) {
+            return false;
         }
-        else {
-            //@ts-ignore
-            document.getElementById("errorEmail").innerHTML = "";
-            //@ts-ignore
-            document.getElementById("BtnInserir").disabled = false;
+        // Valida 2o digito	
+        add = 0;
+        for (let i = 0; i < 10; i++) {
+            add += parseInt(cpf.charAt(i)) * (11 - i);
         }
-        if (imputCpf === '') {
-            //@ts-ignore
-            document.getElementById("errorCpf").innerHTML = "Error: Campo obligatorio!";
-            //@ts-ignore
-            document.getElementById("BtnInserir").disabled = true;
+        rev = 11 - (add % 11);
+        if (rev === 10 || rev === 11) {
+            rev = 0;
         }
-        else {
-            //@ts-ignore
-            document.getElementById("errorCpf").innerHTML = "";
-            //@ts-ignore
-            document.getElementById("BtnInserir").disabled = false;
+        if (rev !== parseInt(cpf.charAt(10))) {
+            return false;
         }
-        if (imputSenha === '') {
-            //@ts-ignore
-            document.getElementById("errorSenha").innerHTML = "Error: Campo obligatorio!";
-            //@ts-ignore
-            document.getElementById("BtnInserir").disabled = true;
-        }
-        else {
-            //@ts-ignore
-            document.getElementById("errorSenha").innerHTML = "";
-            //@ts-ignore
-            document.getElementById("BtnInserir").disabled = false;
-        }
-        if ((imputConfirmaSenha !== imputSenha) || (imputConfirmaSenha==='') ) {
-            //@ts-ignore
-            document.getElementById("errorConfirmaSenha").innerHTML = "Error: As senhas não são iguais";
-            //@ts-ignore
-            document.getElementById("BtnInserir").disabled = true;
-        }
-        else {
-            
-            //@ts-ignore
-            document.getElementById("errorConfirmaSenha").innerHTML = "";
-            //@ts-ignore
-            document.getElementById("BtnInserir").disabled = false;
-        }
-
+        return true;
     }
 
+    const validations = Yup.object().shape({
+        nome: Yup.string().required(),
+        email: Yup.string().email().required(),
+        cpf: Yup.string().test("", "CPF não valido",
+            (value) => validarCPF(value + '')).required(),
+            senha: Yup.string().min(6).required(),
+        ConfirmaSenha: Yup.string().oneOf([Yup.ref('senha'),
+            null], 'As senhas são diferentes').required('Confirmação é obrigatória')
 
-    //recebendo os dados e enviando para o banco
-    const [dados, setDados] = useState({
-        name: '',
-        sobrenome: '',
-        email: '',
-        cpf: '',
-        sexo: '',
-        senha: ''
     })
-
-    const onchangeInput = (e: { target: { name: string; value: string; }; }) =>
-        setDados({ ...dados, [e.target.name]: e.target.value });
-
-
-    const inserir = async (e: { preventDefault: () => void; }) => {
-        e.preventDefault();
-
-        //@ts-ignore
-        let imputName = document.getElementById("name").value;
-        if (imputName !== '') {
-
-            axios.post('http://localhost:8080/client', dados)
-            
-                .then(function (response) {
-                    alert('Dados inseridos com sucesso');
-                })
-                .catch(function (error) {
-                    alert('Error: client ja cadastrado')
-                });
-
-        } else {
-            alert('Por favor insira os dados')
-        }
-    }
-
-
 
     return (
         <div className='container homeCad'>
-
             <div className='row'>
                 <div className='col text-center'>
                     <h5>
@@ -131,78 +82,82 @@ function Cadastrar() {
                 </div>
             </div>
 
-            <form onChange={validacao}>
-                <div className="row mb-4 mt-2 ml-2 mr-2">
-                    <div className="col">
-                        <label htmlFor='name' >NOME*</label>
-                        <input type="text" id="name" name='name' onChange={onchangeInput}
-                            placeholder="Nome" />
-                        <span id='errorName'></span>
+            <Formik initialValues={{}} onSubmit={handleSubmit} validationSchema={validations}>
+                <Form>
+                    <div className="row mb-4 mt-2 ml-2 mr-2">
+                        <div className="col">
+                            <label htmlFor='Nome' >NOME*</label>
+                            <Field type="text" id="Nome" name='nome'
+                                placeholder="Nome" />
+                            <ErrorMessage component='span' name='nome' />
+                        </div>
+
+                        <div className="col">
+                            <label htmlFor="sexo">Gênero (opcional)</label>
+                            <Field id='sexo' name='sexo' as="select"
+                                className='form-control form-control-sm'>
+                                <option value='Não_especificado'>Não especificado</option>
+                                <option value='Masculino'>Masculino</option>
+                                <option value='Feminino'>Feminino</option>
+                            </Field>
+                        </div>
                     </div>
 
-                    <div className="col">
-                        <label htmlFor="sexo">Gênero (opcional)</label>
-                        <select id='sexo' name='sexo' className='form-control form-control-sm' onChange={onchangeInput} >
-                            <option>Não especificado</option>
-                            <option>Masculino</option>
-                            <option>Feminino</option>
-                        </select>
+                    <div className="row mt-2 ml-2 mr-2">
+                        <div className="col-md-12">
+                            <label htmlFor="Email">E-MAIL*</label>
+                            <Field type="text" id="Email" placeholder="E-mail"
+                                name='email' />
+                            <ErrorMessage component='span' name='email' />
+                        </div>
                     </div>
-                </div>
 
-                <div className="row mt-2 ml-2 mr-2">
-                    <div className="col-md-12">
-                        <label htmlFor="email">E-MAIL*</label>
-                        <input type="text" id="email" placeholder="E-mail"
-                            name='email' onChange={onchangeInput} />
-                        <span id='errorEmail'></span>
+                    <div className="row mt-2 ml-2 mr-2">
+                        <div className="col-md-12">
+                            <label htmlFor="CPF">CPF*</label>
+                            <Field type="text" id="CPF" placeholder="CPF (Apenas número)"
+                                name='cpf' />
+                            <ErrorMessage component='span' name='cpf' />
+                        </div>
                     </div>
-                </div>
 
-                <div className="row mt-2 ml-2 mr-2">
-                    <div className="col-md-12">
-                        <label htmlFor="cpf">CPF*</label>
-                        <input type="number" id="cpf" placeholder="cpf (Apenas número)"
-                            name='cpf' onChange={onchangeInput} />
-                        <span id='errorCpf'></span>
+                    <div className="row mt-2 ml-2 mr-2">
+                        <div className="col-md-12">
+                            <label htmlFor="Password">SENHA*</label>
+                            <Field type="password" name="senha" id="Password"
+                                placeholder="********" />
+                            <ErrorMessage component='span' name='senha' />
+                        </div>
                     </div>
-                </div>
 
-                <div className="row mt-2 ml-2 mr-2">
-                    <div className="col-md-12">
-                        <label htmlFor="senha">SENHA*</label>
-                        <input type="password" name="senha" id="senha"
-                            placeholder="********" onChange={onchangeInput} />
-                        <span id='errorSenha' />
+                    <div className="row mt-2 ml-2 mr-2">
+                        <div className="col-md-12">
+                            <label htmlFor="ConfirmaPassword">CONFIRMAÇÃO DA SENHA*</label>
+                            <Field type="password" id="ConfirmaSenha"
+                                placeholder="confirmar Senha" name='ConfirmaSenha' />
+                            <ErrorMessage component='span' name='ConfirmaSenha' />
+                        </div>
                     </div>
-                </div>
 
-                <div className="row mt-2 ml-2 mr-2">
-                    <div className="col-md-12">
-                        <label htmlFor="confirmacaoSenha">CONFIRMAÇÃO DA SENHA*</label>
-                        <input type="password" id="confirmacaoSenha"
-                            placeholder="confirmar Senha" />
-                        <span id='errorConfirmaSenha' />
+                    <div className="row mt-2 mr-2">
+                        <div className="col text-center">
+                            <button type='submit'
+                                className="btn btn-secondary">
+                                CRIAR
+                             </button>
+                        </div>
                     </div>
-                </div>
-            </form>
-
-            <div className="row mt-2 mr-2">
-                <div className="col text-center">
-                    <button type='submit' onClick={inserir}
-                        className="btn btn-secondary"
-                        id='BtnInserir'
-                    >
-                        CRIAR
-                    </button>
-                </div>
-            </div>
+                </Form>
+            </Formik>
 
             <div className='row'>
                 <div className='col text-center'>
                     <p>
-                        À partir de agora você receberá as newsletters com as novidades da Vísion Ótica. <br /> Fique tranquilo, a qualquer momento você poderá cancelar o Cadastro.
-                        </p>
+                        À partir de agora você receberá as newsletters
+                        com as novidades da Vísion Ótica. <br />
+                        Fique tranquilo, a qualquer momento você poderá cancelar
+                        o Cadastro.
+                    </p>
                 </div>
             </div>
         </div >
