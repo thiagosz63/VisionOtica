@@ -22,12 +22,6 @@ function Footer() {
                             <li className="nav-item" >
                                 <Link to='/'>Carrinho de Compras</Link>
                             </li>
-                            <li className="nav-item" >
-                                <Link to='/'>Meus Favoritos</Link>
-                            </li>
-                            <li className="nav-item" >
-                                <Link to='/'>Trocas e Devoluções</Link>
-                            </li>
                         </ul>
                     </div>
 
@@ -47,7 +41,7 @@ function Footer() {
                                 <Link to='/trocas-e-Devolucao'>Políticas de troca e devolução</Link>
                             </li>
                             <li className="nav-item" >
-                                <Link to='/'>Universidade Vision</Link>
+                                <Link to='/universidade-vision'>Universidade Vision</Link>
                             </li>
                         </ul>
                     </div>
@@ -56,16 +50,13 @@ function Footer() {
                         <h4>AJUDA/FAQ</h4>
                         <ul className="navbar-nav">
                             <li className="nav-item" >
-                                <Link to='/'></Link>
-                            </li>
-                            <li className="nav-item" >
                                 <Link to='/'>Como cuidar dos seus óculus</Link>
                             </li>
                             <li className="nav-item" >
                                 <Link to='/'>Calcule sua distância pupilar</Link>
                             </li>
                             <li className="nav-item" >
-                                <Link to='/'>Dicas Úteis</Link>
+                                <Link to='/dicas'>Dicas Úteis</Link>
                             </li>
                             <li className="nav-item" >
                                 <Link to='/'>Dúvidas freqüentes</Link>

@@ -24,7 +24,7 @@ function Contato() {
                     </label>
 
                     <label htmlFor="mensagem">Tire suas dúvidas conosco <span>*</span> </label>
-                    <textarea className="contato-msn" id="mensagem" rows={8} cols={5}></textarea>
+                    <textarea className="contato-msn" id="mensagem" rows={8} cols={5} placeholder="Escreva sua Mensagem..."></textarea>
                     <div className="centralizar"> 
                         <input className="btn btn-info" type="submit" id="btnContEnviar" value="Enviar" />
                     </div>

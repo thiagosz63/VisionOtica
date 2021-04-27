@@ -2,7 +2,6 @@
 nav.navbar-transparente {
     padding: 5px 0;
     background: #10589b 67%;
-
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -42,4 +41,5 @@ nav.navbar-transparente {
 }
 #buttons {
     margin-right: 40px;
-   }
+}
+
