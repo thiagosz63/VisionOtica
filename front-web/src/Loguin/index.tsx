@@ -17,8 +17,14 @@ function LoguinCliente() {
         axios.get(`http://localhost:8080/client/${values.email}`)
             .then(function (response: AxiosResponse) {
                 if (response.data.senha === values.password) {
-                    localStorage.setItem('client-logado', response.data);
-                    History.push('/page-user');
+                    if (response.data.categoria !== 'admin') {
+                        localStorage.setItem('client-logado', response.data);
+                        History.push('/page-user');
+                    }
+                    if (response.data.categoria === 'admin') {
+                        localStorage.setItem('admin-logado', response.data);
+                        History.push('/page-admin');
+                    }
                 } else {
                     alert('As senha sao diferente')
                 }
@@ -32,7 +38,6 @@ function LoguinCliente() {
         email: Yup.string().email().required(),
         password: Yup.string().min(6).required()
     });
-
 
     return (
         <div className='container Caixa'>

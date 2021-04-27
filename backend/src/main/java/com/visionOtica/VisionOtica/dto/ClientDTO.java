@@ -7,18 +7,19 @@ import com.visionOtica.VisionOtica.entities.Client;
 public class ClientDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Long id;
 	private String nome;
 	private String email;
 	private String cpf;
 	private String sexo;
 	private String senha;
+	private String categoria;
 
 	public ClientDTO() {
 	}
 
-	public ClientDTO(Long id, String nome,String email, String cpf, String sexo, String senha) {
+	public ClientDTO(Long id, String nome, String email, String cpf, String sexo, String senha, String categoria) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -26,6 +27,7 @@ public class ClientDTO implements Serializable {
 		this.cpf = cpf;
 		this.sexo = sexo;
 		this.senha = senha;
+		this.categoria = categoria;
 	}
 
 	public ClientDTO(Client entity) {
@@ -36,6 +38,7 @@ public class ClientDTO implements Serializable {
 		cpf = entity.getCpf();
 		sexo = entity.getSexo();
 		senha = entity.getSenha();
+		categoria = entity.getCategoria();
 	}
 
 	public Long getId() {
@@ -86,6 +89,14 @@ public class ClientDTO implements Serializable {
 		this.senha = senha;
 	}
 
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -110,8 +121,5 @@ public class ClientDTO implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
 
 }

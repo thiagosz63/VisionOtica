@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import './style.css'
 import { pt } from 'yup-locale-pt';
 import axios from 'axios';
+import { History } from '../history';
 
 function Cadastrar() {
     Yup.setLocale(pt);
@@ -12,7 +13,8 @@ function Cadastrar() {
         axios.post('http://localhost:8080/client', Values)
 
             .then(function (response) {
-                alert('Dados inseridos com sucesso');       
+                alert('Dados inseridos com sucesso');  
+                History.push('/loguin-cliente');     
             })
             .catch(function (error) {
                 alert('Error: client ja cadastrado')

@@ -25,11 +25,12 @@ public class Client implements Serializable {
 	private String cpf;
 	private String sexo;
 	private String senha;
+	private String categoria;
 
 	public Client() {
 	}
 
-	public Client(Long id, String nome, String email, String cpf, String sexo, String senha) {
+	public Client(Long id, String nome, String email, String cpf, String sexo, String senha,String categoria) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -37,6 +38,7 @@ public class Client implements Serializable {
 		this.cpf = cpf;
 		this.sexo = sexo;
 		this.senha = senha;
+		this.categoria = categoria;
 	}
 
 	public Long getId() {
@@ -85,6 +87,14 @@ public class Client implements Serializable {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 
 	@Override

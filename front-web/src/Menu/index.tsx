@@ -1,21 +1,10 @@
 import './style.css'
 import Logo from './logo.png';
 import { Link } from 'react-router-dom';
-import { History } from '../history';
 
-
-function Menu() {
-
-    function btnEntra(){
-        if(localStorage.getItem('client-logado')){
-            History.push('/page-user');
-        }else{
-            History.push('/loguin-cliente');
-        }
-    }
-    
+function Menu() {    
     return (
-        <header>
+        <header >
             <div className="contante page-header">
                 <div className='row'>
                     <div className='col-md-4 d-flex'>
@@ -25,12 +14,11 @@ function Menu() {
                             </Link>
                         </div>
                     </div>
-
                 </div>
             </div>
-          
+
             <nav className="navbar navbar-expand-sm navbar-light navbar-transparente">
-             <div className="container">
+                <div className="container">
                     <button className="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
                         <i className="fas fa-bars text-white"></i>
                     </button>
@@ -56,13 +44,12 @@ function Menu() {
                             <li className="nav-item divisor ml-2 mr-2"></li>
 
                             <li className="nav-item">
-                                <button id ='buttons'onClick={btnEntra} type="button" 
-                                    className="btn btn-outline-light ml-4">Entrar</button>
+                                <Link to="/page-user" className="btn btn-outline-light ml-4">Entrar</Link>
                             </li>
                         </ul>
                     </div>
                 </div>
-            </nav>  
+            </nav>
         </header>
     );
 }

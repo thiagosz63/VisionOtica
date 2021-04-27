@@ -33,7 +33,7 @@ public class ClientService {
 	
 		@Transactional
 	public ClientDTO insert(ClientDTO dto) {
-		Client client = new Client(null, dto.getNome(), dto.getEmail(), dto.getCpf(), dto.getSexo(), dto.getSenha());
+		Client client = new Client(null, dto.getNome(), dto.getEmail(), dto.getCpf(), dto.getSexo(), dto.getSenha(),dto.getCategoria());
 
 		client = repository.save(client);
 		return new ClientDTO(client);

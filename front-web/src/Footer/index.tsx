@@ -17,7 +17,7 @@ function Footer() {
                         <h4>SUA CONTA</h4>
                         <ul className="navbar-nav" >
                             <li className="nav-item" >
-                                <Link to='/loguin-cliente'>Acessar sua Conta</Link>
+                                <Link to='/loguin'>Acessar sua Conta</Link>
                             </li>
                             <li className="nav-item" >
                                 <Link to='/'>Carrinho de Compras</Link>

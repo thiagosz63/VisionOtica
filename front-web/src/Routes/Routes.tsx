@@ -2,20 +2,21 @@ import { Switch, Route, Router } from "react-router-dom";
 import Cadastrar from "../cadastrar";
 import Footer from "../Footer";
 import Contato from "../Footer/TelasFooter/Contato";
-import Dicas from "../Footer/TelasFooter/Dicas";
 import PoliticaDeEntrega from "../Footer/TelasFooter/Politica-de-Entrega";
 import QuemSomos from "../Footer/TelasFooter/QuemSomos";
 import TrocasDevolucao from "../Footer/TelasFooter/Trocas-e-Devolucao";
-import UniversidadeVision from "../Footer/TelasFooter/UniversidadeVision";
 import { History } from "../history";
 import Home from "../Home";
-import LoguinCliente from "../LoguinCliente";
+import LoguinCliente from "../Loguin";
 import Menu from "../Menu";
 import OculosGrau from "../OculosGrau";
-import PageUser from "../pageUser";
+import PagesAdmin from "../pagesAdmin";
+import PageUser from "../pagesUser";
 import PrivateRooter from "./PrivateRooter";
 import PrivateRooterInverso from "./PrivateRooterInverso";
-
+import PrivateRooterAdmin from "./PrivateRooterAdmin";
+import UniversidadeVision from "../Footer/TelasFooter/UniversidadeVision";
+import Dicas from "../Footer/TelasFooter/Dicas";
 
 function Routes() {
     return (
@@ -30,8 +31,9 @@ function Routes() {
                 <Route component={TrocasDevolucao} exact path="/trocas-e-Devolucao" />
                 <Route component={UniversidadeVision} exact path="/universidade-vision" />
                 <Route component={Dicas} exact path="/dicas" />
-                <PrivateRooterInverso component={LoguinCliente}  exact path="/loguin-cliente" />
+                <PrivateRooterInverso component={LoguinCliente}  exact path="/loguin" />
                 <PrivateRooter component={PageUser} exact path="/page-user" />
+                <PrivateRooterAdmin component={PagesAdmin} exact path="/page-admin" />
                 <Route component={Home} path="/" />
             </Switch>
             <Footer />
