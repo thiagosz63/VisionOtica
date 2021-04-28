@@ -53,13 +53,13 @@ function Footer() {
                                 <Link to='/'>Como cuidar dos seus óculus</Link>
                             </li>
                             <li className="nav-item" >
-                                <Link to='/'>Calcule sua distância pupilar</Link>
+                                <Link to='/cdpupilar'>Calcule sua distância pupilar</Link>
                             </li>
                             <li className="nav-item" >
                                 <Link to='/dicas'>Dicas Úteis</Link>
                             </li>
                             <li className="nav-item" >
-                                <Link to='/'>Dúvidas freqüentes</Link>
+                                <Link to='/duvidas'>Dúvidas freqüentes</Link>
                             </li>
                             <li className="nav-item" >
                                 <Link to='/'>Reclame aqui na Otica Vision</Link>

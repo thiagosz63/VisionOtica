@@ -16,8 +16,7 @@ function Menu() {
                     </div>
                 </div>
             </div>
-
-            <nav className="navbar navbar-expand-sm navbar-light navbar-transparente">
+            <nav className="navbar navbar-expand-sm navbar-light navbar-transparente ">
                 <div className="container">
                     <button className="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
                         <i className="fas fa-bars text-white"></i>

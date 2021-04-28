@@ -17,6 +17,8 @@ import PrivateRooterInverso from "./PrivateRooterInverso";
 import PrivateRooterAdmin from "./PrivateRooterAdmin";
 import UniversidadeVision from "../Footer/TelasFooter/UniversidadeVision";
 import Dicas from "../Footer/TelasFooter/Dicas";
+import Duvidas from "../Footer/TelasFooter/Duvidas";
+import CDPupilar from "../Footer/TelasFooter/CDPupilar";
 
 function Routes() {
     return (
@@ -31,6 +33,8 @@ function Routes() {
                 <Route component={TrocasDevolucao} exact path="/trocas-e-Devolucao" />
                 <Route component={UniversidadeVision} exact path="/universidade-vision" />
                 <Route component={Dicas} exact path="/dicas" />
+                <Route component={Duvidas} exact path="/duvidas" />
+                <Route component={CDPupilar} exact path="/cdpupilar" />
                 <PrivateRooterInverso component={LoguinCliente}  exact path="/loguin" />
                 <PrivateRooter component={PageUser} exact path="/page-user" />
                 <PrivateRooterAdmin component={PagesAdmin} exact path="/page-admin" />
