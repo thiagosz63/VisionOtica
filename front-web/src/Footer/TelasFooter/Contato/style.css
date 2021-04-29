@@ -22,7 +22,7 @@
     border-radius: 8px;
     font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: 13px;
-    height: auto;
+    height: 100%;
     line-height: 1.4;
     margin: 0;
     padding: 9px;
@@ -30,9 +30,16 @@
     width: 100%;
     box-sizing: border-box;
     resize: none;
-    margin-bottom: 20px;
 }
+
 .btn-info{
     background:#10589b;
     width: 200px;
+    margin-top: 20px;
+}
+.spanRed {
+    color: red;
+}
+.top-label {
+    margin-top: 15px;
 }
