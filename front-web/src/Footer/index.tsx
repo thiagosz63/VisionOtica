@@ -50,7 +50,7 @@ function Footer() {
                         <h4>AJUDA/FAQ</h4>
                         <ul className="navbar-nav">
                             <li className="nav-item" >
-                                <Link to='/'>Como cuidar dos seus óculus</Link>
+                                <Link to='/cuidarOculos'>Como cuidar dos seus óculos</Link>
                             </li>
                             <li className="nav-item" >
                                 <Link to='/cdpupilar'>Calcule sua distância pupilar</Link>
@@ -60,9 +60,6 @@ function Footer() {
                             </li>
                             <li className="nav-item" >
                                 <Link to='/duvidas'>Dúvidas freqüentes</Link>
-                            </li>
-                            <li className="nav-item" >
-                                <Link to='/'>Reclame aqui na Otica Vision</Link>
                             </li>
                         </ul>
                     </div>

@@ -14,7 +14,7 @@ function UniversidadeVision() {
     return (
         <body>
             <div className="container universidadeVision">
-                <img src={Logo} width="500px" alt=""></img>
+                <img src={Logo} width="60%" alt=""></img>
             </div>
             
             <div className='container'>

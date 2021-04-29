@@ -48,43 +48,43 @@ function Home() {
                 <div className='row'>
                     <div className='col-md-3'>
                         <div className='coteudo'>
-                            <img src={Mosaico} alt='mosaico' />
+                            <img src={Mosaico} width='100%' alt='mosaico' />
                         </div>
 
                         <div className='coteudo'>
-                            <img src={Outlet3} alt='outlet3' />
+                            <img src={Outlet3} width='100%' alt='outlet3' />
                         </div>
 
                         <div className='coteudo'>
-                            <img src={Antiazul3} alt='antiazul3' />
+                            <img src={Antiazul3} width='100%' alt='antiazul3' />
                         </div>
                     </div>
 
                     <div className='col-md-6'>
                         <div className='coteudo'>
-                            <img src={Rayban20f} alt='Rayban20f' />
+                            <img src={Rayban20f} width='100%' alt='Rayban20f' />
                         </div>
 
                         <div className='coteudo'>
-                            <img src={Mosaico3} alt='Mosaico3' />
+                            <img src={Mosaico3} width='100%' alt='Mosaico3' />
                         </div>
 
                         <div className='coteudo'>
-                            <img src={Lanca} alt='Lanca' />
+                            <img src={Lanca} width='100%' alt='Lanca' />
                         </div>
                     </div>
 
                     <div className='col-md-3'>
                         <div className='coteudo'>
-                            <img src={Ela} alt='Ela' />
+                            <img src={Ela} width='100%' alt='Ela' />
                         </div>
 
                         <div className='coteudo'>
-                            <img src={Acess} alt='Acess' />
+                            <img src={Acess} width='100%' alt='Acess' />
                         </div>
 
                         <div className='coteudo'>
-                            <img src={Armacao3} alt='Armacao3' />
+                            <img src={Armacao3} width='100%' alt='Armacao3' />
                         </div>
                     </div>
 
