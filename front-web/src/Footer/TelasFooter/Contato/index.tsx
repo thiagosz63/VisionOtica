@@ -2,30 +2,31 @@ import './style.css';
 import { ErrorMessage, Field, Form, Formik, FormikValues } from 'formik'
 import * as Yup from 'yup';
 import { pt } from 'yup-locale-pt';
-import axios from 'axios';
 import { History } from '../../../history';
+import axios from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 
 function Contato() {
     Yup.setLocale(pt);
 
     const handleSubmit = (Values: FormikValues) => {
-        axios.get('http://localhost:8080/contato', Values)
+        axios.post('http://localhost:8080/contato', Values)
 
-        .then(function (response) {
+        .then(function (response : AxiosResponse) {
             alert('Dados Enviados com sucesso');  
             History.push('/');     
         })
-        .catch(function (error) {
+        .catch(function (error: AxiosError) {
             alert('Error: Mensagem não enviada')
         });
     }
     const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 
         const validaCont = Yup.object().shape({
-        Nome: Yup.string().required(),
-        Email: Yup.string().email().required(),
-        Telefone: Yup.string().matches(phoneRegExp, 'O número de telefone não é válido.'),
-        Mensagem: Yup.string().required()
+        nome: Yup.string().required(),
+        email: Yup.string().email().required(),
+        telefone: Yup.string().matches(phoneRegExp, 'O número de telefone não é válido.'),
+        texto: Yup.string().required()
     })
     return (
     <body >
@@ -40,26 +41,26 @@ function Contato() {
                 <Form className="col-md-6">
                     <div>
                        <label>Nome <span className="spanRed">*</span></label>
-                        <Field type="text" className="Contato-box" name="Nome" id="Nome" placeholder="Digite seu Nome" />
-                        <ErrorMessage className="spanRed" component='span' name='Nome'/>
+                        <Field type="text" className="Contato-box" name="nome" placeholder="Digite seu Nome" />
+                        <ErrorMessage className="spanRed" component='span' name='nome'/>
                     </div>
 
                     <div>
                     <label className="top-label">Email <span className="spanRed">*</span></label>
-                    <Field type="text" className="Contato-box" name="Email"  id="Email" placeholder="Digite seu e-mail" />
-                    <ErrorMessage className="spanRed" component='span' name='Email'/>
+                    <Field type="text" className="Contato-box" name="email" placeholder="Digite seu e-mail" />
+                    <ErrorMessage className="spanRed" component='span' name='email'/>
                     </div>
                     
                     <div>
                     <label className="top-label">Telefone <span className="spanRed">*</span><br></br></label>
-                    <Field type="text" name="Telefone" id="Telefone" className="contato-telefone" placeholder="(99) 9999-9999"/> 
-                    <ErrorMessage className="spanRed" component='span' name='Telefone'/>
+                    <Field type="text" name="telefone" className="contato-telefone" placeholder="(99) 9999-9999"/> 
+                    <ErrorMessage className="spanRed" component='span' name='telefone'/>
                     </div>
 
                     <div>
                     <label htmlFor="mensagem" className="top-label">Tire suas dúvidas conosco <span className="spanRed">*</span></label>
-                    <Field as = "textarea" className="contato-msn" name="Mensagem"  id="Mensagem"  rows={8} cols={5} placeholder="Escreva sua Mensagem..." />
-                    <ErrorMessage className="spanRed" component='span' name='Mensagem'/>
+                    <Field as = "textarea" className="contato-msn" name="texto" rows={8} cols={5} placeholder="Escreva sua Mensagem..." />
+                    <ErrorMessage className="spanRed" component='span' name='texto'/>
                     </div>
 
                     <div className="centralizar"> 
