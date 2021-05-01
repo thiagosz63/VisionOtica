@@ -1,7 +1,64 @@
-function PagesAdmin(){
-    return(
-        <div>
-            <h1>PagesAdmin</h1>
+import { History } from '../history';
+import './style.css'
+
+function PagesAdmin() {
+    function logout() {
+        localStorage.removeItem('admin-logado')
+        History.push('/');
+    }
+    return (
+        <div className='container'>
+            <h4>Admin</h4>
+            <div className="row">
+                <div className="col-md-2">
+                    <div className="list-group" id="list-tab" role="tablist">
+                        <a className="list-group-item list-group-item-action active "
+                            id="list-Pedido-list" data-toggle="list" href="#list-Pedido" role="tab"
+                            aria-controls="Pedido">
+                            Meus Pedido <span className=' fas fa-caret-right'></span>
+                        </a>
+
+                        <a className="list-group-item list-group-item-action"
+                            id="list-Venda-list" data-toggle="list" href="#list-Venda" role="tab"
+                            aria-controls="Venda">
+                            Efetua Venda <span className=' fas fa-caret-right'></span>
+                        </a>
+
+                        <a className="list-group-item list-group-item-action"
+                            id="list-Agendamentos-list" data-toggle="list" href="#list-Agendamentos" role="tab"
+                            aria-controls="Agendamentos">
+                            Agendamentos <span className=' fas fa-caret-right' />
+                        </a>
+
+                        <a className="list-group-item list-group-item-action"
+                            id="list-usuarios-list" data-toggle="list" href="#list-usuarios" role="tab"
+                            aria-controls="usuarios">
+                            usuarios <span className=' fas fa-caret-right' />
+                        </a>
+
+                        <a className="list-group-item list-group-item-action"
+                            id="list-mensagens-list" data-toggle="list" href="#list-mensagens" role="tab"
+                            aria-controls="usuarios">
+                            mensagens <span className=' fas fa-caret-right' />
+                        </a>
+
+                        <a className="list-group-item list-group-item-action" onClick={logout}
+                            id="list-settings-list" data-toggle="list" href="#list-settings" role="tab"
+                            aria-controls="settings">
+                            SAIR <span className=' fas fa-caret-right' />
+                        </a>
+                    </div>
+                </div>
+                <div className="col-md-8">
+                    <div className="tab-content" id="nav-tabContent">
+                        <div className="tab-pane fade show active" id="list-Pedido" role="tabpanel" aria-labelledby="list-Pedido-list">Pedido</div>
+                        <div className="tab-pane fade" id="list-Venda" role="tabpanel" aria-labelledby="list-Venda-list">Venda</div>
+                        <div className="tab-pane fade" id="list-Agendamentos" role="tabpanel" aria-labelledby="list-Agendamentos-list">Agendamentos</div>
+                        <div className="tab-pane fade" id="list-usuarios" role="tabpanel" aria-labelledby="list-usuarios-list">usuarios</div>
+                        <div className="tab-pane fade" id="list-mensagens" role="tabpanel" aria-labelledby="list-mensagens-list">mensagens</div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
