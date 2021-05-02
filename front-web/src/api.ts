@@ -6,6 +6,10 @@ export function fetchProducts(){
     return axios(`${api_url}/products`)
 }
 
+export function fetchClient(){
+    return axios(`${api_url}/client`)
+}
+
 
 
 

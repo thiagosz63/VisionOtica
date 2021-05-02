@@ -1,0 +1,68 @@
+.adm-margem {
+    margin: 10px;
+    display: flex;
+}
+
+.h4-margem {
+    margin: 5px 10px;
+}
+
+.usuario-btn {
+    width: 10%;
+    height: 30px;
+    border-radius: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px 2px;
+}
+.usuario-btn:hover {
+    background-color: blue
+}
+
+.usuario-input {
+    width: 65%;
+    height: 30px;
+	border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-left: 10px;
+}
+
+
+#usuario-flex {
+    display: flex;
+}
+.eu{
+    display: flex;
+}
+
+#margem-id {
+    margin: 0px 16px;
+}
+#margem-nome {
+    margin: 0px 25px;
+    width: 50px;
+}
+#margem-email {
+    margin: 0px;
+    width: 200px;
+}
+
+#margem-sexo {
+    margin: 0px 15px;
+    width: 50px;
+}
+
+#margem-cpf {
+    margin: 0px 35px;
+    width: 50px;
+}
+
+#margem-senha {
+    margin: 0px 25px;
+    width: 50px;
+}
+
+#margem-categoria {
+    margin: 0px 5px;
+    width: 50px;
+}
+
