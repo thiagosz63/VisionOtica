@@ -1,21 +1,39 @@
 import { ClientType } from './types';
+import './style.css';
 
 type Props = {
-    client: ClientType;
+    clients: ClientType;
 }
 
-const ClientCard = ({ client }: Props) => {
-
+const ClientCard = ({ clients }: Props) => {
+    function btnApagar() {
+        alert(clients.id)
+    }
+    function btnAtualizar() {
+        alert(clients.nome)
+    }
     return (
         <tbody>
             <tr>
-                <th scope="row">{client.id}</th>
-                <td>{client.nome}</td>
-                <td>{client.email}</td>
-                <td>{client.cpf}</td>
-                <td>{client.sexo}</td>
-                <td>{client.senha}</td>
-                <td>{client.categoria}</td>
+                <th scope="row">
+                    <button onClick={btnApagar} className='btn btn-outline-danger w-100'
+                        title="Apagar">
+                        <i className="fas fa-times "></i>
+                    </button>
+                </th>
+                <td>
+                    <button onClick={btnAtualizar} className='btn btn-outline-success w-100'
+                        title="Editar">
+                        <i className="fas fa-user-edit"></i>
+                    </button>
+                </td>
+                <td>{clients.id}</td>
+                <td>{clients.nome}</td>
+                <td>{clients.email}</td>
+                <td>{clients.cpf}</td>
+                <td>{clients.sexo}</td>
+                <td>{clients.senha}</td>
+                <td>{clients.categoria}</td>
             </tr>
         </tbody>
     );

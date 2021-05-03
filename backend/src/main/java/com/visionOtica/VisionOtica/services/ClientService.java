@@ -38,5 +38,9 @@ public class ClientService {
 		client = repository.save(client);
 		return new ClientDTO(client);
 	}
+		
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
 
 }

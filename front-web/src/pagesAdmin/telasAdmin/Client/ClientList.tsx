@@ -9,9 +9,11 @@ function ClientList({ clients }: Props) {
 
     return (
         <div>
-            <table className="table table-bordered table-hover">
+            <table className="table table-bordered table-hover table-sm">
                 <thead>
                     <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
                         <th scope="col">ID</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Email</th>
@@ -23,7 +25,7 @@ function ClientList({ clients }: Props) {
                 </thead>
 
                 {clients.map(client => (
-                    <ClientCard key={client.id} client={client} />
+                    <ClientCard key={client.id} clients={client} />
                 ))}
             </table>
         </div>

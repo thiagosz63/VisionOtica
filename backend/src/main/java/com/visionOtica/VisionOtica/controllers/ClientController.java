@@ -36,14 +36,18 @@ public class ClientController {
 	    return ResponseEntity.ok().body(obj);
 	}
 	
-
-
 	@PostMapping
 	public ResponseEntity<ClientDTO> insert(@RequestBody ClientDTO dto) {
 		dto = service.insert(dto);
 
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
 		return ResponseEntity.created(uri).body(dto);
+	}
+	
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<Void>delete(@PathVariable Long id) {
+		service.delete(id);
+	    return ResponseEntity.noContent().build();
 	}
 
 }
