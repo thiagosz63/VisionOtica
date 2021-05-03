@@ -1,5 +1,6 @@
 import { ClientType } from './types';
 import './style.css';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 
 type Props = {
     clients: ClientType;
@@ -7,7 +8,14 @@ type Props = {
 
 const ClientCard = ({ clients }: Props) => {
     function btnApagar() {
-        alert(clients.id)
+
+        axios.delete(`http://localhost:8080/client/ ${clients.id}`)
+        .then(function (response:AxiosResponse) {
+            alert('Dados apagado com sucesso');             
+        })
+        .catch(function (error:AxiosError) {
+            alert(error.message)
+        });   
     }
     function btnAtualizar() {
         alert(clients.nome)

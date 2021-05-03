@@ -10,7 +10,7 @@ function Client() {
         fetchClient()
             .then(response => setClient(response.data))
             .catch(error => console.log(error))
-    }, []);
+    }, [ClientType]);
 
     return (
         <div>

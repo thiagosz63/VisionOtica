@@ -11,5 +11,5 @@ public interface ClientRepository extends JpaRepository<Client, Long>{
 
 	List<Client> findAllByOrderByNomeAsc();
 	
-	Optional<Client> findByEmail(String email);
+	Optional<Client> findByEmail(String email);		
 }
