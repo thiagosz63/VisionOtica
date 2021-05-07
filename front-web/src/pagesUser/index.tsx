@@ -16,7 +16,7 @@ function PageUser() {
     Yup.setLocale(pt);
 
     const handleSubmit = (Values: FormikValues) => {
-        axios.post('http://localhost:8080', Values)
+        axios.post('http://localhost:8080/agendamento', Values)
 
         .then(function (response : AxiosResponse) {
             alert('Dados Enviados com sucesso');  
@@ -31,7 +31,8 @@ function PageUser() {
 
         const validaCont = Yup.object().shape({
         nome: Yup.string().required(),
-        telefone: Yup.string().matches(phoneRegExp, 'O número de telefone não é válido.')
+        telefone: Yup.string().matches(phoneRegExp, 'O número de telefone não é válido.'),
+        data: Yup.date().required("Data Obrigatória").nullable()
     })
 
     return (
@@ -91,13 +92,13 @@ function PageUser() {
 
                             <div>
                             <label className="top-label"><strong>Dia</strong><span className="spanRed">*</span></label>
-                            <Field type="date" name="dia" className="contato-box"/>
-                            <ErrorMessage className="spanRed" component='span' name='dia'/>
+                            <Field type="date" name="data" className="contato-box"/>
+                            <ErrorMessage className="spanRed" component='span' name='data'/>
                             </div>
 
                             <div>
                             <label className="top-label"><strong>Horário</strong><span className="spanRed">*</span></label>
-                            <Field id='hora' name='hora' as="select"
+                            <Field id='horario' name='horario' as="select"
                                 className='form-control form-control-sm'>
                                 <option>08:30</option>
                                 <option>09:00</option>
