@@ -53,7 +53,7 @@ function Contato() {
                     
                     <div>
                     <label className="top-label">Telefone <span className="spanRed">*</span><br></br></label>
-                    <Field type="text" name="telefone" className="contato-telefone" placeholder="(99) 9999-9999"/> 
+                    <Field type="text" name="telefone" className="contato-telefone" placeholder="(99) 99999-9999"/> 
                     <ErrorMessage className="spanRed" component='span' name='telefone'/>
                     </div>
 

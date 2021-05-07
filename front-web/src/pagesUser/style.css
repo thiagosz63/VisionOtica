@@ -1,0 +1,38 @@
+.cliente-margem {
+    margin: 20px 0px;
+    display: flex;
+}
+
+.contato-h2 {
+    margin: 20px;
+    color: #10589b;
+}
+.Contato-box{
+    width: 100%;
+    height: 40px;
+	border-radius: 8px;
+    border: 1px solid #ccc;
+}
+.contato-telefone {
+    width: 100%;
+    height: 40px;
+	border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+.btn-info{
+    background:#10589b;
+    width: 200px;
+    margin-top: 20px;
+}
+.spanRed {
+    color: red;
+}
+.top-label {
+    margin-top: 15px;
+}
+#agenda-espaco {
+    padding-left: 20px;
+}
+

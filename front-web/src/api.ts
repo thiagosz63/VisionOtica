@@ -10,6 +10,10 @@ export function fetchClient(){
     return axios(`${api_url}/client`)
 }
 
+export function fetchClientAge(){
+    return axios(`${api_url}/client/nome`)
+}
+
 
 
 
