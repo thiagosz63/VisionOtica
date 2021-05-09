@@ -14,6 +14,10 @@ export function fetchClientAge(){
     return axios(`${api_url}/client/nome`)
 }
 
+export function fetchAgendamento(){
+    return axios(`${api_url}/agendamento`)
+}
+
 
 
 

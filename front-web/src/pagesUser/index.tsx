@@ -109,7 +109,7 @@ function PageUser() {
                                 <option>11:30</option>
                                 <option>12:00</option>
                             </Field>
-                            <ErrorMessage className="spanRed" component='span' name='hora'/>
+                            <ErrorMessage className="spanRed" component='span' name='horario'/>
                             </div>
 
                             <div className="centralizar"> 
