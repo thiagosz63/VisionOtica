@@ -1,6 +1,8 @@
 import { ClientType } from './types';
 import './style.css';
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
+import Cadastrar from '../../../cadastrar';
+import { axiosDelete } from '../../../api';
 
 type Props = {
     clients: ClientType;
@@ -8,18 +10,22 @@ type Props = {
 
 const ClientCard = ({ clients }: Props) => {
     function btnApagar() {
+        axiosDelete(`/client/ ${clients.id}`)
+            .then(function (response: AxiosResponse) {
+                alert('Dados apagado com sucesso');
+            })
+            .catch(function (error: AxiosError) {
+                alert(error.message)
+            });
+    }
 
-        axios.delete(`http://localhost:8080/client/ ${clients.id}`)
-        .then(function (response:AxiosResponse) {
-            alert('Dados apagado com sucesso');             
-        })
-        .catch(function (error:AxiosError) {
-            alert(error.message)
-        });   
-    }
-    function btnAtualizar() {
-        alert(clients.nome)
-    }
+    /*function btnAtualizar() {
+        const pai = document.getElementById('nome');
+          const cadastro = document.createElement('input')
+         cadastro.value = clients.nome;
+
+         pai?.appendChild(cadastro)
+    }*/
     return (
         <tbody>
             <tr>
@@ -30,7 +36,8 @@ const ClientCard = ({ clients }: Props) => {
                     </button>
                 </th>
                 <td>
-                    <button onClick={btnAtualizar} className='btn btn-outline-success w-100'
+                    <button data-toggle="modal" data-target="#exampleModal"
+                        data-whatever="@mdo" className='btn btn-outline-success w-100'
                         title="Editar">
                         <i className="fas fa-user-edit"></i>
                     </button>
@@ -43,6 +50,22 @@ const ClientCard = ({ clients }: Props) => {
                 <td>{clients.senha}</td>
                 <td>{clients.categoria}</td>
             </tr>
+
+            <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+
+                            <button type="button" className="close btn btn-secondary" data-dismiss="modal" aria-label="Close">
+                                Cancelar
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <Cadastrar titulo='Atualizar' id={clients.id + ''} />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </tbody>
     );
 }

@@ -3,22 +3,44 @@ import { ErrorMessage, Field, Form, Formik, FormikValues } from 'formik'
 import * as Yup from 'yup';
 import './style.css'
 import { pt } from 'yup-locale-pt';
-import axios from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import { History } from '../history';
+import { axiosPost, axiosPut } from '../api';
 
-function Cadastrar() {
+interface props {
+    id?: string
+    titulo?:string
+}
+
+function Cadastrar(props: props) {
+    const{
+        id,titulo = 'Criar Conta'
+    }= props;
+
     Yup.setLocale(pt);
 
     const handleSubmit = (Values: FormikValues) => {
-        axios.post('http://localhost:8080/client', Values)
 
-            .then(function (response) {
-                alert('Dados inseridos com sucesso');  
-                History.push('/loguin-cliente');     
+        if (id === undefined) {
+            axiosPost('/client', Values)
+                .then(function (response: AxiosResponse) {
+                    alert('Dados inseridos com sucesso');
+                    History.push('/loguin');
+                })
+                .catch(function (error: AxiosError) {
+                    alert('Error: client ja cadastrado' + error)
+                });
+        }else{
+            axiosPut(`/client/${id}`, Values)
+            .then(function (response: AxiosResponse) {
+                alert('Dados Atualizados com sucesso');
             })
-            .catch(function (error) {
-                alert('Error: client ja cadastrado')
+            .catch(function (error: AxiosError) {
+                alert('Error: client ja cadastrado' + error)
             });
+        }
+          
+
     }
     function validarCPF(cpf: string) {
         cpf = cpf.replace(/[^\d]+/g, '');
@@ -68,7 +90,7 @@ function Cadastrar() {
         email: Yup.string().email().required(),
         cpf: Yup.string().test("", "CPF não valido",
             (value) => validarCPF(value + '')).required(),
-            senha: Yup.string().min(6).required(),
+        senha: Yup.string().min(6).required(),
         ConfirmaSenha: Yup.string().oneOf([Yup.ref('senha'),
             null], 'As senhas são diferentes').required('Confirmação é obrigatória')
 
@@ -79,7 +101,7 @@ function Cadastrar() {
             <div className='row'>
                 <div className='col text-center'>
                     <h5>
-                        Criar Conta
+                        {titulo}
                     </h5>
                 </div>
             </div>
@@ -145,7 +167,7 @@ function Cadastrar() {
                         <div className="col text-center">
                             <button type='submit'
                                 className="btn btn-secondary">
-                                CRIAR
+                                Salvar
                              </button>
                         </div>
                     </div>
