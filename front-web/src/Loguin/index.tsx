@@ -1,20 +1,17 @@
 import { ErrorMessage, Field, Form, Formik, FormikValues } from 'formik';
-import { Link } from 'react-router-dom';
 import './style.css'
 import * as Yup from 'yup';
 import { pt } from 'yup-locale-pt';
 import { AxiosError, AxiosResponse } from 'axios';
 import { History } from '../history';
+import Cadastrar from '../cadastrar';
+import { axiosGet } from '../api';
 
-
-
-function LoguinCliente() {
+function Loguin() {
     Yup.setLocale(pt);
 
-    const axios = require('axios').default;
-
     const handleSubmit = (values: FormikValues) => {
-        axios.get(`http://localhost:8080/client/${values.email}`)
+        axiosGet(`/client/${values.email}`)
             .then(function (response: AxiosResponse) {
                 if (response.data.senha === values.password) {
                     if (response.data.categoria !== 'admin') {
@@ -44,7 +41,7 @@ function LoguinCliente() {
             <div className='row'>
                 <div className='col-md-5'>
                     <div className='align-self-center'>
-                        <h1 className='Titulo'>Já sou cadastrado</h1>
+                        <h1>Já sou cadastrado</h1>
                         <p>Se você tiver uma conta, acesse com seu
                         endereço de e-mail e senha.
                         </p>
@@ -73,32 +70,50 @@ function LoguinCliente() {
                                     <div className='col-md-6'>
                                         <a href='/'>Esqueceu sua Senha?</a>
                                     </div>
-
                                 </div>
-
                             </Form>
                         </Formik>
-
                     </div>
-
                 </div>
 
                 <div className='col-md-2' />
 
                 <div className='col-md-5'>
-                    <h1 className='Titulo'>Sou um novo cliente</h1>
+                    <h1>Sou um novo cliente</h1>
                     <p>Criar uma nova conta tem muitos benefícios:
                     fechar pedidos mais rapidamente, registrar mais endereços,
                     acompanhar pedidos e muito mais.
                     </p>
 
-                    <Link to='/cadastrar' type="submit" className="btn btn-warning">Criar Conta</Link>
+                    <div className='col-md-7'>
+                        <button type="button" className="btn btn-warning"
+                            data-toggle="modal" data-target="#cadastrarModal"
+                            data-whatever="@mdo">
+                            Criar Conta
+                        </button>
+
+                        <div className="modal fade" id="cadastrarModal" tabIndex={-1}
+                            aria-labelledby="cadastrarModalLabel" aria-hidden="true">
+                            <div className="modal-dialog">
+                                <div className="modal-content">
+                                    <div className="modal-header">
+                                        <button type="button" className="close btn btn-secondary"
+                                            data-dismiss="modal" aria-label="Close">
+                                            Cancelar
+                                      </button>
+                                    </div>
+
+                                    <div className="modal-body">
+                                        <Cadastrar />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
             </div>
-
         </div>
     );
 }
 
-export default LoguinCliente;
+export default Loguin;

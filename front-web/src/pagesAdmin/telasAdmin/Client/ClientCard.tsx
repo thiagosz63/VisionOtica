@@ -1,8 +1,8 @@
 import { ClientType } from './types';
 import './style.css';
 import { AxiosError, AxiosResponse } from 'axios';
-import Cadastrar from '../../../cadastrar';
 import { axiosDelete } from '../../../api';
+import { Field, Form, Formik, FormikValues } from 'formik';
 
 type Props = {
     clients: ClientType;
@@ -17,6 +17,9 @@ const ClientCard = ({ clients }: Props) => {
             .catch(function (error: AxiosError) {
                 alert(error.message)
             });
+    }
+    const handleSubmit = (Values: FormikValues) => {
+
     }
 
     /*function btnAtualizar() {
@@ -36,7 +39,7 @@ const ClientCard = ({ clients }: Props) => {
                     </button>
                 </th>
                 <td>
-                    <button data-toggle="modal" data-target="#exampleModal"
+                    <button data-toggle="modal" data-target="#AtualizarModal"
                         data-whatever="@mdo" className='btn btn-outline-success w-100'
                         title="Editar">
                         <i className="fas fa-user-edit"></i>
@@ -51,22 +54,37 @@ const ClientCard = ({ clients }: Props) => {
                 <td>{clients.categoria}</td>
             </tr>
 
-            <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="AtualizarModal" tabIndex={-1} aria-labelledby="AtualizarModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-
-                            <button type="button" className="close btn btn-secondary" data-dismiss="modal" aria-label="Close">
+                            <button type="button" className="close btn btn-secondary" data-dismiss="modal"
+                                aria-label="Close">
                                 Cancelar
                             </button>
                         </div>
                         <div className="modal-body">
-                            <Cadastrar titulo='Atualizar' id={clients.id + ''} />
+                            <Formik initialValues={{}} onSubmit={handleSubmit}>
+                                <Form>
+                                    <label>Mudar Categoria
+                                    <Field name='categoria' as="select"
+                                            className='form-control form-control-sm'>
+                                            <option value='admin'>Admin</option>
+                                            <option value='cliente'>Cliente</option>
+                                        </Field>
+                                    </label>
+                                    <button type='submit'
+                                        className="btn btn-secondary">
+                                        Salvar
+                                         </button>
+
+                                </Form>
+                            </Formik>
                         </div>
                     </div>
                 </div>
             </div>
-        </tbody>
+        </tbody >
     );
 }
 export default ClientCard;

@@ -1,9 +1,21 @@
 import { Redirect, Route, RouteProps } from 'react-router'
 
-const PrivateRooter = (props: RouteProps) => {
-    const isLogged = (!!localStorage.getItem('client-logado'))       
+export const PrivateRooterclient = (props: RouteProps) => {
+    const isLogged = (!!localStorage.getItem('client-logado')) 
     return isLogged ? <Route {...props} /> : <Redirect to='/page-admin' />
 }
 
-export default PrivateRooter;
+export const PrivateRooterAdmin  = (props: RouteProps) => {
+    const isLogged = (!!localStorage.getItem('admin-logado')) 
+    return isLogged ? <Route {...props} /> : <Redirect to='/loguin' />
+}
+
+export const PrivateRooterLoguin  = (props: RouteProps) => {
+    const isLogged = (!!!localStorage.getItem('client-logado')) && (!!!localStorage.getItem('admin-logado')) 
+    return isLogged ? <Route {...props} /> : <Redirect to='/page-user'/>
+}
+
+
+
+
 

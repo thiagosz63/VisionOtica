@@ -9,13 +9,13 @@ import { axiosPost, axiosPut } from '../api';
 
 interface props {
     id?: string
-    titulo?:string
+    titulo?: string
 }
 
 function Cadastrar(props: props) {
-    const{
-        id,titulo = 'Criar Conta'
-    }= props;
+    const {
+        id, titulo = 'Criar Conta'
+    } = props;
 
     Yup.setLocale(pt);
 
@@ -30,16 +30,16 @@ function Cadastrar(props: props) {
                 .catch(function (error: AxiosError) {
                     alert('Error: client ja cadastrado' + error)
                 });
-        }else{
+        } else {
             axiosPut(`/client/${id}`, Values)
-            .then(function (response: AxiosResponse) {
-                alert('Dados Atualizados com sucesso');
-            })
-            .catch(function (error: AxiosError) {
-                alert('Error: client ja cadastrado' + error)
-            });
+                .then(function (response: AxiosResponse) {
+                    alert('Dados Atualizados com sucesso');
+                })
+                .catch(function (error: AxiosError) {
+                    alert('Error: client ja cadastrado' + error)
+                });
         }
-          
+
 
     }
     function validarCPF(cpf: string) {
@@ -110,55 +110,61 @@ function Cadastrar(props: props) {
                 <Form>
                     <div className="row mb-4 mt-2 ml-2 mr-2">
                         <div className="col">
-                            <label htmlFor='Nome' >NOME*</label>
-                            <Field type="text" id="Nome" name='nome'
-                                placeholder="Nome" />
+                            <label >NOME*
+                            <Field type="text" name='nome'
+                                    placeholder="Nome" />
+                            </label>
                             <ErrorMessage component='span' name='nome' />
                         </div>
 
                         <div className="col">
-                            <label htmlFor="sexo">Gênero (opcional)</label>
-                            <Field id='sexo' name='sexo' as="select"
-                                className='form-control form-control-sm'>
-                                <option value='Não_especificado'>Não especificado</option>
-                                <option value='Masculino'>Masculino</option>
-                                <option value='Feminino'>Feminino</option>
-                            </Field>
+                            <label>Gênero (opcional)
+                            <Field name='sexo' as="select"
+                                    className='form-control form-control-sm'>
+                                    <option value='Não_especificado'>Não especificado</option>
+                                    <option value='Masculino'>Masculino</option>
+                                    <option value='Feminino'>Feminino</option>
+                                </Field>
+                            </label>
                         </div>
                     </div>
 
                     <div className="row mt-2 ml-2 mr-2">
                         <div className="col-md-12">
-                            <label htmlFor="Email">E-MAIL*</label>
-                            <Field type="text" id="Email" placeholder="E-mail"
-                                name='email' />
+                            <label>E-MAIL*
+                            <Field type="text" placeholder="E-mail"
+                                    name='email' />
+                            </label>
                             <ErrorMessage component='span' name='email' />
                         </div>
                     </div>
 
                     <div className="row mt-2 ml-2 mr-2">
                         <div className="col-md-12">
-                            <label htmlFor="CPF">CPF*</label>
-                            <Field type="text" id="CPF" placeholder="CPF (Apenas número)"
-                                name='cpf' />
+                            <label>CPF*
+                             <Field type="text" placeholder="CPF (Apenas número)"
+                                    name='cpf' />
+                            </label>
                             <ErrorMessage component='span' name='cpf' />
                         </div>
                     </div>
 
                     <div className="row mt-2 ml-2 mr-2">
                         <div className="col-md-12">
-                            <label htmlFor="Password">SENHA*</label>
-                            <Field type="password" name="senha" id="Password"
-                                placeholder="********" />
+                            <label>SENHA*
+                            <Field type="password" name="senha"
+                                    placeholder="********" />
+                            </label>
                             <ErrorMessage component='span' name='senha' />
                         </div>
                     </div>
 
                     <div className="row mt-2 ml-2 mr-2">
                         <div className="col-md-12">
-                            <label htmlFor="ConfirmaPassword">CONFIRMAÇÃO DA SENHA*</label>
-                            <Field type="password" id="ConfirmaSenha"
-                                placeholder="confirmar Senha" name='ConfirmaSenha' />
+                            <label>CONFIRMAÇÃO DA SENHA*
+                            <Field type="password"
+                                    placeholder="confirmar Senha" name='ConfirmaSenha' />
+                            </label>
                             <ErrorMessage component='span' name='ConfirmaSenha' />
                         </div>
                     </div>
