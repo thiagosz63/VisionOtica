@@ -9,10 +9,11 @@ type Props = {
 }
 
 function ClientList({ clients }: Props) {
-    // @ts-ignore
-    $('#AtualizarModal').on('show.bs.modal', function (event) {
-        // @ts-ignore
-        var button = $(event.relatedTarget) // Button that triggered the modal
+
+    var atualizarModal = document.getElementById('AtualizarModal')
+    atualizarModal?.addEventListener('show.bs.modal', function (event) {
+       // @ts-ignore
+        var button = event.relatedTarget // Button that triggered the modal
         var recipientId = button.data('whateverid')
         var recipientNome = button.data('whatevernome')
         var recipientEmail = button.data('whateveremail')
@@ -84,7 +85,7 @@ function ClientList({ clients }: Props) {
                 ))}
             </table>
 
-            <div className="modal fade" id="AtualizarModal" tabIndex={-1} aria-labelledby="AtualizarModalLabel" aria-hidden="true">
+            <div className="modal fade" id="AtualizarModal" tabIndex={-2} aria-labelledby="AtualizarModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">

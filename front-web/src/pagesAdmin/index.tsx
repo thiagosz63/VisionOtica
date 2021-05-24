@@ -3,6 +3,7 @@ import adm from './adm.png';
 import './style.css';
 import Agendamento from './telasAdmin/Agendamento';
 import Client from './telasAdmin/Client';
+import Produtos from './telasAdmin/Produtos';
 
 function PagesAdmin() {
     function logout() {
@@ -38,6 +39,12 @@ function PagesAdmin() {
                         </a>
 
                         <a className="list-group-item list-group-item-action"
+                            id="list-produtos-list" data-toggle="list" href="#list-produtos" role="tab"
+                            aria-controls="usuarios">
+                            Produtos <span className=' fas fa-caret-right' />
+                        </a>
+
+                        <a className="list-group-item list-group-item-action"
                             id="list-usuarios-list" data-toggle="list" href="#list-usuarios" role="tab"
                             aria-controls="usuarios">
                             usuarios <span className=' fas fa-caret-right' />
@@ -61,8 +68,9 @@ function PagesAdmin() {
                     <div className="tab-content" id="nav-tabContent">
                         <div className="tab-pane fade show active" id="list-Pedido" role="tabpanel" aria-labelledby="list-Pedido-list">Pedido</div>
                         <div className="tab-pane fade" id="list-Venda" role="tabpanel" aria-labelledby="list-Venda-list">Venda</div>
-                        <div className="tab-pane fade" id="list-Agendamentos" role="tabpanel" aria-labelledby="list-Agendamentos-list"><Agendamento/></div>
-                        <div className="tab-pane fade" id="list-usuarios" role="tabpanel" aria-labelledby="list-usuarios-list"><Client/></div>
+                        <div className="tab-pane fade" id="list-Agendamentos" role="tabpanel" aria-labelledby="list-Agendamentos-list"><Agendamento /></div>
+                        <div className="tab-pane fade" id="list-produtos" role="tabpanel" aria-labelledby="list-produtos-list"><Produtos/></div>
+                        <div className="tab-pane fade" id="list-usuarios" role="tabpanel" aria-labelledby="list-usuarios-list"><Client /></div>
                         <div className="tab-pane fade" id="list-mensagens" role="tabpanel" aria-labelledby="list-mensagens-list">mensagens</div>
                     </div>
                 </div>
