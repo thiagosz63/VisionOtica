@@ -3,10 +3,7 @@ package com.visionOtica.VisionOtica.dto;
 import java.io.Serializable;
 import java.sql.Date;
 
-import org.springframework.data.jpa.repository.EntityGraph.EntityGraphType;
-
 import com.visionOtica.VisionOtica.entities.Agendamento;
-import com.visionOtica.VisionOtica.entities.Contato;
 
 import model.enums.Status;
 

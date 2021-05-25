@@ -6,15 +6,17 @@ type Props = {
 }
 
 const AgendamentoCard = ({ agendamentos }: Props) => {
-    function btnAtualizar() {
-        alert(agendamentos.nome)
-    }
+    
     return (
         <tbody>
             <tr>
                 <td>
-                    <button onClick={btnAtualizar} className='btn btn-outline-success w-100'
-                        title="Editar">
+                <button data-toggle="modal" data-target="#atualizarModalAge"
+                        className='btn btn-outline-success w-100' title="Editar"
+                        data-whateverid={agendamentos.id}
+                        data-whatevernome={agendamentos.nome} data-whatevertelefone={agendamentos.telefone}
+                        data-whateverhorario={agendamentos.horario} data-whateverdata={agendamentos.data}
+                        data-whateverstatus={agendamentos.status}>
                         <i className="fas fa-user-edit"></i>
                     </button>
                 </td>
