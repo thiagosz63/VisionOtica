@@ -6,6 +6,10 @@ type Props = {
 }
 
 const AgendamentoCard = ({ agendamentos }: Props) => {
+
+const meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul","Ago","Set","Out","Nov","Dez"];
+let dataa = new Date(agendamentos.data);
+let dataFormatada = ((dataa.getDate() + " - " + meses[(dataa.getMonth())] + " - " + dataa.getFullYear()));
     
     return (
         <tbody>
@@ -23,7 +27,7 @@ const AgendamentoCard = ({ agendamentos }: Props) => {
                 <td>{agendamentos.id}</td>
                 <td>{agendamentos.nome}</td>
                 <td>{agendamentos.telefone}</td>
-                <td>{agendamentos.data}</td>
+                <td>{dataFormatada}</td>
                 <td>{agendamentos.horario}</td>
                 <td>{agendamentos.status}</td>
             </tr>

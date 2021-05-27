@@ -10,10 +10,10 @@ type Props = {
 
 function AgendamentoList({ agendamentos }: Props) {
 
-    var atualizarModalAge = document.getElementById('AtualizarModalAge')
-    atualizarModalAge?.addEventListener('show.bs.modal', function (event) {
+    // @ts-ignore
+    $('#atualizarModalAge').on('show.bs.modal', function (event) {
        // @ts-ignore
-        var button = event.relatedTarget // Button that triggered the modal
+        var button = $(event.relatedTarget) // Button that triggered the modal
         var recipientId = button.data('whateverid')
         var recipientNome = button.data('whatevernome')
         var recipientTelefone = button.data('whatevertelefone')
