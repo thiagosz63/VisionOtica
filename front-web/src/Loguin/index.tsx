@@ -6,8 +6,15 @@ import { AxiosError, AxiosResponse } from 'axios';
 import { History } from '../history';
 import Cadastrar from '../cadastrar';
 import { axiosGet } from '../api';
+import { Modal } from 'react-bootstrap';
+import { useState } from 'react';
 
 function Loguin() {
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     Yup.setLocale(pt);
 
     const handleSubmit = (values: FormikValues) => {
@@ -87,28 +94,26 @@ function Loguin() {
 
                     <div className='col-md-7'>
                         <button type="button" className="btn btn-warning"
-                            data-toggle="modal" data-target="#cadastrarModal"
-                            data-whatever="@mdo">
+                            onClick={handleShow}>
                             Criar Conta
                         </button>
 
-                        <div className="modal fade" id="cadastrarModal" tabIndex={-1}
-                            aria-labelledby="cadastrarModalLabel" aria-hidden="true">
-                            <div className="modal-dialog">
-                                <div className="modal-content">
-                                    <div className="modal-header">
-                                        <button type="button" className="close btn btn-secondary"
-                                            data-dismiss="modal" aria-label="Close">
-                                            Cancelar
-                                      </button>
-                                    </div>
-
-                                    <div className="modal-body">
-                                        <Cadastrar />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <Modal
+                            show={show}
+                            onHide={handleClose}
+                            backdrop="static"
+                            keyboard={false}>
+                            <Modal.Header>
+                                <Modal.Title></Modal.Title>
+                                <button type="button" className="close btn btn-secondary" onClick={handleClose}
+                                    aria-label="Close">
+                                    Cancelar
+                    </button>
+                            </Modal.Header>
+                            <Modal.Body>
+                              <Cadastrar/>
+                            </Modal.Body>
+                        </Modal>
                     </div>
                 </div>
             </div>

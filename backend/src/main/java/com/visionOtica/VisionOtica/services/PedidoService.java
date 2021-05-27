@@ -20,7 +20,7 @@ public class PedidoService {
 
 	@Transactional(readOnly = true)
 	public List<PedidoDTO> findAll() {
-		List<Pedido> list = repository.findAllByOrderByNomeAsc();
+		List<Pedido> list = repository.findAllByOrderByIdAsc();
 		return list.stream().map(x -> new PedidoDTO(x)).collect(Collectors.toList());
 	}
 

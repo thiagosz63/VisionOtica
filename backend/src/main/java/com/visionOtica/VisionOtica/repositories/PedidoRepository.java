@@ -8,5 +8,5 @@ import com.visionOtica.VisionOtica.entities.Pedido;
 
 public interface PedidoRepository extends JpaRepository<Pedido, Long>{
 
-	List<Pedido> findAllByOrderByNomeAsc();	
+	List<Pedido> findAllByOrderByIdAsc();	
 }

@@ -1,13 +1,22 @@
 import { ClientType } from './types';
 import './style.css';
 import { AxiosError, AxiosResponse } from 'axios';
-import { axiosDelete } from '../../../api';
+import { axiosDelete, axiosPut } from '../../../api';
+import { useRef, useState } from "react";
+import { Modal } from 'react-bootstrap';
+
 
 type Props = {
     clients: ClientType;
 }
 
 const ClientCard = ({ clients }: Props) => {
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     function btnApagar() {
         axiosDelete(`/client/ ${clients.id}`)
             .then(function (response: AxiosResponse) {
@@ -18,13 +27,31 @@ const ClientCard = ({ clients }: Props) => {
             });
     }
 
-    /*function btnAtualizar() {
-        const pai = document.getElementById('nome');
-          const cadastro = document.createElement('input')
-         cadastro.value = clients.nome;
-
-         pai?.appendChild(cadastro)
-    }*/
+    const categoriaRef = useRef<HTMLSelectElement>(null);
+    const handleSubmit = async (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+        const dados = {
+            nome: clients.nome,
+            email: clients.email,
+            cpf: clients.cpf,
+            senha: clients.senha,
+            sexo: clients.sexo,
+            categoria: categoriaRef.current?.value
+        }
+        if ((dados.categoria === undefined) || dados.categoria === 'undefined') {
+            alert('Selecione o tipo a ser modificado')
+        }
+        else {
+            axiosPut(`/client/${clients.id}`, dados)
+                .then(function (response: AxiosResponse) {
+                    alert('Dados Atualizados com sucesso');
+                    handleClose();
+                })
+                .catch(function (error: AxiosError) {
+                    alert(error.message)
+                });
+        }
+    }
     return (
         <tbody>
             <tr>
@@ -35,12 +62,8 @@ const ClientCard = ({ clients }: Props) => {
                     </button>
                 </th>
                 <td>
-                    <button data-toggle="modal" data-target="#AtualizarModal"
-                        className='btn btn-outline-success w-100' title="Editar"
-                        data-whateverid={clients.id}
-                        data-whatevernome={clients.nome} data-whateveremail={clients.email}
-                        data-whatevercpf={clients.cpf} data-whateversenha={clients.senha}
-                        data-whateversexo={clients.sexo} data-whatevercategoria={clients.categoria}  >
+                    <button onClick={handleShow} className='btn btn-outline-success w-100'
+                        title="Editar">
                         <i className="fas fa-user-edit"></i>
                     </button>
                 </td>
@@ -51,6 +74,37 @@ const ClientCard = ({ clients }: Props) => {
                 <td>{clients.sexo}</td>
                 <td>{clients.categoria}</td>
             </tr>
+
+
+            <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}>
+                <Modal.Header>
+                    <Modal.Title>Atualizar</Modal.Title>
+                    <button type="button" className="close btn btn-secondary" onClick={handleClose}
+                        aria-label="Close">
+                        Cancelar
+                    </button>
+                </Modal.Header>
+                <Modal.Body>
+                    <form>
+                        <label>Mudar Categoria de: <span>{clients.nome}</span>
+                            <select name='categoria' id='categoriaClient' ref={categoriaRef}
+                                className='form-control form-control-sm'>
+                                <option value='undefined'></option>
+                                <option value='admin'>Admin</option>
+                                <option value='cliente'>Cliente</option>
+                            </select>
+                        </label>
+                        <button type='submit' onClick={handleSubmit}
+                            className="btn btn-secondary">
+                            Salvar
+                         </button>
+                    </form>
+                </Modal.Body>
+            </Modal>
         </tbody >
     );
 }
