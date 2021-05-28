@@ -15,10 +15,6 @@ const AgendamentoCard = ({ agendamentos }: Props) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
-    let dataa = new Date(agendamentos.data);
-    let dataFormatada = ((dataa.getDate() + " - " + meses[(dataa.getMonth())] + " - " + dataa.getFullYear()));
-
     const statusResf = useRef<HTMLSelectElement>(null);
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
@@ -56,7 +52,7 @@ const AgendamentoCard = ({ agendamentos }: Props) => {
                 <td>{agendamentos.id}</td>
                 <td>{agendamentos.nome}</td>
                 <td>{agendamentos.telefone}</td>
-                <td>{dataFormatada}</td>
+                <td>{agendamentos.data}</td>
                 <td>{agendamentos.horario}</td>
                 <td>{agendamentos.status}</td>
             </tr>
@@ -82,7 +78,7 @@ const AgendamentoCard = ({ agendamentos }: Props) => {
                                 <option value='Aguardando'>Aguardando</option>
                                 <option value='Confirmado'>Confirmado</option>
                                 <option value='Cancelado'>Cancelado</option>
-                                <option value='Cancelado'>Concluido</option>
+                                <option value='Concluido'>Concluido</option>
                             </select>
                         </label>
                         <button type='submit' onClick={handleSubmit}
