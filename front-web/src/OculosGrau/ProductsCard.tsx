@@ -29,13 +29,13 @@ function ProductsCard({product}: Props) {
                 <p>
                     {product.description}
                 </p>
-            </div>
+           
 
             <button onClick={handleShow} className='btn btn-outline-success w-100'
                         title="Compra">
                         <i className="fa fa-shopping-cart" aria-hidden="true"></i>
             </button>
-
+            </div>
             <Modal show={show}  
                 onHide={handleClose}
                 backdrop="static"

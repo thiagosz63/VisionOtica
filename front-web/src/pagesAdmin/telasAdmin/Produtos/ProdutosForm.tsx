@@ -5,50 +5,52 @@ import { pt } from 'yup-locale-pt';
 import { AxiosError, AxiosResponse } from 'axios';
 import { axiosPost, axiosPut } from '../../../api';
 
-
-
 interface props {
     id?: string
     titulo?: string
+    name?: string
+    price?: number,
+    description?: string,
+    imageUri?: string,
+    fechaModal: () => void
+
 }
 
 function ProdutosForm(props: props) {
     const {
-        id, titulo = 'Novo Produto'
+        id, titulo = 'Novo Produto',
+        name, price, description, imageUri, fechaModal
     } = props;
 
     Yup.setLocale(pt);
-
     const handleSubmit = (Values: FormikValues) => {
 
         if (id === undefined) {
             axiosPost('/products', Values)
                 .then(function (response: AxiosResponse) {
                     alert('Dados inseridos com sucesso');
-
+                    fechaModal();
                 })
                 .catch(function (error: AxiosError) {
-                    alert('Error: client ja cadastrado' + error)
+                    alert(error.message)
                 });
         } else {
             axiosPut(`/products/${id}`, Values)
                 .then(function (response: AxiosResponse) {
                     alert('Dados Atualizados com sucesso');
+                    fechaModal();
                 })
                 .catch(function (error: AxiosError) {
-                    alert('Error: client ja cadastrado' + error)
+                    alert(error.message)
                 });
         }
-
-
     }
 
     const validations = Yup.object().shape({
         name: Yup.string().required(),
         price: Yup.string().required(),
         description: Yup.string().required(),
-        imageUri:Yup.string().required()
-
+        imageUri: Yup.string().required()
     })
 
     return (
@@ -61,9 +63,10 @@ function ProdutosForm(props: props) {
                 </div>
             </div>
 
-            <Formik initialValues={{}} onSubmit={handleSubmit} validationSchema={validations}>
+            <Formik initialValues={{ name: name, price: price, description: description, imageUri: imageUri }}
+                onSubmit={handleSubmit} validationSchema={validations}>
                 <Form>
-                    <div className="row mb-4 mt-2 ml-2 mr-2">
+                    <div className="row mt-2 ml-2 mr-2">
                         <div className="col">
                             <label >NOME*
                             <Field type="text" name='name'
@@ -71,11 +74,9 @@ function ProdutosForm(props: props) {
                             </label>
                             <ErrorMessage component='span' name='name' />
                         </div>
-                    </div>
 
-                    <div className="row mt-2 ml-2 mr-2">
-                        <div className="col-md-12">
-                            <label>Preço
+                        <div className="col">
+                            <label>Preço*
                             <Field type="text" placeholder="Preço"
                                     name='price' />
                             </label>
@@ -85,7 +86,7 @@ function ProdutosForm(props: props) {
 
                     <div className="row mt-2 ml-2 mr-2">
                         <div className="col-md-12">
-                            <label>Descrição
+                            <label>Descrição*
                              <Field type="text" placeholder="Descrição"
                                     name='description' />
                             </label>
@@ -105,7 +106,7 @@ function ProdutosForm(props: props) {
                     <div className="row mt-2 mr-2">
                         <div className="col text-center">
                             <button type='submit'
-                                className="btn btn-secondary">
+                                className="btn btn-primary">
                                 Salvar
                              </button>
                         </div>
