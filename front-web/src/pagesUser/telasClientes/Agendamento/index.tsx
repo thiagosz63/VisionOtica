@@ -55,14 +55,15 @@ function AgendamentoCliente(){
                             <label className="top-label"><strong>Horário</strong><span className="spanRed">*</span></label>
                             <Field id='horario' name='horario' as="select"
                                 className='form-control form-control-sm'>
-                                <option>08:30</option>
-                                <option>09:00</option>
-                                <option>09:30</option>
-                                <option>10:00</option>
-                                <option>10:30</option>
-                                <option>11:00</option>
-                                <option>11:30</option>
-                                <option>12:00</option>
+                                <option selected>Escolha um Horario</option>
+                                <option value="horario">08:30</option>
+                                <option value="horario">09:00</option>
+                                <option value="horario">09:30</option>
+                                <option value="horario">10:00</option>
+                                <option value="horario">10:30</option>
+                                <option value="horario">11:00</option>
+                                <option value="horario">11:30</option>
+                                <option value="horario">12:00</option>
                             </Field>
                             <ErrorMessage className="spanRed" component='span' name='horario'/>
                             </div>

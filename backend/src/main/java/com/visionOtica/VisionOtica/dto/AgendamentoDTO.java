@@ -2,6 +2,7 @@ package com.visionOtica.VisionOtica.dto;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 
 import com.visionOtica.VisionOtica.entities.Agendamento;
 
@@ -14,14 +15,14 @@ public class AgendamentoDTO implements Serializable {
 	private Long id;
 	private String nome;
 	private String telefone;
-	private Date data;
+	private LocalDate data;
 	private String horario;
 	private Status status;
 
 	public AgendamentoDTO() {
 	}
 
-	public AgendamentoDTO(Long id, String nome, String telefone, Date data, String horario,
+	public AgendamentoDTO(Long id, String nome, String telefone, LocalDate data, String horario,
 			Status status) {
 		super();
 		this.id = id;
@@ -66,11 +67,11 @@ public class AgendamentoDTO implements Serializable {
 		this.telefone = telefone;
 	}
 
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 

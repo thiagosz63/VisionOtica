@@ -2,6 +2,7 @@ package com.visionOtica.VisionOtica.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,14 +23,14 @@ public class Agendamento implements Serializable {
 	private Long id;
 	private String nome;
 	private String telefone;
-	private Date data;
+	private LocalDate data;
 	private String horario;
 	private Status status;
 
 	public Agendamento() {
 	}
 
-	public Agendamento(Long id, String nome, String telefone, Date data, String horario, Status status) {
+	public Agendamento(Long id, String nome, String telefone, LocalDate data, String horario, Status status) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -63,11 +64,11 @@ public class Agendamento implements Serializable {
 		this.telefone = telefone;
 	}
 
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 

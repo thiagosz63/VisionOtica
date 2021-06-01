@@ -1,6 +1,7 @@
 import './style.css'
 import Logo from './logo.png';
 import { Link } from 'react-router-dom';
+import Cart from '../Cart';
 
 function Menu() {    
     return (
@@ -45,6 +46,10 @@ function Menu() {
 
                             <li className="nav-item">
                                 <Link to="/page-user" className="btn btn-outline-light ml-4">Entrar</Link>
+                            </li>
+
+                            <li>
+                                <Cart/>
                             </li>
                         </ul>
                     </div>

@@ -18,6 +18,7 @@ import CuidarOculos from "../Footer/TelasFooter/CuidarOculos";
 import { PrivateRooterclient,PrivateRooterAdmin,PrivateRooterLoguin} from "./PrivateRooter";
 import Loguin from "../Loguin";
 
+
 function Routes() {
     return (
         <Router history={History}>
@@ -38,7 +39,7 @@ function Routes() {
                 <PrivateRooterAdmin component={PagesAdmin} exact path="/page-admin" />
                 <Route component={Home} path="/" />
             </Switch>
-            <Footer />
+            <Footer/>
         </Router>
     );
 }
