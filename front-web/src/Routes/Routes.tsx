@@ -17,6 +17,7 @@ import CDPupilar from "../Footer/TelasFooter/CDPupilar";
 import CuidarOculos from "../Footer/TelasFooter/CuidarOculos";
 import { PrivateRooterclient,PrivateRooterAdmin,PrivateRooterLoguin} from "./PrivateRooter";
 import Loguin from "../Loguin";
+import Cart from "../Cart";
 
 
 function Routes() {
@@ -34,6 +35,7 @@ function Routes() {
                 <Route component={Duvidas} exact path="/duvidas" />
                 <Route component={CDPupilar} exact path="/cdpupilar" />
                 <Route component={CuidarOculos} exact path="/cuidarOculos" />
+                <Route component={Cart} exact path="/cart" />
                 <PrivateRooterLoguin component={Loguin} exact path="/loguin"/>
                 <PrivateRooterclient component={PageUser} exact path="/page-user"/>
                 <PrivateRooterAdmin component={PagesAdmin} exact path="/page-admin" />
