@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import com.visionOtica.VisionOtica.entities.Client;
 
+import model.enums.CategoriaClient;
+
 public class ClientDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -14,12 +16,12 @@ public class ClientDTO implements Serializable {
 	private String cpf;
 	private String sexo;
 	private String senha;
-	private String categoria;
+	private CategoriaClient categoria;
 
 	public ClientDTO() {
 	}
 
-	public ClientDTO(Long id, String nome, String email, String cpf, String sexo, String senha, String categoria) {
+	public ClientDTO(Long id, String nome, String email, String cpf, String sexo, String senha, CategoriaClient categoria) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -89,11 +91,11 @@ public class ClientDTO implements Serializable {
 		this.senha = senha;
 	}
 
-	public String getCategoria() {
+	public CategoriaClient getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(String categoria) {
+	public void setCategoria(CategoriaClient categoria) {
 		this.categoria = categoria;
 	}
 

@@ -13,6 +13,8 @@ import com.visionOtica.VisionOtica.dto.ClientDTO;
 import com.visionOtica.VisionOtica.entities.Client;
 import com.visionOtica.VisionOtica.repositories.ClientRepository;
 
+import model.enums.CategoriaClient;
+
 @Service
 public class ClientService {
 
@@ -25,17 +27,25 @@ public class ClientService {
 		return list.stream().map(x -> new ClientDTO(x)).collect(Collectors.toList());
 	}
 
-	@Transactional
-	public Client findEmail(String email) {
+	@Transactional(readOnly = true)
+	public Client findByEmail(String email) {
 		Optional<Client> obj = repository.findByEmail(email);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! email: " + email + ", Tipo" + ClientService.class.getName(), email));
 	}
+	
+	@Transactional(readOnly = true)
+	public Client findById(Long id) {
+		Optional<Client> obj = repository.findById(id);
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! email: " + id + ", Tipo" + ClientService.class.getName(), "" + id));
+	}
+
 
 	@Transactional
 	public ClientDTO insert(ClientDTO dto) {
 		Client client = new Client(null, dto.getNome(), dto.getEmail(), dto.getCpf(), dto.getSexo(), dto.getSenha(),
-				dto.getCategoria());
+				CategoriaClient.cliente);
 
 		client = repository.save(client);
 		return new ClientDTO(client);

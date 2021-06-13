@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -32,9 +33,15 @@ public class ClientController {
 		return ResponseEntity.ok().body(list);
 	}
 
-	@GetMapping(value = "/{email}")
-	public ResponseEntity<Client> buscar(@PathVariable String email) {
-		Client obj = service.findEmail(email);
+	@GetMapping("/{email}/email")
+	public ResponseEntity<Client> buscar(@PathVariable("email") String email) {
+		Client obj = service.findByEmail(email);
+	    return ResponseEntity.ok().body(obj);
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Client> buscar(@PathVariable Long id) {
+		Client obj = service.findById(id);
 	    return ResponseEntity.ok().body(obj);
 	}
 	

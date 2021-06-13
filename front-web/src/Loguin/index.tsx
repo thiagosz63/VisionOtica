@@ -18,7 +18,7 @@ function Loguin() {
     Yup.setLocale(pt);
 
     const handleSubmit = (values: FormikValues) => {
-        axiosGet(`/client/${values.email}`)
+        axiosGet(`/client/${values.email}/email`)
             .then(function (response: AxiosResponse) {
                 if (response.data.senha === values.password) {
                     if (response.data.categoria !== 'admin') {

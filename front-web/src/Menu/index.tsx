@@ -1,9 +1,8 @@
 import './style.css'
 import Logo from './logo.png';
 import { Link } from 'react-router-dom';
-import Produtos from '../pagesAdmin/telasAdmin/Produtos';
 
-function Menu() {    
+function Menu() {
     return (
         <header>
             <div className="contante page-header">
@@ -46,10 +45,6 @@ function Menu() {
 
                             <li className="nav-item">
                                 <Link to="/page-user" className="btn btn-outline-light ml-4">Entrar</Link>
-                            </li>
-
-                            <li className="nav-item">
-                                <Link to="/cart" className="btn btn-outline-light ml-4">Carrinho ({Produtos.length})</Link>
                             </li>
                         </ul>
                     </div>

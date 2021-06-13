@@ -2,8 +2,13 @@ INSERT INTO tb_product (name, price, image_Uri, description) VALUES ('Óculos SP
 INSERT INTO tb_product (name, price, image_Uri, description) VALUES ('Óculos Arnette', 400.00, 'https://github.com/thiagosz63/VisionOtica/blob/main/imagem/2.png?raw=true', 'THE SEEKER AN7182 2702 Azul Striped Lente Tam 49.');
 
 
-INSERT INTO tb_client (nome,email, cpf, sexo, senha, categoria) VALUES ('thiago','thiagosz63@gmail.com', '73550999062', 'masculino','123456','');
-INSERT INTO tb_client (nome,email, cpf, sexo, senha,categoria) VALUES ('thiago','admin@gmail.com', '80308147049', 'masculino','123456', 'admin');
+INSERT INTO tb_client (nome,email, cpf, sexo, senha, categoria) VALUES ('thiago','thiagosz63@gmail.com', '73550999062', 'masculino','123456',0);
+INSERT INTO tb_client (nome,email, cpf, sexo, senha,categoria) VALUES ('thiago','admin@gmail.com', '80308147049', 'masculino','123456', 1);
 
-INSERT INTO tb_client (nome,email, cpf, sexo, senha, categoria) VALUES ('felipe','felipe@gmail.com', '12545395010', 'masculino','123456','');
-INSERT INTO tb_client (nome,email, cpf, sexo, senha,categoria) VALUES ('felipe','admin@gmail.com.br', '12365495112', 'masculino','123456', 'admin');
+INSERT INTO tb_client (nome,email, cpf, sexo, senha, categoria) VALUES ('felipe','felipe@gmail.com', '12545395010', 'masculino','123456',0);
+INSERT INTO tb_client (nome,email, cpf, sexo, senha,categoria) VALUES ('felipe','admin@gmail.com.br', '12365495112', 'masculino','123456', 1);
+
+INSERT INTO tb_pedido (quantidade, preco, data_Venda, status, cliente_id) VALUES (1, 23.5, '2016-02-06', 0, 1);
+
+INSERT INTO tb_pedido_product (pedido_id, product_id) VALUES (1 , 1);
+INSERT INTO tb_pedido_product (pedido_id, product_id) VALUES (1 , 2);

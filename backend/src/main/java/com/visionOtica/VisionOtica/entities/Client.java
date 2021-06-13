@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import model.enums.CategoriaClient;
+
 @Entity
 @Table(name = "tb_client")
 public class Client implements Serializable {
@@ -25,12 +27,12 @@ public class Client implements Serializable {
 	private String cpf;
 	private String sexo;
 	private String senha;
-	private String categoria;
+	private CategoriaClient categoria;
 
 	public Client() {
 	}
 
-	public Client(Long id, String nome, String email, String cpf, String sexo, String senha,String categoria) {
+	public Client(Long id, String nome, String email, String cpf, String sexo, String senha,CategoriaClient categoria) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -89,11 +91,11 @@ public class Client implements Serializable {
 		this.senha = senha;
 	}
 	
-	public String getCategoria() {
+	public CategoriaClient getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(String categoria) {
+	public void setCategoria(CategoriaClient categoria) {
 		this.categoria = categoria;
 	}
 

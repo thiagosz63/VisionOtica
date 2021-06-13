@@ -1,67 +1,55 @@
 package com.visionOtica.VisionOtica.entities;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import model.enums.Situacao;
+import model.enums.StatusPedido;
 
 @Entity
 @Table(name = "tb_pedido")
 public class Pedido implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Integer quantidade;
 	private Double preco;
-	private Date dataVenda;
-	private Product products;
-	private Client clients;
-	private Situacao situacao;
-	
+	private LocalDate dataVenda;
+	private StatusPedido status;
+
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
+	private Client client;
+
+	@ManyToMany
+	@JoinTable(name = "tb_pedido_product", joinColumns = @JoinColumn(name = "pedido_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
+	private Set<Product> products = new HashSet<Product>();
+
 	public Pedido() {
 	}
 
-	public Pedido( Long id, Client clients, Product products,  Integer quantidade, Double preco, Date dataVenda, Situacao situacao) {
+	public Pedido(Long id, Integer quantidade, Double preco, LocalDate dataVenda, StatusPedido status) {
 		super();
 		this.id = id;
-		this.clients = clients;
-		this.products = products;
 		this.quantidade = quantidade;
 		this.preco = preco;
 		this.dataVenda = dataVenda;
-		this.situacao = situacao;
-	}
+		this.status = status;
 
-	public Product getProducts() {
-		return products;
-	}
-
-	public void setProducts(Product products) {
-		this.products = products;
-	}
-
-	public Client getClients() {
-		return clients;
-	}
-
-	public void setClients(Client clients) {
-		this.clients = clients;
-	}
-
-	public Situacao getSituacao() {
-		return situacao;
-	}
-
-	public void setSituacao(Situacao situacao) {
-		this.situacao = situacao;
 	}
 
 	public Long getId() {
@@ -88,20 +76,32 @@ public class Pedido implements Serializable {
 		this.preco = preco;
 	}
 
-	public Date getDataVenda() {
+	public LocalDate getDataVenda() {
 		return dataVenda;
 	}
 
-	public void setDataVenda(Date dataVenda) {
+	public void setDataVenda(LocalDate dataVenda) {
 		this.dataVenda = dataVenda;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public StatusPedido getStatus() {
+		return status;
 	}
 
-	public double subTotal() {
-		return preco * quantidade;
+	public void setStatus(StatusPedido status) {
+		this.status = status;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public Set<Product> getProducts() {
+		return products;
 	}
 
 	@Override
@@ -128,4 +128,5 @@ public class Pedido implements Serializable {
 			return false;
 		return true;
 	}
+
 }

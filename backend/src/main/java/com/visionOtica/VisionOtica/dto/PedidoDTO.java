@@ -1,79 +1,50 @@
 package com.visionOtica.VisionOtica.dto;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-import com.visionOtica.VisionOtica.entities.Client;
 import com.visionOtica.VisionOtica.entities.Pedido;
-import com.visionOtica.VisionOtica.entities.Product;
 
-import model.enums.Situacao;
+import model.enums.StatusPedido;
 
 public class PedidoDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Integer quantidade;
 	private Double preco;
-	private Date dataVenda;
-	private Product products;
-	private Client clients;
-	private Situacao situacao;
+	private LocalDate dataVenda;
+	private StatusPedido status;
+
+	private ClientDTO client;
+
+	private List<ProductDTO> products = new ArrayList<>();
 
 	public PedidoDTO() {
 	}
 
-	public PedidoDTO( Long id, Client clients, Product products,  Integer quantidade, Double preco, Date dataVenda, Situacao situacao) {
+	public PedidoDTO(Long id, Integer quantidade, Double preco, LocalDate dataVenda, StatusPedido status) {
 		super();
 		this.id = id;
-		this.clients = clients;
-		this.products = products;
 		this.quantidade = quantidade;
 		this.preco = preco;
 		this.dataVenda = dataVenda;
-		this.situacao = situacao;
+		this.status = status;
 	}
-	
+
 	public PedidoDTO(Pedido entity) {
 		super();
 		id = entity.getId();
-		clients = entity.getClients();
-		products = entity.getProducts();
-		quantidade = entity.getQuantidade();	
+		quantidade = entity.getQuantidade();
 		preco = entity.getPreco();
 		dataVenda = entity.getDataVenda();
-		situacao = entity.getSituacao();
-	}
-
-	public Product getProducts() {
-		return products;
-	}
-
-	public void setProducts(Product products) {
-		this.products = products;
-	}
-
-	public Client getClients() {
-		return clients;
-	}
-
-	public void setClients(Client clients) {
-		this.clients = clients;
-	}
-
-	public Situacao getSituacao() {
-		return situacao;
-	}
-
-	public void setSituacao(Situacao situacao) {
-		this.situacao = situacao;
+		status = entity.getStatus();
+		client = new ClientDTO(entity.getClient());
+		products = entity.getProducts().stream().map(x -> new ProductDTO(x)).collect(Collectors.toList());
 	}
 
 	public Long getId() {
@@ -100,20 +71,32 @@ public class PedidoDTO implements Serializable {
 		this.preco = preco;
 	}
 
-	public Date getDataVenda() {
+	public LocalDate getDataVenda() {
 		return dataVenda;
 	}
 
-	public void setDataVenda(Date dataVenda) {
+	public void setDataVenda(LocalDate dataVenda) {
 		this.dataVenda = dataVenda;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public StatusPedido getStatus() {
+		return status;
 	}
 
-	public double subTotal() {
-		return preco * quantidade;
+	public void setStatus(StatusPedido status) {
+		this.status = status;
+	}
+
+	public ClientDTO getClient() {
+		return client;
+	}
+
+	public void setClients(ClientDTO client) {
+		this.client = client;
+	}
+
+	public List<ProductDTO> getProducts() {
+		return products;
 	}
 
 	@Override
@@ -140,4 +123,5 @@ public class PedidoDTO implements Serializable {
 			return false;
 		return true;
 	}
+
 }
