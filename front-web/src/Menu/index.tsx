@@ -3,6 +3,7 @@ import Logo from './logo.png';
 import { Link } from 'react-router-dom';
 
 function Menu() {
+    
     return (
         <header>
             <div className="contante page-header">
@@ -26,19 +27,43 @@ function Menu() {
                     <div className="collapse navbar-collapse" id="nav-principal">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-                                <Link to='/oculos-de-grau' className="nav-link text-white">Óculos de grau</Link>
+                                <Link to={{
+                                    pathname: '/products',
+                                    state: { path: "/grau/categoria" },
+                                }}
+                                    className="nav-link text-white">
+                                    Óculos de grau
+                                </Link>
                             </li>
 
                             <li className="nav-item">
-                                <a href="/" className="nav-link">Óculos de sol</a>
+                                <Link to={{
+                                    pathname: '/products',
+                                    state: { path: "/sol/categoria" },
+                                }}
+                                    className="nav-link text-white">
+                                    Óculos de sol
+                                </Link>
                             </li>
 
                             <li className="nav-item">
-                                <a href="/" className="nav-link">Lentes de contato</a>
+                                <Link to={{
+                                    pathname: '/products',
+                                    state: { path: "/lenteContato/categoria" },
+                                }}
+                                    className="nav-link text-white">
+                                    Lentes de contato
+                                </Link>
                             </li>
 
                             <li className="nav-item">
-                                <a href="/" className="nav-link">Marcas</a>
+                            <Link to={{
+                                    pathname: '/products',
+                                    state: { path: "" },
+                                }}
+                                    className="nav-link text-white">
+                                    Todos
+                                </Link>
                             </li>
 
                             <li className="nav-item divisor ml-2 mr-2"></li>
@@ -50,7 +75,7 @@ function Menu() {
                     </div>
                 </div>
             </nav>
-        </header>
+        </header >
     );
 }
 export default Menu;

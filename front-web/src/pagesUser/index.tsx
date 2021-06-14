@@ -3,10 +3,46 @@ import { History } from '../history';
 import clientepng from './cliente.png';
 import AgendamentoCliente from './telasClientes/Agendamento';
 import Cart from './telasClientes/Cart';
+import Cadastrar from '../cadastrar';
+import { useEffect, useState } from 'react';
+import { Modal } from 'react-bootstrap';
+import { axiosGet } from '../api';
+import { AxiosError, AxiosResponse } from 'axios';
+
 
 function PageUser() {
+   
+    // @ts-ignore
+    const [id] = useState<string>((localStorage.getItem("id")));
+    const [nome,setNome] = useState<string>();
+    const [sexo,setSexo] = useState<string>();
+    const [email,setEmail] = useState<string>();
+    const [cpf,setCpf] = useState<string>();
+    const [senha,setSenha] = useState<string>();
+    
+    useEffect(() => {
+        axiosGet(`/client/${id}`)
+            .then(function (response: AxiosResponse) {
+                setNome(response.data.nome)
+                setSexo(response.data.sexo)
+                setEmail(response.data.email)
+                setCpf(response.data.cpf)
+                setSenha(response.data.senha)
+                                                            
+            })
+            .catch(function (error: AxiosError) {
+            });
+
+    });
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     function logout() {
         localStorage.removeItem('client-logado')
+        localStorage.removeItem("id")
         History.push('/');
     }
 
@@ -14,7 +50,16 @@ function PageUser() {
         <div className='container'>
             <div className="cliente-margem">
                 <img src={clientepng} width="40px" height="40px" alt="" />
-                <h4 className="h4-margem">Minha Conta</h4>
+                <h4 className="h4-margem">
+                    Bem Vindo
+                    <span> {nome}</span>
+                </h4>
+
+                <div className='col-md-4'>
+                    <button className="btn btn-outline-primary" onClick={handleShow}>
+                        <i className="fas fa-user-circle"></i>Minha conta
+                    </button>
+                </div>
             </div>
             <div className="row">
                 <div className="col-md-2">
@@ -53,7 +98,7 @@ function PageUser() {
 
                         <div className="tab-pane fade " id="list-home"
                             role="tabpanel" aria-labelledby="list-home-list">
-                            
+
                         </div>
 
                         <div className="tab-pane fade" id="list-messages"
@@ -63,6 +108,25 @@ function PageUser() {
                     </div>
                 </div>
             </div>
+
+            <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}>
+                <Modal.Header>
+                    <Modal.Title></Modal.Title>
+                    <button type="button" className="close btn btn-secondary" onClick={handleClose}
+                        aria-label="Close">
+                        Cancelar
+                    </button>
+                </Modal.Header>
+                <Modal.Body>
+                    <Cadastrar titulo="Atualizar Minha Conta" id={id} fechaModal={handleClose} 
+                                nome={nome} sexo={sexo} email={email} cpf ={cpf} 
+                                senha ={senha} categoria='cliente'/>
+                </Modal.Body>
+            </Modal>
         </div>
     );
 }

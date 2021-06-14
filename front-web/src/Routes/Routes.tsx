@@ -7,7 +7,7 @@ import TrocasDevolucao from "../Footer/TelasFooter/Trocas-e-Devolucao";
 import { History } from "../history";
 import Home from "../Home";
 import Menu from "../Menu";
-import OculosGrau from "../OculosGrau";
+import Products from "../Products";
 import PagesAdmin from "../pagesAdmin";
 import PageUser from "../pagesUser";
 import UniversidadeVision from "../Footer/TelasFooter/UniversidadeVision";
@@ -23,7 +23,7 @@ function Routes() {
         <Router history={History}>
             <Menu />
             <Switch>
-                <Route component={OculosGrau} exact path="/oculos-de-grau" />
+                <Route component={Products} exact path="/products" />
                 <Route component={QuemSomos} exact path="/quem-somos" />
                 <Route component={Contato} exact path="/contato" />
                 <Route component={PoliticaDeEntrega} exact path="/politica-de-entrega" />

@@ -23,7 +23,9 @@ function Loguin() {
                 if (response.data.senha === values.password) {
                     if (response.data.categoria !== 'admin') {
                         localStorage.setItem('client-logado', response.data);
-                        History.push('/page-user');
+                        localStorage.setItem('id', response.data.id);
+
+                        History.push("/page-user")
                     }
                     if (response.data.categoria === 'admin') {
                         localStorage.setItem('admin-logado', response.data);
@@ -50,7 +52,7 @@ function Loguin() {
                     <div className='align-self-center'>
                         <h1>Já sou cadastrado</h1>
                         <p>Se você tiver uma conta, acesse com seu
-                        endereço de e-mail e senha.
+                            endereço de e-mail e senha.
                         </p>
 
                         <Formik initialValues={{}} onSubmit={handleSubmit} validationSchema={validations}>
@@ -88,8 +90,8 @@ function Loguin() {
                 <div className='col-md-5'>
                     <h1>Sou um novo cliente</h1>
                     <p>Criar uma nova conta tem muitos benefícios:
-                    fechar pedidos mais rapidamente, registrar mais endereços,
-                    acompanhar pedidos e muito mais.
+                        fechar pedidos mais rapidamente, registrar mais endereços,
+                        acompanhar pedidos e muito mais.
                     </p>
 
                     <div className='col-md-7'>
@@ -108,10 +110,10 @@ function Loguin() {
                                 <button type="button" className="close btn btn-secondary" onClick={handleClose}
                                     aria-label="Close">
                                     Cancelar
-                    </button>
+                                </button>
                             </Modal.Header>
                             <Modal.Body>
-                              <Cadastrar/>
+                                <Cadastrar fechaModal={handleClose} />
                             </Modal.Body>
                         </Modal>
                     </div>

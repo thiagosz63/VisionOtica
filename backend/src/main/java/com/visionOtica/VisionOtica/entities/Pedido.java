@@ -15,6 +15,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import model.enums.StatusPedido;
 
 @Entity
@@ -33,6 +36,7 @@ public class Pedido implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Client client;
 
 	@ManyToMany

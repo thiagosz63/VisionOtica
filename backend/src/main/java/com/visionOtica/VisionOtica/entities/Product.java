@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import model.enums.CategoriaOculos;
+
 @Entity
 @Table(name="tb_product")
 public class Product implements Serializable {
@@ -21,18 +23,20 @@ public class Product implements Serializable {
 	private Double price;
 	private String description;
 	private String imageUri;
+	private CategoriaOculos categoria;
 
 	public Product() {
 	}
 
 	public Product(Long id, String name, Double price, String description,
-			String imageUri) {
+			String imageUri, CategoriaOculos categoria) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.description = description;
 		this.imageUri = imageUri;
+		this.categoria = categoria;
 	}
 
 	public Long getId() {
@@ -74,6 +78,13 @@ public class Product implements Serializable {
 	public void setImageUri(String imageUri) {
 		this.imageUri = imageUri;
 	}
+	public CategoriaOculos getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(CategoriaOculos categoria) {
+		this.categoria = categoria;
+	}
 
 	@Override
 	public int hashCode() {
@@ -99,7 +110,5 @@ public class Product implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
 
 }

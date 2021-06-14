@@ -6,17 +6,29 @@ import { pt } from 'yup-locale-pt';
 import { AxiosError, AxiosResponse } from 'axios';
 import { History } from '../history';
 import { axiosPost, axiosPut } from '../api';
+import { toast } from 'react-toastify';
 
 interface props {
     id?: string
     titulo?: string
+    nome?: string
+    sexo?: string
+    email?: string
+    cpf?: string
+    senha?: string
+    categoria?: string
+    fechaModal: () => void
+
 }
 
 function Cadastrar(props: props) {
+
     const {
-        id, titulo = 'Criar Conta'
+        id, titulo = 'Criar Conta', nome, sexo = "Não especificado", email, cpf,
+         senha, categoria, fechaModal
     } = props;
 
+       
     Yup.setLocale(pt);
 
     const handleSubmit = (Values: FormikValues) => {
@@ -24,19 +36,21 @@ function Cadastrar(props: props) {
         if (id === undefined) {
             axiosPost('/client', Values)
                 .then(function (response: AxiosResponse) {
-                    alert('Dados inseridos com sucesso');
+                    toast.success('Dados inseridos com sucesso')
+                    fechaModal();
                     History.push('/loguin');
                 })
                 .catch(function (error: AxiosError) {
-                    alert('Error: client ja cadastrado' + error)
+                    toast.error('Cliente já cadastrado')
                 });
         } else {
             axiosPut(`/client/${id}`, Values)
                 .then(function (response: AxiosResponse) {
-                    alert('Dados Atualizados com sucesso');
+                    toast.success('Dados Atualizados com sucesso')
+                    fechaModal();
                 })
                 .catch(function (error: AxiosError) {
-                    alert('Error: client ja cadastrado' + error)
+                    toast.error("Error: Sistema Indisponivel")
                 });
         }
 
@@ -106,12 +120,16 @@ function Cadastrar(props: props) {
                 </div>
             </div>
 
-            <Formik initialValues={{}} onSubmit={handleSubmit} validationSchema={validations}>
+            <Formik initialValues={{
+                nome: nome, sexo: sexo, email: email, cpf: cpf, senha: senha,ConfirmaSenha:senha,
+                categoria: categoria
+            }}
+                onSubmit={handleSubmit} validationSchema={validations}>
                 <Form>
                     <div className="row mb-4 mt-2 ml-2 mr-2">
                         <div className="col">
                             <label >NOME*
-                            <Field type="text" name='nome'
+                                <Field type="text" name='nome'
                                     placeholder="Nome" />
                             </label>
                             <ErrorMessage component='span' name='nome' />
@@ -119,11 +137,12 @@ function Cadastrar(props: props) {
 
                         <div className="col">
                             <label>Gênero (opcional)
-                            <Field name='sexo' as="select"
+                                <Field name='sexo' as="select"
                                     className='form-control form-control-sm'>
-                                    <option value='Não_especificado'>Não especificado</option>
+                                    <option value={sexo}>{sexo}</option>
                                     <option value='Masculino'>Masculino</option>
                                     <option value='Feminino'>Feminino</option>
+                                    <option value='Não especificado'>Não especificado</option>
                                 </Field>
                             </label>
                         </div>
@@ -132,7 +151,7 @@ function Cadastrar(props: props) {
                     <div className="row mt-2 ml-2 mr-2">
                         <div className="col-md-12">
                             <label>E-MAIL*
-                            <Field type="text" placeholder="E-mail"
+                                <Field type="text" placeholder="E-mail"
                                     name='email' />
                             </label>
                             <ErrorMessage component='span' name='email' />
@@ -142,7 +161,7 @@ function Cadastrar(props: props) {
                     <div className="row mt-2 ml-2 mr-2">
                         <div className="col-md-12">
                             <label>CPF*
-                             <Field type="text" placeholder="CPF (Apenas número)"
+                                <Field type="text" placeholder="CPF (Apenas número)"
                                     name='cpf' />
                             </label>
                             <ErrorMessage component='span' name='cpf' />
@@ -152,7 +171,7 @@ function Cadastrar(props: props) {
                     <div className="row mt-2 ml-2 mr-2">
                         <div className="col-md-12">
                             <label>SENHA*
-                            <Field type="password" name="senha"
+                                <Field type="password" name="senha"
                                     placeholder="********" />
                             </label>
                             <ErrorMessage component='span' name='senha' />
@@ -162,10 +181,11 @@ function Cadastrar(props: props) {
                     <div className="row mt-2 ml-2 mr-2">
                         <div className="col-md-12">
                             <label>CONFIRMAÇÃO DA SENHA*
-                            <Field type="password"
+                                <Field type="password"
                                     placeholder="confirmar Senha" name='ConfirmaSenha' />
                             </label>
                             <ErrorMessage component='span' name='ConfirmaSenha' />
+                            <Field name="categoria" type="hidden" />
                         </div>
                     </div>
 
@@ -174,7 +194,7 @@ function Cadastrar(props: props) {
                             <button type='submit'
                                 className="btn btn-secondary">
                                 Salvar
-                             </button>
+                            </button>
                         </div>
                     </div>
                 </Form>

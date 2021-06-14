@@ -1,5 +1,5 @@
 import './style.css';
-import { Product } from '../../../OculosGrau/types';
+import { Product } from '../../../Products/types';
 import { useState } from 'react';
 
 
@@ -18,7 +18,7 @@ function Cart(product: Props) {
                 <li className="list-group-item py-3">
                     <div className="row g-3">
                         <div className='col-3 align-self-center'>
-                            <img src='https://github.com/thiagosz63/VisionOtica/blob/main/imagem/1.png?raw=true' alt="oculo"
+                            <img src={"imagem/5.png" } alt="oculo"
                                 className="img-thumbnail" />
                         </div>
 

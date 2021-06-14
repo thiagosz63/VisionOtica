@@ -19,6 +19,8 @@ import com.visionOtica.VisionOtica.dto.ProductDTO;
 import com.visionOtica.VisionOtica.entities.Product;
 import com.visionOtica.VisionOtica.services.ProductService;
 
+import model.enums.CategoriaOculos;
+
 @RestController
 @RequestMapping(value = "/products")
 public class ProductController {
@@ -30,6 +32,12 @@ public class ProductController {
 	public ResponseEntity<List<ProductDTO>> findAll(){
 		List<ProductDTO> list = service.findAll();
 		return ResponseEntity.ok().body(list);
+	}
+	
+	@GetMapping("/{categoria}/categoria")
+	public ResponseEntity<List<ProductDTO>> buscar(@PathVariable("categoria") CategoriaOculos categoria) {
+		List<ProductDTO> list = service.findByCategoria(categoria);
+	    return ResponseEntity.ok().body(list);
 	}
 	
 	@PostMapping
