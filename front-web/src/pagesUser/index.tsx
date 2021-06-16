@@ -1,25 +1,25 @@
 import './style.css';
 import { History } from '../history';
 import clientepng from './cliente.png';
-import AgendamentoCliente from './telasClientes/Agendamento';
-import Cart from './telasClientes/Cart';
 import Cadastrar from '../cadastrar';
 import { useEffect, useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import { axiosGet } from '../api';
 import { AxiosError, AxiosResponse } from 'axios';
+import Agendamento from './telasClientes/Agendamento';
+import Pedidos from './telasClientes/Pedidos';
 
 
 function PageUser() {
-   
+
     // @ts-ignore
     const [id] = useState<string>((localStorage.getItem("id")));
-    const [nome,setNome] = useState<string>();
-    const [sexo,setSexo] = useState<string>();
-    const [email,setEmail] = useState<string>();
-    const [cpf,setCpf] = useState<string>();
-    const [senha,setSenha] = useState<string>();
-    
+    const [nome, setNome] = useState<string>();
+    const [sexo, setSexo] = useState<string>();
+    const [email, setEmail] = useState<string>();
+    const [cpf, setCpf] = useState<string>();
+    const [senha, setSenha] = useState<string>();
+
     useEffect(() => {
         axiosGet(`/client/${id}`)
             .then(function (response: AxiosResponse) {
@@ -28,7 +28,7 @@ function PageUser() {
                 setEmail(response.data.email)
                 setCpf(response.data.cpf)
                 setSenha(response.data.senha)
-                                                            
+
             })
             .catch(function (error: AxiosError) {
             });
@@ -71,12 +71,6 @@ function PageUser() {
                         </a>
 
                         <a className="list-group-item list-group-item-action"
-                            id="list-home-list" data-toggle="list" href="#list-home" role="tab"
-                            aria-controls="home">
-                            Minha conta <span className=' fas fa-caret-right'></span>
-                        </a>
-
-                        <a className="list-group-item list-group-item-action"
                             id="list-messages-list" data-toggle="list" href="#list-messages" role="tab"
                             aria-controls="messages">
                             Agendamentos <span className=' fas fa-caret-right' />
@@ -93,17 +87,12 @@ function PageUser() {
                     <div className="tab-content" id="nav-tabContent">
                         <div className="tab-pane fade show active" id="list-cart"
                             role="tabpanel" aria-labelledby="list-cart-list">
-                            <Cart />
-                        </div>
-
-                        <div className="tab-pane fade " id="list-home"
-                            role="tabpanel" aria-labelledby="list-home-list">
-
+                            <Pedidos id={id}/>
                         </div>
 
                         <div className="tab-pane fade" id="list-messages"
                             role="tabpanel" aria-labelledby="list-messages-list">
-                            <AgendamentoCliente />
+                            <Agendamento idClient={id}/>
                         </div>
                     </div>
                 </div>
@@ -122,9 +111,9 @@ function PageUser() {
                     </button>
                 </Modal.Header>
                 <Modal.Body>
-                    <Cadastrar titulo="Atualizar Minha Conta" id={id} fechaModal={handleClose} 
-                                nome={nome} sexo={sexo} email={email} cpf ={cpf} 
-                                senha ={senha} categoria='cliente'/>
+                    <Cadastrar titulo="Atualizar Minha Conta" id={id} fechaModal={handleClose}
+                        nome={nome} sexo={sexo} email={email} cpf={cpf}
+                        senha={senha} categoria='cliente' />
                 </Modal.Body>
             </Modal>
         </div>

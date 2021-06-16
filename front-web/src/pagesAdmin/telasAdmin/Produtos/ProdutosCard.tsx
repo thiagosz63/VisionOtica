@@ -1,9 +1,8 @@
-import { AxiosError, AxiosResponse } from "axios";
-import { axiosDelete } from "../../../api";
 import { ProdutosType } from "./produtosTypes"
 import { useState } from "react";
 import { Modal } from 'react-bootstrap';
 import ProdutosForm from "./ProdutosForm";
+import { formatPrice } from "../../../Products/hepers";
 
 type Props = {
     produtos: ProdutosType
@@ -15,16 +14,8 @@ const ProdutosCard = ({ produtos }: Props) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    function btnApagar() {
-        axiosDelete(`/products/ ${produtos.id}`)
-            .then(function (response: AxiosResponse) {
-                alert('Dados apagado com sucesso');
-            })
-            .catch(function (error: AxiosError) {
-                alert(error.message)
-            });
-    }
-
+    
+    
     return (
         <tbody>
             <tr>
@@ -35,17 +26,12 @@ const ProdutosCard = ({ produtos }: Props) => {
                     </button>
                 </th>
 
-                <td>
-                    <button className='btn btn-outline-danger w-100' onClick={btnApagar}
-                        title="Apagar">
-                        <i className="fas fa-times "></i>
-                    </button>
-                </td>
                 <td> {produtos.id}</td>
                 <td> {produtos.name}</td>
-                <td> R${produtos.price}</td>
+                <td> {formatPrice(produtos.price)}</td>
                 <td> {produtos.description}</td>
                 <td> <img width={100} src={produtos.imageUri} alt={produtos.name} /></td>
+                <td> {produtos.categoria}</td>
             </tr>
 
             <Modal
@@ -63,7 +49,7 @@ const ProdutosCard = ({ produtos }: Props) => {
                 <Modal.Body>
                     <ProdutosForm titulo="Atualizar Produto" name={produtos.name} price={produtos.price}
                     description={produtos.description} imageUri={produtos.imageUri} id={""+produtos.id}
-                    fechaModal={()=>handleClose()}/>
+                    fechaModal={()=>handleClose()} categoria={produtos.categoria}/>
                 </Modal.Body>
             </Modal>
         </tbody >

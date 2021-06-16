@@ -1,14 +1,18 @@
 package com.visionOtica.VisionOtica.entities;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import model.enums.Status;
 
@@ -26,6 +30,11 @@ public class Agendamento implements Serializable {
 	private LocalDate data;
 	private String horario;
 	private Status status;
+
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Client client;
 
 	public Agendamento() {
 	}
@@ -88,8 +97,12 @@ public class Agendamento implements Serializable {
 		this.status = status;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	@Override
@@ -116,6 +129,5 @@ public class Agendamento implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
+
 }

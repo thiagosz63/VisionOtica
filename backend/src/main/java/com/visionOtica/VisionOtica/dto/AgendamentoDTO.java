@@ -17,6 +17,7 @@ public class AgendamentoDTO implements Serializable {
 	private LocalDate data;
 	private String horario;
 	private Status status;
+	private ClientDTO client;
 
 	public AgendamentoDTO() {
 	}
@@ -39,7 +40,8 @@ public class AgendamentoDTO implements Serializable {
 		telefone = entity.getTelefone();
 		data = entity.getData();
 		horario = entity.getHorario();
-		status = entity.getStatus();			
+		status = entity.getStatus();	
+		client = new ClientDTO(entity.getClient());
 	}
 
 	public Long getId() {
@@ -89,9 +91,14 @@ public class AgendamentoDTO implements Serializable {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
+	
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public ClientDTO getClient() {
+		return client;
+	}
+
+	public void setClient(ClientDTO client) {
+		this.client = client;
 	}
 
 	@Override

@@ -3,6 +3,7 @@ import adm from './adm.png';
 import './style.css';
 import Agendamento from './telasAdmin/Agendamento';
 import Client from './telasAdmin/Client';
+import Pedidos from './telasAdmin/Pedidos';
 import Produtos from './telasAdmin/Produtos';
 
 function PagesAdmin() {
@@ -23,14 +24,9 @@ function PagesAdmin() {
                         <a className="list-group-item list-group-item-action active "
                             id="list-Pedido-list" data-toggle="list" href="#list-Pedido" role="tab"
                             aria-controls="Pedido">
-                            Meus Pedido <span className=' fas fa-caret-right'></span>
+                            Pedidos <span className=' fas fa-caret-right'></span>
                         </a>
 
-                        <a className="list-group-item list-group-item-action"
-                            id="list-Venda-list" data-toggle="list" href="#list-Venda" role="tab"
-                            aria-controls="Venda">
-                            Efetua Venda <span className=' fas fa-caret-right'></span>
-                        </a>
 
                         <a className="list-group-item list-group-item-action"
                             id="list-Agendamentos-list" data-toggle="list" href="#list-Agendamentos" role="tab"
@@ -66,10 +62,9 @@ function PagesAdmin() {
 
                 <div className="col-md-10">
                     <div className="tab-content" id="nav-tabContent">
-                        <div className="tab-pane fade show active" id="list-Pedido" role="tabpanel" aria-labelledby="list-Pedido-list">Pedido</div>
-                        <div className="tab-pane fade" id="list-Venda" role="tabpanel" aria-labelledby="list-Venda-list">Venda</div>
+                        <div className="tab-pane fade show active" id="list-Pedido" role="tabpanel" aria-labelledby="list-Pedido-list"><Pedidos/></div>
                         <div className="tab-pane fade" id="list-Agendamentos" role="tabpanel" aria-labelledby="list-Agendamentos-list"><Agendamento /></div>
-                        <div className="tab-pane fade" id="list-produtos" role="tabpanel" aria-labelledby="list-produtos-list"><Produtos/></div>
+                        <div className="tab-pane fade" id="list-produtos" role="tabpanel" aria-labelledby="list-produtos-list"><Produtos /></div>
                         <div className="tab-pane fade" id="list-usuarios" role="tabpanel" aria-labelledby="list-usuarios-list"><Client /></div>
                         <div className="tab-pane fade" id="list-mensagens" role="tabpanel" aria-labelledby="list-mensagens-list">mensagens</div>
                     </div>

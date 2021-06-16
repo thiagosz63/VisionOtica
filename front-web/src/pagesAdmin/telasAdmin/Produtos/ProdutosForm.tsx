@@ -12,6 +12,7 @@ interface props {
     price?: number,
     description?: string,
     imageUri?: string,
+    categoria?: string
     fechaModal: () => void
 
 }
@@ -19,7 +20,7 @@ interface props {
 function ProdutosForm(props: props) {
     const {
         id, titulo = 'Novo Produto',
-        name, price, description, imageUri, fechaModal
+        name, price, description, imageUri,categoria = "grau", fechaModal
     } = props;
 
     Yup.setLocale(pt);
@@ -69,7 +70,7 @@ function ProdutosForm(props: props) {
                     <div className="row mt-2 ml-2 mr-2">
                         <div className="col">
                             <label >NOME*
-                            <Field type="text" name='name'
+                                <Field type="text" name='name'
                                     placeholder="Nome" />
                             </label>
                             <ErrorMessage component='span' name='name' />
@@ -77,7 +78,7 @@ function ProdutosForm(props: props) {
 
                         <div className="col">
                             <label>Preço*
-                            <Field type="text" placeholder="Preço"
+                                <Field type="text" placeholder="Preço"
                                     name='price' />
                             </label>
                             <ErrorMessage component='span' name='price' />
@@ -87,7 +88,7 @@ function ProdutosForm(props: props) {
                     <div className="row mt-2 ml-2 mr-2">
                         <div className="col-md-12">
                             <label>Descrição*
-                             <Field type="text" placeholder="Descrição"
+                                <Field type="text" placeholder="Descrição"
                                     name='description' />
                             </label>
                             <ErrorMessage component='span' name='description' />
@@ -97,18 +98,28 @@ function ProdutosForm(props: props) {
                     <div className="row mt-2 ml-2 mr-2">
                         <div className="col-md-12">
                             <label>Imagem
-                            <Field type="text" name="imageUri"
+                                <Field type="text" name="imageUri"
                                     placeholder="Caminho da imagem" />
                             </label>
                             <ErrorMessage component='span' name='imageUri' />
                         </div>
+                    </div>
+                    <div className="col">
+                        <label>Categoria
+                            <Field name='categoria' as="select"
+                                className='form-control form-control-sm'>
+                                <option value={categoria}>{categoria}</option>
+                                <option value='sol'> Sol</option>
+                                <option value='lenteContato'>LenteContato</option>
+                            </Field>
+                        </label>
                     </div>
                     <div className="row mt-2 mr-2">
                         <div className="col text-center">
                             <button type='submit'
                                 className="btn btn-primary">
                                 Salvar
-                             </button>
+                            </button>
                         </div>
                     </div>
                 </Form>

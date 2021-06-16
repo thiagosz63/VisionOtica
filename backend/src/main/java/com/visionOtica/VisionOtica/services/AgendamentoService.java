@@ -9,14 +9,22 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.visionOtica.VisionOtica.dto.AgendamentoDTO;
+import com.visionOtica.VisionOtica.dto.ClientDTO;
 import com.visionOtica.VisionOtica.entities.Agendamento;
+import com.visionOtica.VisionOtica.entities.Client;
 import com.visionOtica.VisionOtica.repositories.AgendamentoRepository;
+import com.visionOtica.VisionOtica.repositories.ClientRepository;
+
+import model.enums.Status;
 
 @Service
 public class AgendamentoService {
 
 	@Autowired
 	private AgendamentoRepository repository;
+	
+	@Autowired
+	private ClientRepository clientReposytory;
 
 	@Transactional(readOnly = true)
 	public List<AgendamentoDTO> findAll() {
@@ -26,8 +34,15 @@ public class AgendamentoService {
 
 	@Transactional
 	public AgendamentoDTO insert(AgendamentoDTO dto) {
-		Agendamento agendamento = new Agendamento(null, dto.getNome(), dto.getTelefone(), dto.getData(), dto.getHorario(), dto.getStatus());
+		   Agendamento agendamento = new Agendamento(null, dto.getNome(), 
+						dto.getTelefone(), dto.getData(),
+						dto.getHorario(), Status.Pendente);
 
+
+			ClientDTO clientDto = dto.getClient();
+			Client client = clientReposytory.getOne(clientDto.getId());
+			agendamento.setClient(client);
+		   
 		agendamento = repository.save(agendamento);
 		return new AgendamentoDTO(agendamento);
 	}

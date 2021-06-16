@@ -1,66 +1,71 @@
-import { ClientType } from './types';
-import './style.css';
-import { AxiosError, AxiosResponse } from 'axios';
-import { axiosPut } from '../../../api';
-import { useRef, useState } from "react";
-import { Modal } from 'react-bootstrap';
+import { AxiosError, AxiosResponse } from "axios"
+import { useRef, useState } from "react"
+import { Modal } from "react-bootstrap"
+import { axiosPut } from "../../../api"
+import { formatPrice } from "../../../Products/hepers"
+import { PedidoType } from "./PedidoTypes"
 import { toast } from 'react-toastify';
-
+import { Product } from "../../../Products/types"
 
 type Props = {
-    clients: ClientType;
+    pedido: PedidoType
 }
-
-const ClientCard = ({ clients }: Props) => {
+const PedidoCard = ({ pedido }: Props) => {
 
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
 
-    const categoriaRef = useRef<HTMLSelectElement>(null);
+    const statusRef = useRef<HTMLSelectElement>(null);
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
+
+        setSelectedProducts(pedido.product);
+        const productsIds = selectedProducts.map(({ id }) => ({ id }));
         const dados = {
-            nome: clients.nome,
-            email: clients.email,
-            cpf: clients.cpf,
-            senha: clients.senha,
-            sexo: clients.sexo,
-            categoria: categoriaRef.current?.value
+            client: { "id": pedido.client.id},
+            dataVenda: pedido.dataVenda,
+            preco: pedido.preco,
+            quantidade: pedido.quantidade,
+            produtos:productsIds,
+            status: statusRef.current?.value
         }
-        if ((dados.categoria === undefined) || dados.categoria === 'undefined') {
+        if ((dados.status === undefined) || dados.status === 'undefined') {
             toast.warning('Selecione o tipo a ser modificado')
         }
         else {
-            axiosPut(`/client/${clients.id}`, dados)
+            axiosPut(`/pedido/${pedido.id}`, dados)
                 .then(function (response: AxiosResponse) {
-                    toast.success('Dados Atualizados com sucesso');
+                    toast.success('Status Atualizado com Sucesso')
                     handleClose();
                 })
                 .catch(function (error: AxiosError) {
-                    toast.error("sistema indisponivel")
+                    toast.error("Error: Sistema Indisponivel")
                 });
         }
     }
     return (
         <tbody>
             <tr>
+
                 <th scope="row">
                     <button onClick={handleShow} className='btn btn-outline-success w-100'
                         title="Editar">
                         <i className="fas fa-user-edit"></i>
                     </button>
-                </th>
-                <td>{clients.id}</td>
-                <td>{clients.nome}</td>
-                <td>{clients.email}</td>
-                <td>{clients.cpf}</td>
-                <td>{clients.sexo}</td>
-                <td>{clients.categoria}</td>
-            </tr>
 
+                </th>
+                <td>{pedido.id}</td>
+                <td>{formatPrice(pedido.preco)}</td>
+                <td>{pedido.dataVenda}</td>
+                <td>{pedido.status}</td>
+                <td>{pedido.quantidade}</td>
+                <td>{pedido.client.id}</td>
+                <td>{pedido.client.nome}</td>
+            </tr>
 
             <Modal
                 show={show}
@@ -76,14 +81,15 @@ const ClientCard = ({ clients }: Props) => {
                 </Modal.Header>
                 <Modal.Body>
                     <form>
-                        <label>Mudar Categoria de: <span>{clients.nome}</span>
-                            <select name='categoria' id='categoriaClient' ref={categoriaRef}
+                        <label>Mudar Status do Pedido: <span>{pedido.id}</span>
+                            <select name='status' id='statuClient' ref={statusRef}
                                 className='form-control form-control-sm'>
                                 <option value='undefined'></option>
-                                <option value='admin'>Admin</option>
-                                <option value='cliente'>Cliente</option>
+                                <option value='aprovado'>Aprovado</option>
+                                <option value='enviado'>Enviado</option>
+                                <option value='entregue'>Entregue</option>
+                                <option value='finalizado'>Finalizado</option>
                                 <option value='cancelado'>Cancelado</option>
-
                             </select>
                         </label>
                         <button type='submit' onClick={handleSubmit}
@@ -94,6 +100,6 @@ const ClientCard = ({ clients }: Props) => {
                 </Modal.Body>
             </Modal>
         </tbody >
-    );
+    )
 }
-export default ClientCard;
+export default PedidoCard

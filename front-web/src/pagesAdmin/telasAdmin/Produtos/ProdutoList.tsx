@@ -11,12 +11,12 @@ function ProdutosList({ produtos }: Props) {
                 <thead>
                     <tr>
                         <th scope="col"></th>
-                        <th scope="col"></th>
                         <th scope="col">ID</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Preço</th>
                         <th scope="col">Descrição</th>
                         <th scope="col">Imagem</th>
+                        <th scope="col">Categoria</th>
                     </tr>
                 </thead>
 

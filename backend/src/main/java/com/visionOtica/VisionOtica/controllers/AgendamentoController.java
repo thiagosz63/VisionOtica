@@ -30,7 +30,7 @@ public class AgendamentoController {
 		List<AgendamentoDTO> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<AgendamentoDTO> insert(@RequestBody AgendamentoDTO dto) {
 		dto = service.insert(dto);
@@ -38,9 +38,9 @@ public class AgendamentoController {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
 		return ResponseEntity.created(uri).body(dto);
 	}
-	
+
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Void> update(@RequestBody AgendamentoDTO objDto,@PathVariable Long id) {
+	public ResponseEntity<Void> update(@RequestBody AgendamentoDTO objDto, @PathVariable Long id) {
 		Agendamento obj = service.fromDtoAgenda(objDto);
 		obj.setId(id);
 		obj = service.update(obj);

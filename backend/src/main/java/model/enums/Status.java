@@ -1,7 +1,8 @@
 package model.enums;
 
 public enum Status {
-	Aguardando,
+	Pendente,
 	Confirmado,
-	Cancelado
+	Cancelado,
+	Finalizado
 }
