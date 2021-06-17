@@ -75,8 +75,6 @@ public class PedidoService {
 			newPedido.getProducts().add(product);
 		}
 		
-		
-
 		updateData(newPedido, obj);
 		return repository.save(newPedido);
 	}
@@ -86,7 +84,6 @@ public class PedidoService {
 		newPedido.setQuantidade(obj.getQuantidade());
 		newPedido.setStatus(obj.getStatus());
 		newPedido.setDataVenda(obj.getDataVenda());
-		newPedido.setClient(obj.getClient());
 	}
 
 	public Pedido fromDto(PedidoDTO objDto) {
