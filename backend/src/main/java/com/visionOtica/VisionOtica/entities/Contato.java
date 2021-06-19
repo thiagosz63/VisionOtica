@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import model.enums.StatusContato;
+
 @Entity
 @Table(name = "tb_contato")
 public class Contato implements Serializable {
@@ -21,17 +23,18 @@ public class Contato implements Serializable {
 	private String email;
 	private String telefone;
 	private String texto;
-	
+	private StatusContato status;
 	
 	public Contato() {
 	}
-	public Contato(Long id, String nome, String email, String telefone, String texto) {
+	public Contato(Long id, String nome, String email, String telefone, String texto, StatusContato status) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
 		this.texto = texto;
+		this.status = status;
 	}
 	public Long getId() {
 		return id;
@@ -65,6 +68,12 @@ public class Contato implements Serializable {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public StatusContato getStatus() {
+		return status;
+	}
+	public void setStatus(StatusContato status) {
+		this.status = status;
 	}
 	@Override
 	public int hashCode() {

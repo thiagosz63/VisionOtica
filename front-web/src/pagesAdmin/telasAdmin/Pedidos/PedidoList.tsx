@@ -15,10 +15,10 @@ function PedidoList({ pedido }: Props) {
                         <th scope="col">Código</th>
                         <th scope="col">Preço</th>
                         <th scope="col">Data do Pedido</th>
-                        <th scope="col">Status</th>
                         <th scope="col">Total de Produto</th>
                         <th scope="col">Código Cliente</th>
                         <th scope="col">Nome</th>
+                        <th scope="col">Status</th>
 
                     </tr>
                 </thead>

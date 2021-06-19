@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import com.visionOtica.VisionOtica.entities.Contato;
 
+import model.enums.StatusContato;
+
 public class ContatoDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -13,17 +15,19 @@ public class ContatoDTO implements Serializable {
 	private String email;
 	private String telefone;
 	private String texto;
+	private StatusContato status;
 
 	public ContatoDTO() {
 	}
 
-	public ContatoDTO(Long id, String nome, String email, String telefone, String texto) {
+	public ContatoDTO(Long id, String nome, String email, String telefone, String texto, StatusContato status) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
 		this.texto = texto;
+		this.status = status;
 	}
 
 	public ContatoDTO(Contato entity) {
@@ -33,6 +37,7 @@ public class ContatoDTO implements Serializable {
 		email = entity.getEmail();
 		telefone = entity.getTelefone();
 		texto = entity.getTexto();
+		status = entity.getStatus();
 	}
 
 	public Long getId() {
@@ -77,6 +82,13 @@ public class ContatoDTO implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public StatusContato getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusContato status) {
+		this.status = status;
 	}
 
 	@Override

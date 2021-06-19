@@ -1,16 +1,15 @@
-import { AgendamentoType } from './types';
+import { AxiosError, AxiosResponse } from "axios";
+import { useRef, useState } from "react"
+import { Modal } from "react-bootstrap";
+import { toast } from "react-toastify";
+import { axiosPut } from "../../../api";
+import { MensagemType } from "./MensagemTypes";
 import './style.css';
-import { Modal } from 'react-bootstrap';
-import { useRef, useState } from 'react';
-import { axiosPut } from '../../../api';
-import { AxiosError, AxiosResponse } from 'axios';
-import { toast } from 'react-toastify';
 
 type Props = {
-    agendamentos: AgendamentoType;
+    contato: MensagemType;
 }
-
-const AgendamentoCard = ({ agendamentos }: Props) => {
+const MensagemCard = ({ contato }: Props) => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -20,22 +19,22 @@ const AgendamentoCard = ({ agendamentos }: Props) => {
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         const dadosAge = {
-            nome: agendamentos.nome,
-            telefone: agendamentos.telefone,
-            horario: agendamentos.horario,
-            data: agendamentos.data,
+            nome: contato.nome,
+            email: contato.email,
+            telefone: contato.telefone,
+            texto: contato.texto,
             status: statusResf.current?.value,
         }
         if ((dadosAge.status === undefined) || dadosAge.status === 'undefined') {
             toast.warning("Por Favor Selecione um status valido")
         }
-        else if(agendamentos.status === "Finalizado"){
-            toast.error("Agendamento já foi Concluido")
+        else if(contato.status === "Finalizado"){
+            toast.error("Contato já foi Concluido")
             handleClose();
         }
 
         else {
-            axiosPut(`/agendamento/${agendamentos.id}`, dadosAge)
+            axiosPut(`/contato/${contato.id}`, dadosAge)
                 .then(function (response: AxiosResponse) {
                     toast.success("Status Atualizado com Sucesso")
                     handleClose();
@@ -45,27 +44,23 @@ const AgendamentoCard = ({ agendamentos }: Props) => {
                 });
         }
     }
-    
 
     return (
         <tbody>
             <tr>
                 <td>
-                    <button className='btn btn-outline-success w-100' title="Editar"
+                    <button className='btn btn-outline-success w-100' title="msn"
                         onClick={handleShow}>
                         <i className="fas fa-user-edit"></i>
                     </button>
                 </td>
-                <td>{agendamentos.id}</td>
-                <td>{agendamentos.nome}</td>
-                <td>{agendamentos.telefone}</td>
-                <td>{agendamentos.data}</td>
-                <td>{agendamentos.horario}</td>
-                <td>{agendamentos.client.id}</td>
-                <td>{agendamentos.client.nome}</td>
-                <td>{agendamentos.status}</td>
+                    <td>{contato.id}</td>
+                    <td>{contato.nome}</td>
+                    <td>{contato.email}</td>
+                    <td>{contato.telefone}</td>
+                    <td>{contato.texto}</td>
+                    <td>{contato.status}</td>
             </tr>
-
             <Modal
                 show={show}
                 onHide={handleClose}
@@ -80,13 +75,12 @@ const AgendamentoCard = ({ agendamentos }: Props) => {
                 </Modal.Header>
                 <Modal.Body>
                     <form>
-                        <label>Mudar Status de: <span>{agendamentos.nome}</span>
+                        <label>Mudar Status de: <span>{contato.nome}</span>
                             <select name='status' id='statusAgendamento' ref={statusResf}
                                 className='form-control form-control-sm'>
                                  <option value='undefined'></option>
-                                <option value='Confirmado'>Confirmado</option>
-                                <option value='Cancelado'>Cancelado</option>
-                                <option value='Finalizado'>Finalizado</option>
+                                <option value='Lida'>Lido</option>
+                                <option value='Não_Lida'>Não-Lido</option>
                             </select>
                         </label>
                         <button type='submit' onClick={handleSubmit}
@@ -96,7 +90,7 @@ const AgendamentoCard = ({ agendamentos }: Props) => {
                     </form>
                 </Modal.Body>
             </Modal>
-        </tbody>
-    );
+        </tbody >
+            )
 }
-export default AgendamentoCard;
+            export default MensagemCard;

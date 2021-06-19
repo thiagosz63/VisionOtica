@@ -8,6 +8,7 @@ import adm from './adm.png';
 import './style.css';
 import Agendamento from './telasAdmin/Agendamento';
 import Client from './telasAdmin/Client';
+import Mensagem from './telasAdmin/Mensagens';
 import Pedidos from './telasAdmin/Pedidos';
 import Produtos from './telasAdmin/Produtos';
 
@@ -111,7 +112,7 @@ function PagesAdmin() {
                         <div className="tab-pane fade" id="list-Agendamentos" role="tabpanel" aria-labelledby="list-Agendamentos-list"><Agendamento /></div>
                         <div className="tab-pane fade" id="list-produtos" role="tabpanel" aria-labelledby="list-produtos-list"><Produtos /></div>
                         <div className="tab-pane fade" id="list-usuarios" role="tabpanel" aria-labelledby="list-usuarios-list"><Client /></div>
-                        <div className="tab-pane fade" id="list-mensagens" role="tabpanel" aria-labelledby="list-mensagens-list">mensagens</div>
+                        <div className="tab-pane fade" id="list-mensagens" role="tabpanel" aria-labelledby="list-mensagens-list"><Mensagem /></div>
                     </div>
                 </div>
             </div>

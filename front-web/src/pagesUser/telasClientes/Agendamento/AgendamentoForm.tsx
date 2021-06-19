@@ -60,14 +60,14 @@ function AgendamentoForm(props: props) {
                         <Field id='horario' name='horario' as="select"
                             className='form-control form-control-sm'>
                             <option selected>Escolha um Horario</option>
-                            <option value="horario">08:30</option>
-                            <option value="horario">09:00</option>
-                            <option value="horario">09:30</option>
-                            <option value="horario">10:00</option>
-                            <option value="horario">10:30</option>
-                            <option value="horario">11:00</option>
-                            <option value="horario">11:30</option>
-                            <option value="horario">12:00</option>
+                            <option value="08:30">08:30</option>
+                            <option value="09:00">09:00</option>
+                            <option value="09:30">09:30</option>
+                            <option value="10:00">10:00</option>
+                            <option value="10:30">10:30</option>
+                            <option value="11:00">11:00</option>
+                            <option value="11:30">11:30</option>
+                            <option value="12:00">12:00</option>
                         </Field>
                         <ErrorMessage className="spanRed" component='span' name='horario' />
 
