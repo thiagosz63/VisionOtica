@@ -4,6 +4,7 @@ import { Modal } from 'react-bootstrap';
 import { useRef, useState } from 'react';
 import { axiosPut } from '../../../api';
 import { AxiosError, AxiosResponse } from 'axios';
+import { toast } from 'react-toastify';
 
 type Props = {
     agendamentos: AgendamentoType;
@@ -26,16 +27,21 @@ const AgendamentoCard = ({ agendamentos }: Props) => {
             status: statusResf.current?.value,
         }
         if ((dadosAge.status === undefined) || dadosAge.status === 'undefined') {
-            console.log('indefinido')
+            toast.warning("Por Favor Selecione um status valido")
         }
+        else if(agendamentos.status === "Finalizado"){
+            toast.error("Agendamento já foi Concluido")
+            handleClose();
+        }
+
         else {
             axiosPut(`/agendamento/${agendamentos.id}`, dadosAge)
                 .then(function (response: AxiosResponse) {
-                    alert('Dados Atualizados com sucesso');
+                    toast.success("Status Atualizado com Sucesso")
                     handleClose();
                 })
                 .catch(function (error: AxiosError) {
-                    alert(error.message)
+                    toast.error("Sistema Indisponivel")
                 });
         }
     }
@@ -55,6 +61,8 @@ const AgendamentoCard = ({ agendamentos }: Props) => {
                 <td>{agendamentos.data}</td>
                 <td>{agendamentos.horario}</td>
                 <td>{agendamentos.status}</td>
+                <td>{agendamentos.client.id}</td>
+                <td>{agendamentos.client.nome}</td>
             </tr>
 
             <Modal
@@ -74,11 +82,10 @@ const AgendamentoCard = ({ agendamentos }: Props) => {
                         <label>Mudar Status de: <span>{agendamentos.nome}</span>
                             <select name='status' id='statusAgendamento' ref={statusResf}
                                 className='form-control form-control-sm'>
-                                <option value='undefined'></option>
-                                <option value='Aguardando'>Aguardando</option>
+                                 <option value='undefined'></option>
                                 <option value='Confirmado'>Confirmado</option>
                                 <option value='Cancelado'>Cancelado</option>
-                                <option value='Concluido'>Concluido</option>
+                                <option value='Finalizado'>Finalizado</option>
                             </select>
                         </label>
                         <button type='submit' onClick={handleSubmit}

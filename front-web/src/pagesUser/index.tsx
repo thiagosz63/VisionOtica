@@ -12,6 +12,11 @@ import Pedidos from './telasClientes/Pedidos';
 
 function PageUser() {
 
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     // @ts-ignore
     const [id] = useState<string>((localStorage.getItem("id")));
     const [nome, setNome] = useState<string>();
@@ -19,6 +24,7 @@ function PageUser() {
     const [email, setEmail] = useState<string>();
     const [cpf, setCpf] = useState<string>();
     const [senha, setSenha] = useState<string>();
+    const [categoria, setCategoria] = useState<string>();
 
     useEffect(() => {
         axiosGet(`/client/${id}`)
@@ -28,6 +34,7 @@ function PageUser() {
                 setEmail(response.data.email)
                 setCpf(response.data.cpf)
                 setSenha(response.data.senha)
+                setCategoria(response.data.categoria)
 
             })
             .catch(function (error: AxiosError) {
@@ -35,11 +42,7 @@ function PageUser() {
 
     });
 
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
+   
     function logout() {
         localStorage.removeItem('client-logado')
         localStorage.removeItem("id")
@@ -113,7 +116,7 @@ function PageUser() {
                 <Modal.Body>
                     <Cadastrar titulo="Atualizar Minha Conta" id={id} fechaModal={handleClose}
                         nome={nome} sexo={sexo} email={email} cpf={cpf}
-                        senha={senha} categoria='cliente' />
+                        senha={senha} categoria={categoria} />
                 </Modal.Body>
             </Modal>
         </div>

@@ -8,6 +8,7 @@ import Cadastrar from '../cadastrar';
 import { axiosGet } from '../api';
 import { Modal } from 'react-bootstrap';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 function Loguin() {
     const [show, setShow] = useState(false);
@@ -21,22 +22,28 @@ function Loguin() {
         axiosGet(`/client/${values.email}/email`)
             .then(function (response: AxiosResponse) {
                 if (response.data.senha === values.password) {
-                    if (response.data.categoria !== 'admin') {
+                    localStorage.setItem('id', response.data.id);
+
+                    if (response.data.categoria === 'cliente') {
                         localStorage.setItem('client-logado', response.data);
-                        localStorage.setItem('id', response.data.id);
 
                         History.push("/page-user")
                     }
-                    if (response.data.categoria === 'admin') {
+                    else if (response.data.categoria === 'admin') {
                         localStorage.setItem('admin-logado', response.data);
                         History.push('/page-admin');
+                    } else {
+                        toast.error("Error ao fazer loguin! entre em contato com o Admin");
+                        History.push("/contato")
                     }
                 } else {
-                    alert('As senha sao diferente')
+                    toast.warning("Senha Incorreta")
+
                 }
             })
             .catch(function (error: AxiosError) {
-                alert('error: Cliente não encontrado')
+                toast.error("Cliente não Cadastrado")
+
             })
     }
 

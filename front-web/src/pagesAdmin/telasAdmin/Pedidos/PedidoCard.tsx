@@ -36,10 +36,16 @@ const PedidoCard = ({ pedido }: Props) => {
         if ((dados.status === undefined) || dados.status === 'undefined') {
             toast.warning('Selecione o tipo a ser modificado')
         }
+         else if(pedido.status === "finalizado"){
+            toast.error('O Pedido está Concluido')
+            setSelectedProducts([])
+            handleClose();
+        }
         else {
             axiosPut(`/pedido/${pedido.id}`, dados)
                 .then(function (response: AxiosResponse) {
                     toast.success('Status Atualizado com Sucesso')
+                    setSelectedProducts([])
                     handleClose();
                 })
                 .catch(function (error: AxiosError) {
