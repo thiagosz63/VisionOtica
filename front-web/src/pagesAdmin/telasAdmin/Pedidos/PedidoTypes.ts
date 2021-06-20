@@ -5,7 +5,7 @@ export type PedidoType = {
     dataVenda: Date;
     status: string;
     client: client; 
-    product:products[]
+    products:products[]
 }
 
 type client ={   

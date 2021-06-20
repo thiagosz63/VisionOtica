@@ -12,6 +12,8 @@ import com.visionOtica.VisionOtica.dto.ContatoDTO;
 import com.visionOtica.VisionOtica.entities.Contato;
 import com.visionOtica.VisionOtica.repositories.ContatoRepository;
 
+import model.enums.StatusContato;
+
 @Service
 public class ContatoService {
 
@@ -26,7 +28,8 @@ public class ContatoService {
 	
 	@Transactional
 	public ContatoDTO insert(ContatoDTO dto) {
-		Contato contato = new Contato(null, dto.getNome(), dto.getEmail(), dto.getTelefone(), dto.getTexto(), dto.getStatus());
+		Contato contato = new Contato(null, dto.getNome(), dto.getEmail(),
+				dto.getTelefone(), dto.getTexto(), StatusContato.Não_Lida);
 		
 		contato = repository.save(contato);
 		return new ContatoDTO(contato);

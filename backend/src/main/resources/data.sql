@@ -12,8 +12,8 @@ INSERT INTO tb_client (nome,email, cpf, sexo, senha,categoria) VALUES ('thiago',
 INSERT INTO tb_client (nome,email, cpf, sexo, senha, categoria) VALUES ('felipe','felipe@gmail.com', '12545395010', 'Masculino','123456',0);
 INSERT INTO tb_client (nome,email, cpf, sexo, senha,categoria) VALUES ('felipe','admin@gmail.com.br', '12365495112', 'Masculino','123456', 1);
 
-INSERT INTO tb_pedido (quantidade, preco, data_Venda, status, cliente_id) VALUES (1, 23.5, '2016-02-06', 0, 1);
-INSERT INTO tb_pedido (quantidade, preco, data_Venda, status, cliente_id) VALUES (1, 23.5, '2016-02-06', 0, 2);
+INSERT INTO tb_pedido (quantidade, preco, data_Venda, status, cliente_id) VALUES (2, 23.5, '2016-02-06', 0, 1);
+INSERT INTO tb_pedido (quantidade, preco, data_Venda, status, cliente_id) VALUES (2, 23.5, '2016-02-06', 0, 2);
 
 INSERT INTO tb_pedido_product (pedido_id, product_id) VALUES (1 , 1);
 INSERT INTO tb_pedido_product (pedido_id, product_id) VALUES (1 , 2);

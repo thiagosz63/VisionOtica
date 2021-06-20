@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { axiosGet } from "../../../api";
+import { PedidoType } from "../../../pagesAdmin/telasAdmin/Pedidos/PedidoTypes";
 import PedidoList from "./PedidoList";
-import { PedidoType } from "./PedidoTypes";
 import './style.css'
 
 interface props{

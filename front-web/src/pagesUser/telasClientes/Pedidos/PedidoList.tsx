@@ -1,5 +1,5 @@
+import { PedidoType } from "../../../pagesAdmin/telasAdmin/Pedidos/PedidoTypes";
 import PedidoCard from "./PedidoCard";
-import { PedidoType} from "./PedidoTypes";
 
 type Props = {
     pedido: PedidoType[]
@@ -16,6 +16,7 @@ function PedidoList({ pedido }: Props) {
                         <th scope="col">Data do Pedido</th>
                         <th scope="col">Status</th>
                         <th scope="col">Total de Produto</th>
+                        <th scope="col">Produtos</th>
 
                     </tr>
                 </thead>

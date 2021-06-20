@@ -23,20 +23,20 @@ const PedidoCard = ({ pedido }: Props) => {
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
 
-        setSelectedProducts(pedido.product);
+        setSelectedProducts(pedido.products);
         const productsIds = selectedProducts.map(({ id }) => ({ id }));
         const dados = {
-            client: { "id": pedido.client.id},
+            client: { "id": pedido.client.id },
             dataVenda: pedido.dataVenda,
             preco: pedido.preco,
             quantidade: pedido.quantidade,
-            produtos:productsIds,
+            produtos: productsIds,
             status: statusRef.current?.value
         }
         if ((dados.status === undefined) || dados.status === 'undefined') {
             toast.warning('Selecione o tipo a ser modificado')
         }
-         else if(pedido.status === "finalizado"){
+        else if (pedido.status === "finalizado") {
             toast.error('O Pedido está Concluido')
             setSelectedProducts([])
             handleClose();
@@ -67,10 +67,26 @@ const PedidoCard = ({ pedido }: Props) => {
                 <td>{pedido.id}</td>
                 <td>{formatPrice(pedido.preco)}</td>
                 <td>{pedido.dataVenda}</td>
+                <td>{pedido.status}</td>
                 <td>{pedido.quantidade}</td>
                 <td>{pedido.client.id}</td>
                 <td>{pedido.client.nome}</td>
-                <td>{pedido.status}</td>
+
+                <td>
+                    {(pedido.products).map(pedido => (
+                       <span key = {pedido.id}>
+                           {`${pedido.id} - `}
+                       </span>
+                    ))}
+                   
+                </td>
+
+                <td>
+                    {(pedido.products).map(pedido => (
+                        <img key = {pedido.id} src={pedido.imageUri} alt={pedido.name} width="80px"/>
+                    ))}
+                   
+                </td>
             </tr>
 
             <Modal

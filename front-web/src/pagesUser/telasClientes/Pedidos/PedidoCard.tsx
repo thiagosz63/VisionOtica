@@ -1,5 +1,5 @@
+import { PedidoType } from "../../../pagesAdmin/telasAdmin/Pedidos/PedidoTypes"
 import { formatPrice } from "../../../Products/hepers"
-import { PedidoType } from "./PedidoTypes"
 
 type Props = {
     pedido: PedidoType
@@ -16,6 +16,12 @@ const PedidoCard = ({ pedido }: Props) => {
                 <td>{pedido.dataVenda}</td>
                 <td>{pedido.status}</td>
                 <td>{pedido.quantidade}</td>
+                <td>
+                    {(pedido.products).map(pedido => (
+                        <img key = {pedido.id} src={pedido.imageUri} alt={pedido.name} width="80px"/>
+                    ))}
+                   
+                </td>
             </tr>
         </tbody >
     )
