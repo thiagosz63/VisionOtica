@@ -11,6 +11,7 @@ import Ela from './ela.png';
 import Acess from './acess.png';
 import Armacao3 from './armacao3.png';
 import './style.css'
+
 function Home() {
     return (
         <div>

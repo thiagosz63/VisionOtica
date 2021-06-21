@@ -76,6 +76,7 @@ footer ul li {
 
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) and (max-width: 991.98px) {
+	
 	footer  h1 {
 		font-size: 4em;
 	}

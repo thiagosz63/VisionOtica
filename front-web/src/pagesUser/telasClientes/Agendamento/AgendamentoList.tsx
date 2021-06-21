@@ -6,7 +6,7 @@ type Props = {
 }
 function ProdutosList({ agendamento }: Props) {
     return (
-        <div>
+        <div className="table-responsive">
             <table className="table table-bordered table-hover table-sm">
                 <thead>
                     <tr>

@@ -6,7 +6,7 @@ function Menu() {
     
     return (
         <header>
-            <div className="contante page-header">
+            <div className="page-header">
                 <div className='row'>
                     <div className='col-md-4 d-flex'>
                         <div className='align-self-center logo'>

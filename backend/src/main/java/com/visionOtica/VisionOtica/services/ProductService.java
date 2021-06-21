@@ -59,6 +59,7 @@ public class ProductService {
 		newClient.setPrice(obj.getPrice());
 		newClient.setImageUri(obj.getImageUri());
 		newClient.setDescription(obj.getDescription());
+		newClient.setCategoria(obj.getCategoria());
 
 	}
 

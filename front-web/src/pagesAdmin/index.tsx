@@ -51,7 +51,7 @@ function PagesAdmin() {
 
     return (
         <div className='container'>
-            <div className="adm-margem">
+            <div className="row adm-margem">
                 <img src={adm} width="40px" height="40px" alt="" />
                 <h4 className="h4-margem">
                     Adm
@@ -65,7 +65,7 @@ function PagesAdmin() {
                 </div>
             </div>
             <div className="row">
-                <div className="col-md-2">
+                <div className="col-md-3">
                     <div className="list-group" id="list-tab" role="tablist">
                         <a className="list-group-item list-group-item-action active "
                             id="list-Pedido-list" data-toggle="list" href="#list-Pedido" role="tab"
@@ -106,7 +106,7 @@ function PagesAdmin() {
                     </div>
                 </div>
 
-                <div className="col-md-10">
+                <div className="col-md-9">
                     <div className="tab-content" id="nav-tabContent">
                         <div className="tab-pane fade show active" id="list-Pedido" role="tabpanel" aria-labelledby="list-Pedido-list"><Pedidos/></div>
                         <div className="tab-pane fade" id="list-Agendamentos" role="tabpanel" aria-labelledby="list-Agendamentos-list"><Agendamento /></div>

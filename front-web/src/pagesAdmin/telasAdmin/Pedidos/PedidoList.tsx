@@ -7,7 +7,7 @@ type Props = {
 function PedidoList({ pedido }: Props) {
 
     return (
-        <div className="table-responsive ">
+        <div className="table-responsive">
             <table className="table table-bordered table-hover table-sm">
                 <thead>
                     <tr>
