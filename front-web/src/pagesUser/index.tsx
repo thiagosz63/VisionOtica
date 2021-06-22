@@ -60,7 +60,7 @@ function PageUser() {
 
                 <div className='col-md-4'>
                     <button className="btn btn-outline-primary" onClick={handleShow}>
-                        <i className="fas fa-user-circle"></i>Minha conta
+                        <i className="fas fa-user-circle"></i> Minha conta
                     </button>
                 </div>
             </div>

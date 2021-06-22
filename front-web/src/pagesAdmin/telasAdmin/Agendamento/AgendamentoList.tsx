@@ -19,7 +19,7 @@ function AgendamentoList({ agendamentos }: Props) {
                         <th scope="col">Horario</th>
                         <th scope="col">Codigo Cliente</th>
                         <th scope="col">Nome Cliente</th>
-                        <th scope="col">Status</th>
+                        <th className="statusMsn" scope="col">Status</th>
                     </tr>
                 </thead>
 

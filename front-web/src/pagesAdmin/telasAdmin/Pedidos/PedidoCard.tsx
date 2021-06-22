@@ -67,10 +67,10 @@ const PedidoCard = ({ pedido }: Props) => {
                 <td>{pedido.id}</td>
                 <td>{formatPrice(pedido.preco)}</td>
                 <td>{pedido.dataVenda}</td>
-                <td>{pedido.status}</td>
                 <td>{pedido.quantidade}</td>
                 <td>{pedido.client.id}</td>
                 <td>{pedido.client.nome}</td>
+                
 
                 <td>
                     {(pedido.products).map(pedido => (
@@ -85,8 +85,8 @@ const PedidoCard = ({ pedido }: Props) => {
                     {(pedido.products).map(pedido => (
                         <img key = {pedido.id} src={pedido.imageUri} alt={pedido.name} width="80px"/>
                     ))}
-                   
                 </td>
+                <td>{pedido.status}</td>
             </tr>
 
             <Modal

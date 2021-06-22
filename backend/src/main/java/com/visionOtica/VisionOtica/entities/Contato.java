@@ -2,6 +2,7 @@ package com.visionOtica.VisionOtica.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +23,7 @@ public class Contato implements Serializable {
 	private String nome;
 	private String email;
 	private String telefone;
+	@Column (columnDefinition = "TEXT")
 	private String texto;
 	private StatusContato status;
 	
