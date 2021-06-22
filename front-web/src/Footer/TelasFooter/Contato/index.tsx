@@ -15,7 +15,7 @@ function Contato() {
         axiosPost('/contato', Values)
 
             .then(function (response: AxiosResponse) {
-                toast.success('Dados Enviados com sucesso');
+                toast.success('Mensagem Enviada com sucesso: Aguarde que logo entramos em contato com vc');
                 History.push('/');
             })
             .catch(function (error: AxiosError) {

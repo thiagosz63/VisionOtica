@@ -90,8 +90,9 @@ function Home() {
                     </div>
 
                 </div>
+                <h4>Nossa Localização</h4>
                 <article>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15806.307080780953!2d-34.8800677!3d-7.9391921!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x69935a31ebe971!2sUNINASSAU%20-%20Paulista!5e0!3m2!1spt-BR!2sbr!4v1624325452694!5m2!1spt-BR!2sbr"
+                    <iframe title='map' src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15806.307080780953!2d-34.8800677!3d-7.9391921!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x69935a31ebe971!2sUNINASSAU%20-%20Paulista!5e0!3m2!1spt-BR!2sbr!4v1624325452694!5m2!1spt-BR!2sbr"
                         width="100%" height="450" style={{ border: 0 }} loading="lazy"></iframe>
                 </article>
             </div>

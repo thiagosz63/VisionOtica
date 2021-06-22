@@ -9,6 +9,7 @@ import { axiosGet } from '../api';
 import { Modal } from 'react-bootstrap';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 function Loguin() {
     const [show, setShow] = useState(false);
@@ -84,7 +85,7 @@ function Loguin() {
                                     </div>
 
                                     <div className='col-md-6'>
-                                        <a href='/'>Esqueceu sua Senha?</a>
+                                        <Link to='/contato'>Esqueceu sua Senha?</Link>
                                     </div>
                                 </div>
                             </Form>

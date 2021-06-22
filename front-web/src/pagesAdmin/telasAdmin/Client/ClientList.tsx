@@ -16,7 +16,8 @@ function ClientList({ clients }: Props) {
                         <th scope="col">Nome</th>
                         <th scope="col">Email</th>
                         <th scope="col">CPF</th>
-                        <th scope="col">sexo</th>
+                        <th scope="col">SEXO</th>
+                        <th scope="col">SENHA</th>
                         <th className="statusMsn" scope="col">categoria</th>
                     </tr>
                 </thead>

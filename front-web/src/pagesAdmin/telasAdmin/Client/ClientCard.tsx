@@ -58,6 +58,7 @@ const ClientCard = ({ clients }: Props) => {
                 <td>{clients.email}</td>
                 <td>{clients.cpf}</td>
                 <td>{clients.sexo}</td>
+                <td>{clients.senha}</td>
                 <td>{clients.categoria}</td>
             </tr>
 
