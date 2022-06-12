@@ -1,0 +1,45 @@
+.page-header {
+    border-top: unset !important;
+    background: linear-gradient(115deg,
+            #ffffff 18%,
+            #ffffff 17%,
+            rgba(206, 209, 226, 0.45) 41%,
+            #10589b 67%) !important;
+}
+
+.logo {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 30px 0;
+    margin-left: 60px;
+    max-width: 50%;
+    position: relative;
+    z-index: 5;
+}
+
+.divisor {
+    width: 1px;
+    background: white;
+}
+
+nav.navbar-transparente {
+    padding: 5px 0;
+    background: #10589b 67%;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white !important;
+    font-weight: bold;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #5F9EA0 !important;
+}
+
+.navbar-light .navbar-toggle {
+    color: rgba(255, 255, 255, .5) !important;
+    border-color: rgba(255, 255, 255, .1) !important;
+}
+.offcanvas-body{
+    background: #10589b 67%;
+}
