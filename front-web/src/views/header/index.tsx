@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Logo from "./assets/logo.png";
 import './style.css';
 
@@ -8,9 +9,9 @@ export default function Header() {
                 <div className='row'>
                     <div className='col-md-4 d-flex'>
                         <div className='align-self-center logo'>
-                            <a href="/">
+                            <Link to="/">
                                 <img src={Logo} width="90px" alt="logo-vision-otica" />
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -31,9 +32,9 @@ export default function Header() {
                         aria-labelledby="offcanvasNavbarLabel">
                         <div className="offcanvas-header">
                             <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-                                <a href="/">
+                                <Link to="/">
                                     <img src={Logo} width="90px" alt="logo-vision-otica" />
-                                </a>
+                                </Link>
                             </h5>
                             <button type="button"
                                 className="btn-close"
@@ -43,24 +44,24 @@ export default function Header() {
                         <div className="offcanvas-body">
                             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="/">
+                                    <Link to="/" className="nav-link active" aria-current="page">
                                         Óculos de grau
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/">
+                                    <Link to="/" className="nav-link">
                                         Óculos de sol
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/">
+                                    <Link to="/" className="nav-link">
                                         Lentes de contato
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/">
+                                    <Link to="/" className="nav-link">
                                         Todos
-                                    </a>
+                                    </Link>
                                 </li>
 
                                 <li className="nav-item divisor ml-2 mr-2"></li>

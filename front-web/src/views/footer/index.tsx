@@ -5,6 +5,7 @@ import Twitter from './assets/twitter.png';
 import Logo from '../header/assets/logo.png';
 import Whatsapp from './assets/whatsapp.png';
 import Youtube from './assets/youtube.png';
+import { Link } from 'react-router-dom';
 
 
 export default function Footer() {
@@ -17,10 +18,10 @@ export default function Footer() {
                         <h4>SUA CONTA</h4>
                         <ul className="navbar-nav" >
                             <li className="nav-item" >
-                                <a href='/page-user'>Acessar sua Conta</a>
+                                <Link to='/page-user'>Acessar sua Conta</Link>
                             </li>
                             <li className="nav-item" >
-                                <a href='/'>Carrinho de Compras</a>
+                                <Link to='/'>Carrinho de Compras</Link>
                             </li>
                         </ul>
                     </div>
@@ -29,19 +30,19 @@ export default function Footer() {
                         <h4>INSTITUCIONAL</h4>
                         <ul className="navbar-nav">
                             <li className="nav-item" >
-                                <a href='/quem-somos'>Quem Somos</a>
+                                <Link to='/quem-somos'>Quem Somos</Link>
                             </li>
                             <li className="nav-item" >
-                                <a href='/contato'>Contato</a>
+                                <Link to='/contato'>Contato</Link>
                             </li>
                             <li className="nav-item" >
-                                <a href='/politica-de-entrega'>Políticas de Entregas</a>
+                                <Link to='/politica-de-entrega'>Políticas de Entregas</Link>
                             </li>
                             <li className="nav-item" >
-                                <a href='/trocas-e-Devolucao'>Políticas de troca e devolução</a>
+                                <Link to='/trocas-e-Devolucao'>Políticas de troca e devolução</Link>
                             </li>
                             <li className="nav-item" >
-                                <a href='/universidade-vision'>Universidade Vision</a>
+                                <Link to='/universidade-vision'>Universidade Vision</Link>
                             </li>
                         </ul>
                     </div>
@@ -50,31 +51,31 @@ export default function Footer() {
                         <h4>AJUDA/FAQ</h4>
                         <ul className="navbar-nav">
                             <li className="nav-item" >
-                                <a href='/cuidarOculos'>Como cuidar dos seus óculos</a>
+                                <Link to='/cuidarOculos'>Como cuidar dos seus óculos</Link>
                             </li>
                             <li className="nav-item" >
-                                <a href='/cdpupilar'>Calcule sua distância pupilar</a>
+                                <Link to='/cdpupilar'>Calcule sua distância pupilar</Link>
                             </li>
                             <li className="nav-item" >
-                                <a href='/dicas'>Dicas Úteis</a>
+                                <Link to='/dicas'>Dicas Úteis</Link>
                             </li>
                             <li className="nav-item" >
-                                <a href='/duvidas'>Dúvidas freqüentes</a>
+                                <Link to='/duvidas'>Dúvidas freqüentes</Link>
                             </li>
                         </ul>
                     </div>
 
                     <div className="col-md-4 centralizar">
                         <div className="footer-left">
-                            <a href="./Home"><img src={Logo} width="90px" alt=""></img></a>
+                            <Link to="./Home"><img src={Logo} width="90px" alt=""></img></Link>
                         </div>
 
                         <div className="social" >
-                            <a href='/'><img src={Instagram} alt='Instagram' width="50px"></img></a>
-                            <a href='/'><img src={Facebook} alt='Facebook' width="50px"></img></a>
-                            <a href='/'><img src={Twitter} alt='Twitter' width="50px"></img></a>
-                            <a href='/'><img src={Youtube} alt='Youtube' width="50px"></img></a>
-                            <a href='/'><img src={Whatsapp} alt='Whatsapp' width="50px"></img></a>
+                            <Link to='/'><img src={Instagram} alt='Instagram' width="50px"></img></Link>
+                            <Link to='/'><img src={Facebook} alt='Facebook' width="50px"></img></Link>
+                            <Link to='/'><img src={Twitter} alt='Twitter' width="50px"></img></Link>
+                            <Link to='/'><img src={Youtube} alt='Youtube' width="50px"></img></Link>
+                            <Link to='/'><img src={Whatsapp} alt='Whatsapp' width="50px"></img></Link>
                         </div>
                     </div>
                 </div>
