@@ -1,0 +1,12 @@
+.duvidas {
+    text-align: center;
+    margin: 20px;
+}
+.duvidas h2 {
+    color:#10589b;
+    margin: 40px;
+    text-decoration: underline;
+}
+#duvidas-p {
+    margin: 30px 30px;
+}

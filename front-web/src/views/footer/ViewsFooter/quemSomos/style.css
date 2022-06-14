@@ -1,0 +1,15 @@
+.quemSomos {
+    color: #10589b;
+    margin: 30px;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.QuemSomos-center h4 {
+    text-align: center;
+    margin: 20px;
+}
+
+#quemSomos-p {
+    margin: 0px 40px;
+}

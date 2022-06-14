@@ -1,0 +1,17 @@
+.trocasDevolucao {
+    color:#10589b;
+    margin: 30px;
+    text-align: center;
+    text-decoration: underline;
+}
+.trocasDevolucao-center h4 {
+    text-align: center;
+    margin: 20px; 
+    text-decoration: underline;
+}
+#trocasDevolucao-p {
+    margin: 0px 30px;
+}
+.trocas-img {
+    margin: 20px;
+}

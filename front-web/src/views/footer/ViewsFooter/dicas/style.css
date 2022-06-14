@@ -1,0 +1,19 @@
+.dicas {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.dicas h2 {
+    color: #10589b;
+    margin: 40px;
+    text-decoration: underline;
+}
+
+.dicas h4 {
+    color: #10589b;
+    margin: 20px;
+}
+
+.dicas li {
+    margin: 5px;
+}

@@ -6,7 +6,7 @@ import Olhos04 from './assets/Olhos4.jpg';
 import Olhos05 from './assets/Olhos5.jpg';
 import { Link } from 'react-router-dom';
 
-function CDPupilar() {
+export default function CDPupilar() {
     return (
         <body>
             <div className="container cdpupilar">
@@ -81,4 +81,3 @@ function CDPupilar() {
         </body>
     )
 }
-export default CDPupilar;

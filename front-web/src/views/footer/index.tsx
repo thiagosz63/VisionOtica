@@ -51,10 +51,10 @@ export default function Footer() {
                         <h4>AJUDA/FAQ</h4>
                         <ul className="navbar-nav">
                             <li className="nav-item" >
-                                <Link to='/cuidarOculos'>Como cuidar dos seus óculos</Link>
+                                <Link to='/cuidar-oculos'>Como cuidar dos seus óculos</Link>
                             </li>
                             <li className="nav-item" >
-                                <Link to='/cdpupilar'>Calcule sua distância pupilar</Link>
+                                <Link to='/calcule-distancia-pupilar'>Calcule sua distância pupilar</Link>
                             </li>
                             <li className="nav-item" >
                                 <Link to='/dicas'>Dicas Úteis</Link>
