@@ -15,7 +15,7 @@ import './style.css'
 export default function Home() {
     return (
         <div>
-            <div className='contante cont align-self-center'>
+            <div className='contante align-self-center home-container'>
                 <div className='row'>
                     <div className='col-md-12'>
                         <div id="idCarousel" className="carousel slide carousel-dark" data-bs-ride="true">
@@ -66,50 +66,49 @@ export default function Home() {
             </div>
 
 
-            <div className='container align-self-center fotos'>
+            <div className='container align-self-center home-container'>
                 <div className='row'>
                     <div className='col-md-3'>
-                        <div className='coteudo'>
+                        <div className='home-coteudo'>
                             <img src={Mosaico} width='100%' alt='mosaico' />
                         </div>
 
-                        <div className='coteudo'>
+                        <div className='home-coteudo'>
                             <img src={Outlet3} width='100%' alt='outlet3' />
                         </div>
 
-                        <div className='coteudo'>
+                        <div className='home-coteudo'>
                             <img src={Antiazul3} width='100%' alt='antiazul3' />
                         </div>
                     </div>
 
                     <div className='col-md-6'>
-                        <div className='coteudo'>
+                        <div className='home-coteudo'>
                             <img src={Rayban20f} width='100%' alt='Rayban20f' />
                         </div>
 
-                        <div className='coteudo'>
+                        <div className='home-coteudo'>
                             <img src={Mosaico3} width='100%' alt='Mosaico3' />
                         </div>
 
-                        <div className='coteudo'>
+                        <div className='home-coteudo'>
                             <img src={Lanca} width='100%' alt='Lanca' />
                         </div>
                     </div>
 
                     <div className='col-md-3'>
-                        <div className='coteudo'>
+                        <div className='home-coteudo'>
                             <img src={Ela} width='100%' alt='Ela' />
                         </div>
 
-                        <div className='coteudo'>
+                        <div className='home-coteudo'>
                             <img src={Acess} width='100%' alt='Acess' />
                         </div>
 
-                        <div className='coteudo'>
+                        <div className='home-coteudo'>
                             <img src={Armacao3} width='100%' alt='Armacao3' />
                         </div>
                     </div>
-
                 </div>
                 <h4>Nossa Localização</h4>
                 <article>

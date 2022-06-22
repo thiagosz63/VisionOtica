@@ -1,14 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-import Routes from 'Routes/Routes';
+import Routes from 'routes/routes';
 import './App.css';
 
-function App() {
+export default function App() {
   return (
     <div>
-      <Routes/>
+      <Routes />
     </div>
   );
 }
-
-export default App;

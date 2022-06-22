@@ -10,6 +10,7 @@ import UniversidadeVision from "views/footer/ViewsFooter/universidadeVision";
 import CuidarOculos from "views/footer/ViewsFooter/cuidarOculos";
 import Dicas from "views/footer/ViewsFooter/dicas";
 import Duvidas from "views/footer/ViewsFooter/duvidas";
+import Product from "views/product";
 
 
 export default function Routes() {
@@ -17,6 +18,7 @@ export default function Routes() {
         <BrowserRouter>
             <Header />
             <Switch>
+                <Route path="/produtos" element={<Product />} />
                 <Route path="/duvidas" element={<Duvidas />} />
                 <Route path="/dicas" element={<Dicas />} />
                 <Route path="/cuidar-oculos" element={<CuidarOculos />} />

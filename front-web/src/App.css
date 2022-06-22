@@ -1,7 +1,13 @@
-.row{
+:root {
+    --primary-color: #10589b;
+    --secondary-color: #9E9E9E;
+}
+
+.row {
     margin-left: 0;
     margin-right: 0;
 }
+
 a {
     text-decoration: none;
-  }
+}

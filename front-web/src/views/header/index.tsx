@@ -5,10 +5,10 @@ import './style.css';
 export default function Header() {
     return (
         <header>
-            <div className="page-header">
+            <div className="header-container">
                 <div className='row'>
                     <div className='col-md-4 d-flex'>
-                        <div className='align-self-center logo'>
+                        <div className='align-self-center header-logo'>
                             <Link to="/">
                                 <img src={Logo} width="90px" alt="logo-vision-otica" />
                             </Link>
@@ -44,7 +44,7 @@ export default function Header() {
                         <div className="offcanvas-body">
                             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                                 <li className="nav-item">
-                                    <Link to="/" className="nav-link active" aria-current="page">
+                                    <Link to="/produtos" className="nav-link active" aria-current="page">
                                         Óculos de grau
                                     </Link>
                                 </li>
@@ -64,7 +64,7 @@ export default function Header() {
                                     </Link>
                                 </li>
 
-                                <li className="nav-item divisor ml-2 mr-2"></li>
+                                <li className="nav-item ml-2 mr-2 header-divisor"></li>
                             </ul>
                             <form className="d-flex" role="search">
                                 <button className="btn btn-outline-light" type="submit">Entrar</button>

@@ -1,5 +1,3 @@
-/* Rodapé
------------------------------*/
 footer {
 	border-top: unset!important;
 	background: linear-gradient(
@@ -17,7 +15,7 @@ footer h4 {
 }
 
 footer .navbar-nav a {
-	color: rgb(6, 105, 197);
+	color:var(--primary-color);
 	font-size: 0.9em;
 }
 

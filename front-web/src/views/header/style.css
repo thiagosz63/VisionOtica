@@ -1,13 +1,13 @@
-.page-header {
+.header-container {
     border-top: unset !important;
     background: linear-gradient(115deg,
             #ffffff 18%,
             #ffffff 17%,
             rgba(206, 209, 226, 0.45) 41%,
-            #10589b 67%) !important;
+            var(--primary-color) 67%) !important;
 }
 
-.logo {
+.header-logo {
     display: inline-block;
     vertical-align: middle;
     margin: 30px 0;
@@ -17,14 +17,14 @@
     z-index: 5;
 }
 
-.divisor {
+.header-divisor {
     width: 1px;
     background: white;
 }
 
 nav.navbar-transparente {
     padding: 5px 0;
-    background: #10589b 67%;
+    background: var(--primary-color) 67%;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -40,6 +40,7 @@ nav.navbar-transparente {
     color: rgba(255, 255, 255, .5) !important;
     border-color: rgba(255, 255, 255, .1) !important;
 }
-.offcanvas-body{
-    background: #10589b 67%;
+
+.offcanvas-body {
+    background: var(--primary-color) 67%;
 }
