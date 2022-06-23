@@ -48,26 +48,32 @@ export default function Header() {
                                         Óculos de grau
                                     </Link>
                                 </li>
+
                                 <li className="nav-item">
                                     <Link to="/" className="nav-link">
                                         Óculos de sol
                                     </Link>
                                 </li>
+
                                 <li className="nav-item">
                                     <Link to="/" className="nav-link">
                                         Lentes de contato
                                     </Link>
                                 </li>
+
                                 <li className="nav-item">
                                     <Link to="/" className="nav-link">
                                         Todos
                                     </Link>
                                 </li>
 
-                                <li className="nav-item ml-2 mr-2 header-divisor"></li>
+                                <li className="nav-item ml-2 mr-2 header-divisor" />
                             </ul>
-                            <form className="d-flex" role="search">
-                                <button className="btn btn-outline-light" type="submit">Entrar</button>
+
+                            <form className="d-flex">
+                                <Link to={"/login"} className="btn btn-outline-light">
+                                    Entrar
+                                </Link>
                             </form>
                         </div>
                     </div>

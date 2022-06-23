@@ -7,12 +7,11 @@ import Whatsapp from './assets/whatsapp.png';
 import Youtube from './assets/youtube.png';
 import { Link } from 'react-router-dom';
 
-
 export default function Footer() {
     return (
         <footer>
-            <div className="container centralizar">
-                <div className='row' id="marcador">
+            <div className="container footer-centralizar">
+                <div className='row' id="footer-marcador">
 
                     <div className="col-md-2">
                         <h4>SUA CONTA</h4>
@@ -65,17 +64,29 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    <div className="col-md-4 centralizar">
+                    <div className="col-md-4 footer-centralizar">
                         <div className="footer-left">
-                            <Link to="./Home"><img src={Logo} width="90px" alt=""></img></Link>
+                            <Link to="/">
+                                <img src={Logo} width="90px" alt="" />
+                            </Link>
                         </div>
 
-                        <div className="social" >
-                            <Link to='/'><img src={Instagram} alt='Instagram' width="50px"></img></Link>
-                            <Link to='/'><img src={Facebook} alt='Facebook' width="50px"></img></Link>
-                            <Link to='/'><img src={Twitter} alt='Twitter' width="50px"></img></Link>
-                            <Link to='/'><img src={Youtube} alt='Youtube' width="50px"></img></Link>
-                            <Link to='/'><img src={Whatsapp} alt='Whatsapp' width="50px"></img></Link>
+                        <div className="footer-social" >
+                            <Link to='/'>
+                                <img src={Instagram} alt='Instagram' width="50px" />
+                            </Link>
+                            <Link to='/'>
+                                <img src={Facebook} alt='Facebook' width="50px" />
+                            </Link>
+                            <Link to='/'>
+                                <img src={Twitter} alt='Twitter' width="50px" />
+                            </Link>
+                            <Link to='/'>
+                                <img src={Youtube} alt='Youtube' width="50px" />
+                            </Link>
+                            <Link to='/'>
+                                <img src={Whatsapp} alt='Whatsapp' width="50px" />
+                            </Link>
                         </div>
                     </div>
                 </div>

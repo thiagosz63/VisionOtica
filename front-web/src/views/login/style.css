@@ -1,0 +1,13 @@
+.login-caixa {
+    margin-top: 20px;
+}
+
+.login-caixa span {
+    color: red;
+}
+.login-caixa h1{
+    color: var(--primary-color);
+}
+.login-field{
+    margin-left: 10px;
+}

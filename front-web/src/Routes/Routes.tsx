@@ -1,16 +1,17 @@
 import { BrowserRouter, Routes as Switch, Route } from "react-router-dom";
-import Header from "views/header";
-import Footer from "views/footer";
+import Header from "components/header";
+import Footer from "components/footer";
 import Home from "../views/home";
-import CDPupilar from "../views/footer/ViewsFooter/cdPupilar";
-import QuemSomos from "views/footer/ViewsFooter/quemSomos";
-import PoliticaEntrega from "views/footer/ViewsFooter/politicaEntrega";
-import TrocasDevolucao from "views/footer/ViewsFooter/trocasDevolucao";
-import UniversidadeVision from "views/footer/ViewsFooter/universidadeVision";
-import CuidarOculos from "views/footer/ViewsFooter/cuidarOculos";
-import Dicas from "views/footer/ViewsFooter/dicas";
-import Duvidas from "views/footer/ViewsFooter/duvidas";
+import CDPupilar from "views/staticsViews/cdPupilar";
+import QuemSomos from "views/staticsViews/quemSomos";
+import PoliticaEntrega from "views/staticsViews/politicaEntrega";
+import TrocasDevolucao from "views/staticsViews/trocasDevolucao";
+import UniversidadeVision from "views/staticsViews/universidadeVision";
+import CuidarOculos from "views/staticsViews/cuidarOculos";
+import Dicas from "views/staticsViews/dicas";
+import Duvidas from "views/staticsViews/duvidas";
 import Product from "views/product";
+import Login from "views/login";
 
 
 export default function Routes() {
@@ -18,6 +19,7 @@ export default function Routes() {
         <BrowserRouter>
             <Header />
             <Switch>
+                <Route path="/login" element={<Login/>}/>
                 <Route path="/produtos" element={<Product />} />
                 <Route path="/duvidas" element={<Duvidas />} />
                 <Route path="/dicas" element={<Dicas />} />
